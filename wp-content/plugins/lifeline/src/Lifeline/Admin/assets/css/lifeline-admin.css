@@ -1,0 +1,8 @@
+.nav-tabs { border-bottom: none !important; }
+.nav-tabs .nav-link { color: #fa3a6b; }
+.nav-tabs .nav-link:focus { outline: none; box-shadow: none; }
+
+#page_row_template { display: none; }
+.delete-btn { border: none; background-color: transparent; padding: 0; }
+
+.propel-pages-container .form-check .form-check-label { line-height: 1rem; margin-top: -22px; margin-left: 25px; }

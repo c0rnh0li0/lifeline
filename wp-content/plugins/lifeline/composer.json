@@ -1,0 +1,19 @@
+{
+    "name": "darko/lifeline",
+    "description": "Lifeline - Makedonija Lek",
+    "type": "wordpress-plugin",
+    "license": "none",
+    "autoload": {
+        "psr-4": {
+            "Lifeline\\": "src/Lifeline/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Darko Krstev",
+            "email": "darkokrstev@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}
