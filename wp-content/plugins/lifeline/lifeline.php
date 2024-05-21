@@ -21,6 +21,8 @@ defined( 'ABSPATH' ) || exit;
 
 
 define('LIFELINE_SETTINGS_DB', 'lifeline_settings');
+define('LIFELINE_SYNC_LOG_DB', 'lifeline_sync_log');
+define('LIFELINE_PLUGIN_DIR', plugin_dir_path(__FILE__));
 
 require plugin_dir_path(__FILE__) . '/vendor/autoload.php';
 
