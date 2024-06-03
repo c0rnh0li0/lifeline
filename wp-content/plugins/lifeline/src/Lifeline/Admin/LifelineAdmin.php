@@ -14,21 +14,29 @@ class LifelineAdmin {
     
     public function __construct() { }
 
+    public function register_scripts() {
+        // include admin scripts and styles
+        if (isset($_REQUEST['page']) && str_contains($_REQUEST['page'], 'lifeline')) {
+            add_action('admin_enqueue_scripts', [$this, 'styles']);
+            add_action('admin_enqueue_scripts', [$this, 'scripts']);
+
+            $this->actions();
+        }      
+    }
+
     public function scripts() {
-        // wp_enqueue_script('mollie_admin_bootstrap', plugin_dir_url( __FILE__ ) . 'assets/js/bootstrap.min.js', array( 'jquery' ), null, true);
-        
-        // custom propeller admin js
         wp_enqueue_script('lifeline_bootstrap', plugin_dir_url( __FILE__ ) . 'assets/js/bootstrap.min.js', [], null, true);
         wp_enqueue_script('lifeline_overlay', plugin_dir_url( __FILE__ ) . 'assets/js/plain-overlay.min.js', array( 'jquery' ), null, true);
-        wp_enqueue_script('lifeline_admin_js', plugin_dir_url( __FILE__ ) . 'assets/js/lifeline-admin.js', array( 'jquery' ), null, true);
+        wp_enqueue_script('lifeline_admin', plugin_dir_url( __FILE__ ) . 'assets/js/lifeline-admin.js', array( 'jquery' ), null, true);
 
-        wp_localize_script('lifeline_admin_js', 'lifeline_admin_ajax', array( 'ajaxurl' => admin_url( 'admin-ajax.php')));
+        wp_localize_script('lifeline_admin', 'lifeline_admin_ajax', [ 
+            'ajaxurl' => admin_url('admin-ajax.php') 
+        ]);
     }
 
     public function styles() {
         wp_enqueue_style( 'lifeline_admin_bootstrap', plugin_dir_url( __FILE__ ) . 'assets/css/bootstrap.min.css', array(), null, 'all' );
 
-        // custom propeller admin css
         wp_enqueue_style( 'lifeline_admin_css', plugin_dir_url( __FILE__ ) . 'assets/css/lifeline-admin.css', array(), null, 'all' );
     }
 
@@ -36,6 +44,13 @@ class LifelineAdmin {
         add_menu_page('Lifeline', 'Lifeline', 'manage_options', 'lifeline', array( $this, 'dashboard' ));
         add_submenu_page("lifeline", "Lifeline", "Sync", 'manage_options', "lifeline-sync", array( $this, 'sync' ));
         add_submenu_page("lifeline", "Lifeline", "Logs", 'manage_options', "lifeline-logs", array( $this, 'logs' ));
+    }
+
+    public function actions() {
+        $lifelineSync = new LifelineSync();
+        
+        add_action('wp_ajax_ll_sync_db', array($lifelineSync, 'sync'));
+        add_action('wp_ajax_ll_restore_old', array($lifelineSync, 'restore_wc_data'));
     }
 
     public function dashboard() {

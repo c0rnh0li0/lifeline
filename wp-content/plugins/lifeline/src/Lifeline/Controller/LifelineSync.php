@@ -113,16 +113,25 @@ class LifelineSync extends LifelineConnector {
             }
         }
 
-        $this->log([
+        $log_data = [
             'inserted' => $untouched,
             'updated' => $updated,
             'deleted' => $not_found,
             'logs' => 'Old data restored.',
             'old_restore' => 1
-        ]);
+        ];
+
+        $this->log($log_data);
 
         if (file_exists(LIFELINE_PLUGIN_DIR . '/src/wc.csv'))
             @unlink(file_exists(LIFELINE_PLUGIN_DIR . '/src/wc.csv'));
+
+        if (wp_doing_ajax()) {
+            die(json_encode([
+                'success' => true, 
+                $log_data
+            ]));
+        }
     }
 
     public function count() {
@@ -172,8 +181,8 @@ class LifelineSync extends LifelineConnector {
         }
     }
 
-    public function sync($type = 3) {
-        ini_set('max_execution_time', '7200');
+    public function sync($type = self::SYNC_TYPE_UNKNOWN) {
+        ini_set('max_execution_time', '72000');
 
         $inserted = 0;
         $updated = 0;
@@ -195,6 +204,8 @@ class LifelineSync extends LifelineConnector {
             $products = $this->get_products($this->limit, $offset);
             
             $responses[] = $this->import($products);
+
+            break;
         }
 
         foreach ($responses as $response) {
@@ -203,14 +214,23 @@ class LifelineSync extends LifelineConnector {
             $deleted += $response->deleted;
         }
 
-        $this->log([
+        $log_data = [
             'inserted' => $inserted,
             'updated' => $updated,
             'deleted' => $deleted,
             'logs' => 'Synchronization successful',
             'old_restore' => 0, 
             'sync_type' => $type
-        ]);
+        ];
+
+        $this->log($log_data);
+
+        if (wp_doing_ajax()) {
+            die(json_encode([
+                'success' => true, 
+                $log_data
+            ]));
+        }
     }
 
     public function import($products) {

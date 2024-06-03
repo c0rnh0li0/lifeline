@@ -41,11 +41,7 @@ class Lifeline {
         // add wp admin menu for Mollie Propeller
         add_action('admin_menu', [$_admin, 'menu']);
         
-        // include admin scripts and styles
-        if (isset($_REQUEST['page']) && str_contains($_REQUEST['page'], 'lifeline')) {
-            add_action('admin_enqueue_scripts', [$_admin, 'styles']);
-            add_action('admin_enqueue_scripts', [$_admin, 'scripts']);
-        }    
+        $_admin->register_scripts();   
     }
 
     public static function activate() {

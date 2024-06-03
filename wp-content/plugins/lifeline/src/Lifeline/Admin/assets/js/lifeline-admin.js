@@ -72,23 +72,15 @@ window.Lifeline || (window.Lifeline = {});
 		manual_sync: function(event) {
 			console.log('manual sync');
 
-			Lifeline.Alert.show("message");
-
-			return;
-
-			var data = {
-				action: 'manual_sync'
-			};
-
             Lifeline.Ajax.call({
-                url: lifeline_admin_js.ajaxurl,
+                url: lifeline_admin.ajaxurl,
                 method: 'POST',
-                data: data,
+                data: {
+                    action: 'll_sync_db'
+                },
                 loading: $(this),
                 success: function(data, msg, xhr) {
                     Lifeline.Alert.show(data.message);
-
-                    // Kerridge.Admin.init(false);
                 },
                 error: function() {
                     console.log('error', arguments);
@@ -98,6 +90,21 @@ window.Lifeline || (window.Lifeline = {});
 		},
 		old_data_restore: function(event) {
 			console.log('old data restore');
+
+            Lifeline.Ajax.call({
+                url: lifeline_admin_js.ajaxurl,
+                method: 'POST',
+                data: {
+                    action: 'll_restore_old'
+                },
+                loading: $(this),
+                success: function(data, msg, xhr) {
+                    Lifeline.Alert.show(data.message);
+                },
+                error: function() {
+                    console.log('error', arguments);
+                }
+            });
 		}
     };
 
