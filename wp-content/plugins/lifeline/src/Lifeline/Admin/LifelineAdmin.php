@@ -49,8 +49,8 @@ class LifelineAdmin {
     public function actions() {
         $lifelineSync = new LifelineSync();
         
-        add_action('wp_ajax_ll_sync_db', array($lifelineSync, 'sync'));
-        add_action('wp_ajax_ll_restore_old', array($lifelineSync, 'restore_wc_data'));
+        add_action('wp_ajax_ll_sync', array($lifelineSync, 'sync'));
+        add_action('wp_ajax_ll_restore', array($lifelineSync, 'restore_wc_data'));
     }
 
     public function dashboard() {

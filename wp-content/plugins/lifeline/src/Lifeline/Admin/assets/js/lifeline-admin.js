@@ -73,10 +73,10 @@ window.Lifeline || (window.Lifeline = {});
 			console.log('manual sync');
 
             Lifeline.Ajax.call({
-                url: lifeline_admin.ajaxurl,
+                url: lifeline_admin_ajax.ajaxurl,
                 method: 'POST',
                 data: {
-                    action: 'll_sync_db'
+                    action: 'll_sync'
                 },
                 loading: $(this),
                 success: function(data, msg, xhr) {
@@ -95,7 +95,7 @@ window.Lifeline || (window.Lifeline = {});
                 url: lifeline_admin_js.ajaxurl,
                 method: 'POST',
                 data: {
-                    action: 'll_restore_old'
+                    action: 'll_restore'
                 },
                 loading: $(this),
                 success: function(data, msg, xhr) {
