@@ -92,3 +92,40 @@ function understrap_child_customize_controls_js() {
 	);
 }
 add_action( 'customize_controls_enqueue_scripts', 'understrap_child_customize_controls_js' );
+
+/**
+ * @snippet       Remove Sidebar @ Single Product Page
+ * @how-to        Get CustomizeWoo.com FREE
+ * @sourcecode    https://businessbloomer.com/?p=19572
+ * @author        Rodolfo Melogli
+ * @testedwith    WooCommerce 3.2.6
+ */
+ 
+ function remove_wc_sidebar_conditional( $array ) {
+
+	// Hide sidebar on product pages by returning false
+	if ( is_product() )
+	  return false;
+  
+	// Otherwise, return the original array parameter to keep the sidebar
+	return $array;
+  }
+  
+  // Change position of the title in product, to be bellow breadcrumbs 
+
+  add_filter( 'is_active_sidebar', 'remove_wc_sidebar_conditional', 10, 2 );
+
+  function product_change_title_position() {
+	remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_title', 5 );
+	add_action( 'woocommerce_before_single_product', 'woocommerce_template_single_title', 5 );
+}
+
+add_action( 'init', 'product_change_title_position' );
+
+// Cart menu
+
+function register_header_menu() {
+	register_nav_menu('cart-menu',__( 'Cart menu' ));
+  }
+  add_action( 'init', 'register_header_menu' );
+ 

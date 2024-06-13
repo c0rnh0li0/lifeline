@@ -24,9 +24,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 		<!-- Your site branding in the menu -->
 		<?php get_template_part( 'global-templates/navbar-branding' ); ?>		
 
-		<div class="search-home">
-			<?php get_search_form(); ?>
-		</div>
+		
 
 		<div class="phone">
 			<a href="tel:+389070217128"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/icons/icon-phone.svg" alt="Phone" /><span>070 217 128</span></a>
@@ -34,7 +32,12 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 		<div class="top-buttons">
 			<a href="#" target="_blank"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/icons/icon-heart-plus.svg" alt="Heart plus" /></a>
-			<a href="#" target="_blank"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/icons/icon-cart.svg" alt="Cart" /></a>
+			<?php 
+				wp_nav_menu( array(
+				'theme_location' => 'cart-menu',
+				'container'      => false,
+				'menu_class'     => 'x-nav sf-menu'
+				) ); ?>
 		</div>
 		
 		<div class="social">
@@ -58,12 +61,32 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 </nav><!-- #main-nav -->
 
+<?php if ( wp_is_mobile() ) : ?>
+	<div class="wrapper search-mobile-wrapper">
+		<div class="<?php echo esc_attr( $container ); ?>">	
+			<div class="row search-mobile">					
+				<div class="search-home col-9">
+					<?php get_search_form(); ?>
+				</div>
+				<div class="user-profile col-3">
+					<?php if ( is_user_logged_in() ) { ?>
+						<a href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>" class="profile-button create-profile" title="<?php _e('My Account','woothemes'); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/icons/icon-mobile-profile.svg" alt="Create profile"><span><?php _e('My Account','woothemes'); ?></span></a>
+					<?php } 
+					else { ?>
+						<a href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>" class="profile-button create-profile" title="<?php _e('Login / Register','woothemes'); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/icon-mobile-profile.svg" alt="Create profile"><span><?php _e('Login / Register','woothemes'); ?></span></a>
+					<?php } ?>
+				</div>
+			</div>
+		</div>
+	</div>
+<?php endif; ?>
+
 <div class="wrapper menu-wrapper">
 		<div class="<?php echo esc_attr( $container ); ?>">	
 		
-			<div class="row header-bottom">
+			<div class="row header-bottom">				
 
-				<div class="col-9 lifeline-nav navbar-expand-md">
+				<div class="col-md-10 col-12 lifeline-nav navbar-expand-md">
 					<!-- The WordPress Menu goes here -->
 					<?php
 					wp_nav_menu(
@@ -81,9 +104,15 @@ $container = get_theme_mod( 'understrap_container_type' );
 					?>
 				</div>
 
-				<div class="col-3 lifeline-profile">
-					<a href="#" class="profile-button create-profile"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/icons/icon-profile.svg" alt="Create profile"><span>Креирај профил</span></a>
-					<a href="#" class="profile-button profile-login"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/icons/icon-login.svg" alt="Profile login"><span>Најави се</span></a>
+				<div class="d-none d-sm-block col-md-2 lifeline-profile">
+					<?php /* <a href="#" class="profile-button create-profile"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/icons/icon-profile.svg" alt="Create profile"><span>Креирај профил</span></a>
+					<a href="#" class="profile-button profile-login"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/icons/icon-login.svg" alt="Profile login"><span>Најави се</span></a> */ ?>
+					<?php if ( is_user_logged_in() ) { ?>
+						<a href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>" class="profile-button create-profile" title="<?php _e('My Account','woothemes'); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/icons/icon-profile.svg" alt="Create profile"><span><?php _e('My Account','woothemes'); ?></span></a>
+					<?php } 
+					else { ?>
+						<a href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>" class="profile-button create-profile" title="<?php _e('Login / Register','woothemes'); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/icons/icon-profile.svg" alt="Create profile"><span><?php _e('Login / Register','woothemes'); ?></span></a>
+					<?php } ?>
 				</div>
 
 

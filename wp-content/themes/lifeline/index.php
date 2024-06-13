@@ -34,8 +34,6 @@ $container = get_theme_mod( 'understrap_container_type' );
 			get_template_part( 'global-templates/left-sidebar-check' );
 			?>
 
-			<main class="site-main" id="main">
-
 				<?php
 				if ( have_posts() ) {
 					// Start the Loop.
@@ -53,8 +51,6 @@ $container = get_theme_mod( 'understrap_container_type' );
 					get_template_part( 'loop-templates/content', 'none' );
 				}
 				?>
-
-			</main>
 
 			<?php
 			// Display the pagination component.
