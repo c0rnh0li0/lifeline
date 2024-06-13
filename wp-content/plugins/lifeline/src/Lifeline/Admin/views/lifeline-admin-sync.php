@@ -1,15 +1,30 @@
-<div class="toast-container position-fixed bottom-0 end-0 p-3">
-  <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-    <div class="toast-header">
-      <img src="..." class="rounded me-2" alt="...">
-      <strong class="me-auto">Bootstrap</strong>
-      <small>11 mins ago</small>
-      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+<div aria-live="polite" aria-atomic="true" class="bg-body-secondary position-relative bd-example-toasts rounded-3">
+    <div class="toast-container position-fixed top-0 end-0 p-3 m-3 mt-4">
+        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <strong class="me-auto">Lifeline</strong>
+                <small></small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                <div class="row">
+                    <div class="col ll-toast-label type-inserted"></div>
+                    <div class="col ll-toast-label value-inserted"></div>
+                </div>
+                <div class="row">
+                    <div class="col ll-toast-label type-updated"></div>
+                    <div class="col ll-toast-label value-updated"></div>
+                </div>
+                <div class="row">
+                    <div class="col ll-toast-label type-deleted"></div>
+                    <div class="col ll-toast-label value-deleted"></div>
+                </div>
+                <div class="row mt-3">
+                    <strong class="col ll-toast-label value-logs"></strong>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="toast-body">
-      Hello, world! This is a toast message.
-    </div>
-  </div>
 </div>
 
 <div class="row p-3">
@@ -25,6 +40,10 @@
                 <div class="row mb-3 mt-3">
                     <div class="col">
                         <button class="btn btn-success" id="manual_sync" type="button">Manual synchronization</button>
+
+                        <div class="progress mt-3 ll-sync-progress-bar">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated ll-sync-progress bg-info" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">0%</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -40,6 +59,10 @@
         <div class="row mb-3">
             <div class="col">
                 <button class="btn btn-success" id="old_data_restore" type="button">Restore old data</button>
+
+                <div class="progress mt-3 ll-restore-progress-bar">
+                <div class="progress-bar progress-bar-striped progress-bar-animated ll-restore-progress bg-info" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">0%</div>
+            </div>
             </div>
         </div>
         <?php } ?>

@@ -26,12 +26,22 @@ define('LIFELINE_PLUGIN_DIR', plugin_dir_path(__FILE__));
 
 require plugin_dir_path(__FILE__) . '/vendor/autoload.php';
 
+global $lifeline_active;
+
+$active_plugins = (array) get_option('active_plugins', array());
+$lifeline_active = !empty($active_plugins) && in_array(basename(__DIR__) . '/lifeline.php', $active_plugins);
+
 function activate_lifeline() {
 	\Lifeline\Lifeline::activate();
+
+	if (!wp_next_scheduled('ll_sync_cron'))
+        wp_schedule_event(strtotime('00:00:00'), 'daily', 'll_sync_cron');
 }
 
 function deactivate_lifeline() {
 	\Lifeline\Lifeline::deactivate();
+
+	wp_unschedule_event(wp_next_scheduled('ll_sync_cron'), 'll_sync_cron');
 }
 
 function uninstall_lifeline() { 
@@ -41,6 +51,10 @@ function uninstall_lifeline() {
 register_activation_hook(__FILE__, 'activate_lifeline');
 register_deactivation_hook(__FILE__, 'deactivate_lifeline');
 register_uninstall_hook(__FILE__, 'uninstall_lifeline');
+
+if ($lifeline_active) {
+	require plugin_dir_path(__FILE__) . '/ajax.php';
+}
 
 function run_lifeline() {
 	$lifeline = new \Lifeline\Lifeline();

@@ -19,8 +19,6 @@ class LifelineAdmin {
         if (isset($_REQUEST['page']) && str_contains($_REQUEST['page'], 'lifeline')) {
             add_action('admin_enqueue_scripts', [$this, 'styles']);
             add_action('admin_enqueue_scripts', [$this, 'scripts']);
-
-            $this->actions();
         }      
     }
 
@@ -46,13 +44,6 @@ class LifelineAdmin {
         add_submenu_page("lifeline", "Lifeline", "Logs", 'manage_options', "lifeline-logs", array( $this, 'logs' ));
     }
 
-    public function actions() {
-        $lifelineSync = new LifelineSync();
-        
-        add_action('wp_ajax_ll_sync', array($lifelineSync, 'sync'));
-        add_action('wp_ajax_ll_restore', array($lifelineSync, 'restore_wc_data'));
-    }
-
     public function dashboard() {
         global $table_prefix, $wpdb;
 
@@ -75,7 +66,7 @@ class LifelineAdmin {
     public function sync() {
         global $table_prefix, $wpdb;
 
-        $restore_logs = $wpdb->get_results("SELECT * FROM " . $table_prefix . LIFELINE_SYNC_LOG_DB . " WHERE old_restore = 1");
+        $restore_logs = $wpdb->get_results("SELECT * FROM " . $table_prefix . LIFELINE_SYNC_LOG_DB . " WHERE old_restore = 1 ORDER BY execution DESC LIMIT 1");
         $old_data_exists = file_exists(LIFELINE_PLUGIN_DIR . '/src/wc.csv');
 
         require 'views/lifeline-admin-sync.php';
@@ -84,8 +75,8 @@ class LifelineAdmin {
     public function logs() {
         global $table_prefix, $wpdb;
 
-        $sync_logs = $wpdb->get_results("SELECT * FROM " . $table_prefix . LIFELINE_SYNC_LOG_DB . " WHERE old_restore = 0");
-        $restore_logs = $wpdb->get_results("SELECT * FROM " . $table_prefix . LIFELINE_SYNC_LOG_DB . " WHERE old_restore = 1");
+        $sync_logs = $wpdb->get_results("SELECT * FROM " . $table_prefix . LIFELINE_SYNC_LOG_DB . " WHERE old_restore = 0 ORDER BY execution DESC LIMIT 10");
+        $restore_logs = $wpdb->get_results("SELECT * FROM " . $table_prefix . LIFELINE_SYNC_LOG_DB . " WHERE old_restore = 1 ORDER BY execution DESC LIMIT 10");
 
         require 'views/lifeline-admin-logs.php';
     }

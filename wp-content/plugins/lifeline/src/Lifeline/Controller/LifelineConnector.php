@@ -27,34 +27,41 @@ class LifelineConnector {
         global $wpdb, $table_prefix;
         $ll_settings = $wpdb->get_row("SELECT * FROM " . $table_prefix . LIFELINE_SETTINGS_DB);
 
-        $this->host = $ll_settings->mklek_db_host;
-        $this->view = $ll_settings->mklek_db_view;
-        $this->user = $ll_settings->mklek_db_user;
-        $this->pass = $ll_settings->mklek_db_pass;
-        $this->port = $ll_settings->mklek_db_port;
-        $this->dbname = $ll_settings->mklek_db_dbname;
+        if (is_object($ll_settings)) {
+            $this->host = $ll_settings->mklek_db_host;
+            $this->view = $ll_settings->mklek_db_view;
+            $this->user = $ll_settings->mklek_db_user;
+            $this->pass = $ll_settings->mklek_db_pass;
+            $this->port = $ll_settings->mklek_db_port;
+            $this->dbname = $ll_settings->mklek_db_dbname;
+    
+            try {
+                $dsn = "pgsql:host=$this->host;port=$this->port;dbname=$this->dbname";
+                $username = $this->user;
+                $password = $this->pass;
+                $connection = new PDO($dsn, $username, $password, self::$options);
 
-        try {
-            $dsn = "pgsql:host=$this->host;port=$this->port;dbname=$this->dbname";
-            $username = $this->user;
-            $password = $this->pass;
-            $connection = new PDO($dsn, $username, $password, self::$options);
-            $this->connection = $connection;
-            return $connection;      
-        } catch (PDOException    $e) {
-            $this->log([
-                'inserted' => 0,
-                'updated' => 0,
-                'deleted' => 0,
-                'logs' => 'There was a problem connecting to the database: ' . $e->getMessage(),
-                'old_restore' => 0
-            ]);
+                $this->connection = $connection;
 
-            exit($e->getMessage());
+                return $connection;      
+            } catch (PDOException    $e) {
+                $this->log([
+                    'inserted' => 0,
+                    'updated' => 0,
+                    'deleted' => 0,
+                    'logs' => 'There was a problem connecting to the database: ' . $e->getMessage(),
+                    'old_restore' => 0
+                ]);
+    
+                // exit($e->getMessage());
+            }
         }
     }
     
     public function query($query) {
+        if (!$this->connection)
+            return [];
+        
         $result = $this->connection->query($query);
 
         $data = [];

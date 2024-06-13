@@ -13,6 +13,7 @@ class LifelineSync extends LifelineConnector {
 
     protected $limit = 100; 
     protected $helper;
+    protected $log_file;
 
     protected $tax_classes = [
         '18' => 'standard',
@@ -39,7 +40,9 @@ class LifelineSync extends LifelineConnector {
     }
 
     public function restore_wc_data() {
-        ini_set('max_execution_time', '7200');
+        $this->log_file = plugin_dir_path(__FILE__) . "/sync.log";
+
+        set_time_limit(0);
         
         $updated = 0;
         $untouched = 0;
@@ -64,12 +67,21 @@ class LifelineSync extends LifelineConnector {
             require_once(ABSPATH . 'wp-admin/includes/file.php');
             require_once(ABSPATH . 'wp-admin/includes/image.php');
         }
+
+        $paging = new stdClass();
+        $paging->count = count($products_count);
+        $paging->pages = $pages;
         
         for ($i = 0; $i < $pages; $i++) {
             $args['offset'] = $args['limit'] * $i;
 
             $products = wc_get_products($args);
             
+            $count = 1;
+
+            $paging->offset = $args['offset'];
+            $paging->page = $i;
+
             foreach ($products as $product) {
                 $found = array_filter($old_products, function($old) use ($product) {
                     return strtolower($old->Name) == strtolower($product->get_name());
@@ -110,6 +122,10 @@ class LifelineSync extends LifelineConnector {
                 else {
                     $not_found++;
                 }
+
+                $this->set_status($paging, $count);
+
+                $count++;
             }
         }
 
@@ -123,22 +139,19 @@ class LifelineSync extends LifelineConnector {
 
         $this->log($log_data);
 
-        if (file_exists(LIFELINE_PLUGIN_DIR . '/src/wc.csv'))
-            @unlink(file_exists(LIFELINE_PLUGIN_DIR . '/src/wc.csv'));
+        if (file_exists(LIFELINE_PLUGIN_DIR . 'src' . DIRECTORY_SEPARATOR . 'wc.csv'))
+            @unlink(LIFELINE_PLUGIN_DIR . 'src' . DIRECTORY_SEPARATOR . 'wc.csv');
 
-        if (wp_doing_ajax()) {
-            die(json_encode([
-                'success' => true, 
-                $log_data
-            ]));
-        }
+        $this->remove_status_file();
+
+        return $log_data;
     }
 
     public function count() {
         $count_sql = "SELECT COUNT(sifra) FROM $this->view";
         $count = $this->query($count_sql);
 
-        return $count[0]->count;
+        return sizeof($count) > 0 ? $count[0]->count : 0;
     }
 
     public function get_products($limit, $offset) {
@@ -182,7 +195,9 @@ class LifelineSync extends LifelineConnector {
     }
 
     public function sync($type = self::SYNC_TYPE_UNKNOWN) {
-        ini_set('max_execution_time', '72000');
+        $this->log_file = plugin_dir_path(__FILE__) . "/sync.log";
+
+        set_time_limit(0);
 
         $inserted = 0;
         $updated = 0;
@@ -192,20 +207,39 @@ class LifelineSync extends LifelineConnector {
         
         $count = $this->count();
 
+        if ($count == 0) {
+            $error_data = [
+                'inserted' => $inserted,
+                'updated' => $updated,
+                'deleted' => $deleted,
+                'logs' => 'No products in database or no connection to database server',
+                'old_restore' => 0, 
+                'sync_type' => $type
+            ];
+
+            $this->log($error_data);
+            return $error_data;
+        }
+
         $pages = ceil($count / $this->limit);
 
         $offset = 0;
 
         $responses = [];
 
+        $paging = new stdClass();
+        $paging->count = $count;
+        $paging->pages = $pages;
+
         for ($i = 0; $i < $pages; $i++) {
             $offset = $i == 0 ? $offset : $offset + $this->limit;
 
             $products = $this->get_products($this->limit, $offset);
-            
-            $responses[] = $this->import($products);
 
-            break;
+            $paging->offset = $offset;
+            $paging->page = $i;
+            
+            $responses[] = $this->import($products, $paging);
         }
 
         foreach ($responses as $response) {
@@ -225,19 +259,55 @@ class LifelineSync extends LifelineConnector {
 
         $this->log($log_data);
 
-        if (wp_doing_ajax()) {
-            die(json_encode([
-                'success' => true, 
-                $log_data
-            ]));
-        }
+        $this->remove_status_file();
+        
+        return $log_data;
     }
 
-    public function import($products) {
+    public function async_sync() {
+        $results = $this->sync(self::SYNC_TYPE_MANUAL);
+
+        $return = new stdClass();
+
+        $return->success = true;
+        $return->results = $results;
+
+        echo json_encode($return);
+
+        wp_die();
+    }
+
+    public function async_restore() {
+        $results = $this->restore_wc_data();
+
+        $return = new stdClass();
+
+        $return->success = true;
+        $return->results = $results;
+
+        echo json_encode($return);
+
+        wp_die();
+    }
+
+    public function async_status() {
+        $return = new stdClass();
+
+        $return->success = true;
+        $return->status = ceil($this->get_status());
+
+        echo json_encode($return);
+
+        wp_die();
+    }
+
+    public function import($products, $paging) {
         $return = new stdClass();
         $return->inserted = 0;
         $return->updated = 0;
         $return->deleted = 0;
+
+        $count = 1; 
 
         foreach($products as $i => $product) {
             $product_id = wc_get_product_id_by_sku($product->sifra);
@@ -264,8 +334,51 @@ class LifelineSync extends LifelineConnector {
             $woo_product->set_status('publish');
 
             $woo_product->save();
+
+            $this->set_status($paging, $count);
+
+            $count++;
         }
 
         return $return;
+    }
+
+    private function set_status($paging, $current) {
+        if (!$this->log_file)
+            $this->log_file = plugin_dir_path(__FILE__) . "/sync.log";
+
+        $stat_file = fopen($this->log_file, "w") or die("Unable to open sync file!");
+
+        $current = $paging->offset + $current;
+
+        $percentage = (($current / $paging->count) * 100);
+
+        fwrite($stat_file, $percentage);
+
+        fclose($stat_file);
+    }
+
+    private function get_status() {
+        if (!$this->log_file)
+            $this->log_file = plugin_dir_path(__FILE__) . "/sync.log";
+
+        $stat_file = fopen($this->log_file, "r") or die("Unable to open sync file!");
+
+        if (filesize($this->log_file) > 0) {
+            $content = fread($stat_file, filesize($this->log_file));
+
+            fclose($stat_file);
+    
+            return $content;
+        }
+        
+        return 0;
+    }
+
+    private function remove_status_file() {
+        if (!$this->log_file)
+            $this->log_file = plugin_dir_path(__FILE__) . "/sync.log";
+
+        @unlink($this->log_file);
     }
 }

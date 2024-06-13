@@ -2,7 +2,7 @@
     <div class="col">
         <p class="h3 mt-3 mb-2 text-black-50">General settings</p>
 
-        <form method="POST" class="propel-admin-form p-3 border rounded-lg" action="#" id="propel_settings_form">
+        <form method="POST" class="p-3 border rounded-lg" action="#" id="settings_form">
             <input type="hidden" id="id" name="id" value="<?php echo isset($settings_result->id) ? $settings_result->id : 0; ?>">
             <input type="hidden" name="action" value="save_settings">
                     

@@ -19,7 +19,7 @@ class Lifeline {
             if (isset($_REQUEST['sync'])) {
                 $sync = new LifelineSync();
             
-                $sync->sync();
+                $sync->sync($sync::SYNC_TYPE_MANUAL);
             }
 
             if (isset($_REQUEST['restore'])) {
@@ -38,7 +38,6 @@ class Lifeline {
     public function admin_hooks() {
         $_admin = new \Lifeline\Admin\LifelineAdmin();
 
-        // add wp admin menu for Mollie Propeller
         add_action('admin_menu', [$_admin, 'menu']);
         
         $_admin->register_scripts();   

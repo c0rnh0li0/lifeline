@@ -65,12 +65,20 @@ window.Lifeline || (window.Lifeline = {});
 
     var Admin = {
         account_pages_checked: false,
+        status_interval: false, 
+        prev_sync_status: 0,
 		init: function () {
             $('#manual_sync').off('click').on('click', this.manual_sync);
             $('#old_data_restore').off('click').on('click', this.old_data_restore);
+
+            $('.ll-sync-progress-bar').hide();
+            $('.ll-restore-progress-bar').hide();
 		},
 		manual_sync: function(event) {
-			console.log('manual sync');
+            var sync_btn = this;
+
+            $(sync_btn).hide();
+            $('.ll-sync-progress-bar').show();
 
             Lifeline.Ajax.call({
                 url: lifeline_admin_ajax.ajaxurl,
@@ -78,41 +86,114 @@ window.Lifeline || (window.Lifeline = {});
                 data: {
                     action: 'll_sync'
                 },
-                loading: $(this),
                 success: function(data, msg, xhr) {
-                    Lifeline.Alert.show(data.message);
+                    data.results.type = 'sync';
+
+                    Lifeline.Alert.show(data.results);
+
+                    Lifeline.Admin.update_progress(100, 'sync');
+
+                    setTimeout(function() {
+                        $('.ll-sync-progress-bar').hide();
+                        Lifeline.Admin.update_progress(0, 'sync');
+
+                        $(sync_btn).show();
+                    }, 3000);
+
+                    clearInterval(Lifeline.Admin.status_interval);                    
                 },
                 error: function() {
                     console.log('error', arguments);
                 }
             });
 
+            Lifeline.Admin.update_status('sync');
 		},
 		old_data_restore: function(event) {
-			console.log('old data restore');
+            var restore_btn = this;
+
+			$(restore_btn).hide();
+            $('.ll-restore-progress-bar').show();
 
             Lifeline.Ajax.call({
-                url: lifeline_admin_js.ajaxurl,
+                url: lifeline_admin_ajax.ajaxurl,
                 method: 'POST',
                 data: {
                     action: 'll_restore'
                 },
-                loading: $(this),
+                // loading: $(this),
                 success: function(data, msg, xhr) {
-                    Lifeline.Alert.show(data.message);
+                    data.results.type = 'restore';
+
+                    Lifeline.Alert.show(data.results);
+
+                    Lifeline.Admin.update_progress(100, 'restore');
+
+                    setTimeout(function() {
+                        $('.ll-restore-progress-bar').hide();
+                        Lifeline.Admin.update_progress(0, 'restore');
+    
+                        $(restore_btn).show();
+                    }, 3000);
+
+                    clearInterval(Lifeline.Admin.status_interval);
                 },
                 error: function() {
                     console.log('error', arguments);
                 }
             });
-		}
+
+            Lifeline.Admin.update_status('restore');
+		},
+        update_status: function(what) {
+            Lifeline.Admin.status_interval = window.setInterval(function(){
+                Lifeline.Ajax.call({
+                    url: lifeline_admin_ajax.ajaxurl,
+                    method: 'POST',
+                    data: {
+                        action: 'll_sync_status'
+                    },
+                    // loading: $(this),
+                    success: function(data, msg, xhr) {
+                        if (typeof data.status != 'undefined' && data.status > 0) {
+                            Lifeline.Admin.prev_sync_status = data.status;
+                            Lifeline.Admin.update_progress(data.status, what);
+                        }                        
+                    },
+                    error: function() {
+                        console.log('error', arguments);
+                    }
+                });
+            }, 5000);
+		},
+        update_progress: function(percent, what) {
+            $(`.ll-${what}-progress`).attr('aria-valuenow', percent).css({ 'width': `${percent}%`}).html(`${percent}%`);
+        }
     };
 
 	var Alert = {
         alert: '#liveToast',
         init: function() {},
-        show: function(message) {
+        show: function(data) {
+            var restore_map = {
+                "inserted": "Untouched",
+                "updated": "Updated",
+                "deleted": "Not found"
+            };
+
+            for (const property in data) {
+                if (data.type == 'sync') {
+                    $(this.alert).find(`.type-${property}`).html(property.charAt(0).toUpperCase() + property.slice(1));
+                    $(this.alert).find(`.value-${property}`).html(data[property]);
+                } else {
+                    var restore_label = typeof restore_map[property] != 'undefined' ? restore_map[property] : property.charAt(0).toUpperCase() + property.slice(1);
+                    $(this.alert).find(`.type-${property}`).html(restore_label);
+                    $(this.alert).find(`.value-${property}`).html(data[property]);
+                }
+            }
+
             var toast = new bootstrap.Toast(this.alert);
+
 
     		toast.show();
         }
