@@ -75,6 +75,7 @@ class Lifeline {
                     mklek_db_user VARCHAR(200) NOT NULL,
                     mklek_db_pass VARCHAR(200) NOT NULL,
                     mklek_db_view VARCHAR(200) NOT NULL,
+                    mklek_db_dbname VARCHAR(200) NOT NULL,
                     UNIQUE KEY id (id)
             ) $charset_collate;";
             

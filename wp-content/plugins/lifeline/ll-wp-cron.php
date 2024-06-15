@@ -13,6 +13,8 @@ add_filter( 'cron_schedules', 'll_sync_cron_schedules', 10, 1 );
 
 
 function ll_sync_cron() {
+    $sync_type = \Lifeline\Controller\LifelineSync::SYNC_TYPE_WP_CRON;
+    
     require_once(plugin_dir_path(__FILE__) . '/ll-sync-cron.php');
 }
 

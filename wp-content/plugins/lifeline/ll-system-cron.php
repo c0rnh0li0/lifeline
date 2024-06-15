@@ -10,4 +10,4 @@ set_time_limit(0);
 
 $ll_sync = new \Lifeline\Controller\LifelineSync();
 
-$ll_sync->sync($ll_sync::SYNC_TYPE_CRON);
+$ll_sync->sync(isset($sync_type) ? $sync_type : $ll_sync::SYNC_TYPE_CRON);

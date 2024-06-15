@@ -25,7 +25,7 @@
                     <td scope="row"><?php echo $log->inserted; ?></td>
                     <td scope="row"><?php echo $log->updated; ?></td>
                     <td scope="row"><?php echo $log->deleted; ?></td>
-                    <td scope="row" title="<?php echo $log->logs; ?>"><?php echo mb_substr($log->logs, 0, 90); ?>...</td>
+                    <td scope="row" title="<?php echo addslashes($log->logs); ?>"><?php echo mb_substr($log->logs, 0, 90); ?>...</td>
                     <td scope="row"><?php echo $this->sync_types[$log->sync_type]; ?></td>
                 </tr>
                 <?php } ?>
