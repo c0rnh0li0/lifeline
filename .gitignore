@@ -18,3 +18,4 @@
 /wp-content/plugins/*
 !/wp-content/plugins/lifeline
 /vendor/
+/wp-content/themes/lifeline/node_modules
