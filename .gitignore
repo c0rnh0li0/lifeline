@@ -11,6 +11,7 @@
 !/wp-content/themes
 /wp-content/themes/*
 !/wp-content/themes/lifeline
+/wp-content/themes/lifeline/node_modules
 
 # Plugin ignores
 
@@ -18,4 +19,3 @@
 /wp-content/plugins/*
 !/wp-content/plugins/lifeline
 /vendor/
-/wp-content/themes/lifeline/node_modules

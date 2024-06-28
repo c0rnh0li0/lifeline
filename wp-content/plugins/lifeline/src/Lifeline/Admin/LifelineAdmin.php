@@ -2,6 +2,7 @@
 
 namespace Lifeline\Admin;
 
+use Lifeline\Controller\LifelineGroups;
 use Lifeline\Controller\LifelineSync;
 
 class LifelineAdmin {        
@@ -25,6 +26,8 @@ class LifelineAdmin {
     public function scripts() {
         wp_enqueue_script('lifeline_bootstrap', plugin_dir_url( __FILE__ ) . 'assets/js/bootstrap.min.js', [], null, true);
         wp_enqueue_script('lifeline_overlay', plugin_dir_url( __FILE__ ) . 'assets/js/plain-overlay.min.js', array( 'jquery' ), null, true);
+        wp_enqueue_script('lifeline_groups', plugin_dir_url( __FILE__ ) . 'assets/js/jquery.tokeninput.min.js', array( 'jquery' ), null, true);
+        wp_enqueue_script('lifeline_datepicker', plugin_dir_url( __FILE__ ) . 'assets/js/bootstrap-datepicker.min.js', array( 'jquery' ), null, true);
         wp_enqueue_script('lifeline_admin', plugin_dir_url( __FILE__ ) . 'assets/js/lifeline-admin.js', array( 'jquery' ), null, true);
 
         wp_localize_script('lifeline_admin', 'lifeline_admin_ajax', [ 
@@ -34,12 +37,15 @@ class LifelineAdmin {
 
     public function styles() {
         wp_enqueue_style( 'lifeline_admin_bootstrap', plugin_dir_url( __FILE__ ) . 'assets/css/bootstrap.min.css', array(), null, 'all' );
+        wp_enqueue_style( 'lifeline_groups', plugin_dir_url( __FILE__ ) . 'assets/css/token-input.css', array(), null, 'all' );
+        wp_enqueue_style( 'lifeline_datepicker', plugin_dir_url( __FILE__ ) . 'assets/css/bootstrap-datepicker.min.css', array(), null, 'all' );
 
         wp_enqueue_style( 'lifeline_admin_css', plugin_dir_url( __FILE__ ) . 'assets/css/lifeline-admin.css', array(), null, 'all' );
     }
 
     public function menu() {
-        add_menu_page('Lifeline', 'Lifeline', 'manage_options', 'lifeline', array( $this, 'dashboard' ));
+        add_menu_page('lifeline', 'Lifeline', 'manage_options', 'lifeline', array( $this, 'dashboard' ));
+        add_submenu_page("lifeline", "Lifeline", "Frontend", 'manage_options', "lifeline-frontend", array( $this, 'frontend' ));
         add_submenu_page("lifeline", "Lifeline", "Sync", 'manage_options', "lifeline-sync", array( $this, 'sync' ));
         add_submenu_page("lifeline", "Lifeline", "Logs", 'manage_options', "lifeline-logs", array( $this, 'logs' ));
     }
@@ -79,6 +85,14 @@ class LifelineAdmin {
         $restore_logs = $wpdb->get_results("SELECT * FROM " . $table_prefix . LIFELINE_SYNC_LOG_DB . " WHERE old_restore = 1 ORDER BY execution DESC LIMIT 10");
 
         require 'views/lifeline-admin-logs.php';
+    }
+
+    public function frontend() {
+        $groupsController = new LifelineGroups();
+        
+        $groups = $groupsController->get_groups();
+        
+        require 'views/lifeline-admin-frontend.php';
     }
 
     public function save_settings($data) {

@@ -1,2 +1,10 @@
 #page_row_template { display: none; }
 .delete-btn { border: none; background-color: transparent; padding: 0; }
+
+.ul.token-input-list {
+    width: 100% !important;
+}
+
+.ll-fe-group .form-check input {
+    margin-top: 6px !important;
+}

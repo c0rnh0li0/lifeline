@@ -33,6 +33,8 @@ class Lifeline {
     public function run() {
         if (is_admin())
             $this->admin_hooks();
+        else 
+            $this->frontend_hooks();
     }
 
     public function admin_hooks() {
@@ -41,6 +43,12 @@ class Lifeline {
         add_action('admin_menu', [$_admin, 'menu']);
         
         $_admin->register_scripts();   
+    }
+
+    public function frontend_hooks() {
+        $_frontend = new \Lifeline\Frontend\LifelineFrontend();
+
+        $_frontend->init();   
     }
 
     public static function activate() {
@@ -60,6 +68,7 @@ class Lifeline {
 
         $tbl_settings   = $table_prefix . LIFELINE_SETTINGS_DB;
         $tbl_logs   = $table_prefix . LIFELINE_SYNC_LOG_DB;
+        $tbl_groups   = $table_prefix . LIFELINE_FE_GROUPS_DB;
 
         $charset_collate = $wpdb->get_charset_collate();
 
@@ -93,6 +102,24 @@ class Lifeline {
                     logs TEXT DEFAULT NULL,
                     old_restore TINYINT(2) DEFAULT 0,
                     sync_type INT(10) DEFAULT 3,
+                    UNIQUE KEY id (id)
+            ) $charset_collate;";
+            
+            dbDelta($sql);
+        }
+
+        if($wpdb->get_var("SHOW TABLES LIKE '$tbl_groups'") != $tbl_groups) {
+
+            $sql = "CREATE TABLE $tbl_groups (
+                    id INT(11) NOT NULL AUTO_INCREMENT,
+                    group_name VARCHAR(150) NOT NULL,
+                    products TEXT DEFAULT NULL,
+                    promo TINYINT(2) DEFAULT 0,
+                    starts_at TIMESTAMP DEFAULT NULL,
+                    ends_at TIMESTAMP DEFAULT NULL,
+                    active TINYINT(2) DEFAULT 0,
+                    is_bestseller TINYINT(2) DEFAULT 0,
+                    use_bestseller_cookie TINYINT(2) DEFAULT 0,
                     UNIQUE KEY id (id)
             ) $charset_collate;";
             

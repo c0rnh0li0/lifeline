@@ -17,6 +17,23 @@ window.Lifeline || (window.Lifeline = {});
 	// Detect Mobile
 	Lifeline.isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
+    // Helper functions and extensions
+    $.fn.serializeObject = function() {
+        var o = {};
+        var a = this.serializeArray();
+        $.each(a, function() {
+            if (o[this.name]) {
+                if (!o[this.name].push) {
+                    o[this.name] = [o[this.name]];
+                }
+                o[this.name].push(this.value || '');
+            } else {
+                o[this.name] = this.value || '';
+            }
+        });
+        return o;
+    };
+
     var Ajax = {
 		overlay: null, 
         lazyload: null,
@@ -170,6 +187,159 @@ window.Lifeline || (window.Lifeline = {});
             $(`.ll-${what}-progress`).attr('aria-valuenow', percent).css({ 'width': `${percent}%`}).html(`${percent}%`);
         }
     };
+
+    var Groups = {
+        init: function () {
+            $('.new-group-btn').off('click').on('click', this.add_group);
+            $('.groups-forms').off('submit').on('submit', this.save_group);
+
+            this.init_groups();
+		},
+        init_groups: function() {
+            $(".ll-group").each(function(index, el) {
+                var group_id = $(el).data('id');
+                var form = $(el).closest('form');
+
+                // Promotions
+                $(form).find('input[name="promo"]').off('change').on('change', function(event){
+                    if ($(this).is(':checked'))
+                        $(form).find('.datepickers-container').show();
+                    else
+                        $(form).find('.datepickers-container').hide();
+
+                    return true;
+                });
+
+                if ($(form).find('input[name="promo"]:checked').length == 1)
+                    $(form).find('.datepickers-container').show();
+                else
+                    $(form).find('.datepickers-container').hide();
+
+                // Bestsellers 
+                $(form).find('input[name="is_bestseller"]').off('change').on('change', function(event){
+                    if ($(this).is(':checked'))
+                        $(form).find('.bestseller-container').show();
+                    else
+                        $(form).find('.bestseller-container').hide();
+
+                    return true;
+                });
+
+                if ($(form).find('input[name="is_bestseller"]:checked').length == 1)
+                    $(form).find('.bestseller-container').show();
+                else
+                    $(form).find('.bestseller-container').hide();
+
+                // Tag input
+                $(`#group_${group_id}`).tokenInput(`${lifeline_admin_ajax.ajaxurl}?action=ll_group_products`, {
+                    prePopulate: JSON.parse($(`#group_${group_id}`).val())
+                });
+
+                // Calendars
+                $(form).find('.datepicker').each(function(index, dp) {
+                    var dp_options = {
+                        format: 'dd.mm.yyyy',
+                        autoclose: true,
+                        // calendarWeeks: true,
+                        todayHighlight: true,
+                        weekStart: 1
+                    };
+
+                    if ($(dp).hasClass('start') && $(dp).val() == '') {
+                        dp_options.startDate = '+1d';
+                    }                        
+
+                    if ($(dp).hasClass('end') && $(dp).val() == '') {
+                        dp_options.startDate = '+1d';
+                    }                        
+
+                    $(dp).datepicker(dp_options);
+                });
+
+                // Delete 
+                $(form).find('.btn-delete').off('click').on('click', Lifeline.Groups.delete_group);
+            });            
+        },
+        add_group: function(event) {
+            console.log('add new group');
+
+            Lifeline.Ajax.call({
+                url: lifeline_admin_ajax.ajaxurl,
+                method: 'POST',
+                data: {
+                    action: 'll_new_group'
+                },
+                // loading: $(this),
+                success: function(data, msg, xhr) {
+                    console.log(data);
+
+                    $('.groups-container').prepend(data.content);
+
+                    $(`#group_0`).tokenInput(`${lifeline_admin_ajax.ajaxurl}?action=ll_group_products`);
+
+                    $('.groups-forms').off('submit').on('submit', Lifeline.Groups.save_group);
+                    Lifeline.Groups.init_datepicker();
+                },
+                error: function() {
+                    console.log('error', arguments);
+                }
+            });
+        },
+        save_group: function(event) {
+            event.preventDefault();
+
+            var form_id = $(this).data('id');
+
+            var formData = $(this).serializeObject();
+
+            formData.products = JSON.stringify($(`#group_${form_id}`).tokenInput("get"));
+
+            Lifeline.Ajax.call({
+                url: lifeline_admin_ajax.ajaxurl,
+                method: 'POST',
+                data: formData,
+                loading: $(this),
+                success: function(data, msg, xhr) {
+                    if (form_id == 0)
+                        window.location.reload();
+                    else {
+                        $('.groups-container').prepend(data.content);
+                        $(`#group_0`).tokenInput(`${lifeline_admin_ajax.ajaxurl}?action=ll_group_products`);
+                    }                    
+                },
+                error: function() {
+                    console.log('error', arguments);
+                }
+            });
+
+            return false;
+        },
+        delete_group: function(event) {
+            var group_id = $(this).closest('form').data('id');
+
+            Lifeline.Ajax.call({
+                url: lifeline_admin_ajax.ajaxurl,
+                method: 'POST',
+                data: {
+                    action: 'll_delete_group', 
+                    id: group_id
+                },
+                loading: $(this),
+                success: function(data, msg, xhr) {
+                    if (data.success)
+                        $(`.group-${group_id}`).remove();
+                },
+                error: function() {
+                    console.log('error', arguments);
+                }
+            });
+
+            return false;
+        }
+    };
+
+    Lifeline.Groups = Groups;
+    Lifeline.Groups.init();
 
 	var Alert = {
         alert: '#liveToast',

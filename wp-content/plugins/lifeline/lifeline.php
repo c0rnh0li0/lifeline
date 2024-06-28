@@ -1,11 +1,11 @@
 <?php
 
 /**
-* Plugin Name: Lifeline WP Plugin
+* Plugin Name: Lifeline Pharmacy
 * Plugin URI: https://lifeline.mk/lifeline.zip
-* Description: Lifeline plugin for MakedonijaLek products sync
+* Description: Lifeline pharmacy Wordpress plugin
 * Version: 1.0.0
-* Author: Darko Krstev
+* Author: Darko & Chima
 * Author URI: https://lifeline.mk
 * Text Domain: lifeline
 * Domain Path: /languages
@@ -22,7 +22,9 @@ defined( 'ABSPATH' ) || exit;
 
 define('LIFELINE_SETTINGS_DB', 'lifeline_settings');
 define('LIFELINE_SYNC_LOG_DB', 'lifeline_sync_log');
+define('LIFELINE_FE_GROUPS_DB', 'lifeline_fe_groups');
 define('LIFELINE_PLUGIN_DIR', plugin_dir_path(__FILE__));
+define('LIFELINE_TEMPLATES_DIR', plugin_dir_path(__FILE__) . 'src/Lifeline/Frontend/views/');
 
 require plugin_dir_path(__FILE__) . '/vendor/autoload.php';
 
