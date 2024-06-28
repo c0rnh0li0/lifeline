@@ -16,7 +16,12 @@ class LifelineGroups {
 
         $group = $wpdb->get_row("SELECT * FROM " . $table_prefix . LIFELINE_FE_GROUPS_DB . " WHERE id = $group_id");
 
-        $products = $this->get_group_products(json_decode(wp_unslash($group->products)), $group->use_bestseller_cookie == 1 ? true : false);
+        if ($group->active == 0)
+            return '';
+
+        $product_ids = [];
+        foreach (json_decode(wp_unslash($group->products)) as $prod)
+            $product_ids[] = $prod->id;
 
         ob_start();
 
@@ -25,34 +30,6 @@ class LifelineGroups {
         $content = ob_get_clean();
 
         return $content;
-    }
-
-    private function get_group_products($products_arr, $use_bestsellers) {
-        $products = [];
-
-        if ($use_bestsellers) {
-            $query = new WP_Query( array(
-                'posts_per_page' => 12,
-                'post_type' => 'product',
-                'post_status' => 'publish',
-                'ignore_sticky_posts' => 1,
-                'meta_key' => 'total_sales',
-                'orderby' => 'meta_value_num',
-                'order' => 'DESC',
-            ) );
-
-            if($query->have_posts()) {
-                while($query->have_posts()) : $query->the_post();
-                    $products[] = wc_get_product(get_the_id());
-                endwhile;
-            }
-        } else {
-            foreach ($products_arr as $prod) {
-                $products[] = wc_get_product($prod->id);
-            }
-        }
-        
-        return $products;
     }
 
     public function get_groups() {
@@ -101,7 +78,6 @@ class LifelineGroups {
 
     public function search() {
         $search_keyword = sanitize_text_field($_REQUEST['q']);
-        // $product_visibility_term_ids = wc_get_product_visibility_term_ids();
         $ordering_args = WC()->query->get_catalog_ordering_args('title', 'asc' );
         $suggestions = [];
 
@@ -113,15 +89,7 @@ class LifelineGroups {
             'posts_per_page'      => 20,
             'orderby'             => $ordering_args['orderby'],
             'order'               => $ordering_args['order'],
-            'suppress_filters'    => false,
-            // 'tax_query'           => array(
-            //     array(
-            //         'taxonomy' => 'product_visibility',
-            //         'field'    => 'term_taxonomy_id',
-            //         'terms'    => $product_visibility_term_ids['exclude-from-search'],
-            //         'operator' => 'NOT IN',
-            //     ),
-            // ),
+            'suppress_filters'    => false
         );
 
         $products = get_posts($args);
