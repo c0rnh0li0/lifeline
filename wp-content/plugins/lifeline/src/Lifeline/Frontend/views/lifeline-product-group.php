@@ -1,12 +1,25 @@
+<?php 
+    $expired = false; 
+
+    $now = strtotime(date_create('now', timezone_open('Europe/Belgrade'))->format('Y-m-d H:i:s'));
+
+    if ($now > strtotime($group->ends_at))
+        $expired = true;
+?>
 <?php if ($group->promo) { ?>
-    <h2>
-        <span>Промоција: <?php echo $group->group_name; ?></span>
+    <div class="row">        
+        <div class="col h2">
+            <?php echo ($expired ? '<del>' : '') . $group->group_name . ($expired ? '</del>' : ''); ?>
+            <?php echo ($expired ? ' - Истечена' : ''); ?>
+        </div>
         
         <?php if (!empty($group->starts_at) && !empty($group->ends_at)) { ?>
-            <span class="h6 justify-content-end">
+            <div class="col h6 text-end">
+                <?php echo $expired ? '<del>' : ''; ?>
                 од <?php echo date('d.m.Y', strtotime($group->starts_at)); ?> 
                 до <?php echo date('d.m.Y', strtotime($group->ends_at)); ?> 
-            </span>
+                <?php echo $expired ? '</del>' : ''; ?>                
+            </div>
         <?php } ?>            
     </h2>
 <?php } ?>
