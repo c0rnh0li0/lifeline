@@ -18,7 +18,7 @@
 			</header>
 
 			<div class="products-container">				
-				<?php echo do_shortcode('[product-group id="1"]'); ?>
+				<?php echo do_shortcode('[product-group id="3"]'); ?>
 			</div>
 
 		</div>	

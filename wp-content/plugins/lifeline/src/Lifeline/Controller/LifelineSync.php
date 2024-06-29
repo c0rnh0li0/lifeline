@@ -2,6 +2,7 @@
 namespace Lifeline\Controller;
 
 use stdClass;
+use WC_Product_Attribute;
 use WC_Product_Simple;
 use WC_Tax;
 
@@ -204,6 +205,7 @@ class LifelineSync extends LifelineConnector {
         $deleted = 0;
 
         // $this->sync_taxes();
+        // $taxonomy_id = $this->set_attribute('brand');
         
         $count = $this->count();
 
@@ -327,13 +329,24 @@ class LifelineSync extends LifelineConnector {
             $woo_product->set_manage_stock(true);
             $woo_product->set_stock_quantity($product->zaliha);
             $woo_product->set_stock_status($product->zaliha > 0 ? 'instock' : 'outofstock');
+            
+            $attribs = $this->add_attribute_value('Manufacturer', $product->proizvoditel);
+            
+            $woo_product->set_attributes($attribs);
+
+            // $woo_product->set_props([
+            //     'attributes' => $attribs,
+            //     //Set any other properties of the product here you want - price, name, etc.
+            // ]);
 
             $ddv = (int) $product->ddv;
             $woo_product->set_tax_class($this->tax_classes["$ddv"]); // standard
 
             $woo_product->set_status('publish');
 
-            $woo_product->save();
+            $product_id = $woo_product->save();
+
+            $this->set_terms($attribs, $product_id);
 
             $this->set_status($paging, $count);
 
@@ -341,6 +354,129 @@ class LifelineSync extends LifelineConnector {
         }
 
         return $return;
+    }
+
+    private function set_terms($attribs, $product_id) {
+        foreach ($attribs as $attrib) {
+            $tax = $attrib->get_name();
+            $vals = $attrib->get_options();
+
+            $termsToAdd = array();
+
+            if (is_array($vals) && count($vals) > 0) {
+                foreach ($vals as $val) {
+                    //Get or create the term if it doesnt exist:
+                    $term = $this->get_attribute_term($val, $tax);
+
+                    if ($term['id']) $termsToAdd[] = $term['id'];
+                }
+            }
+
+            if (count($termsToAdd) > 0)
+                wp_set_object_terms($product_id, $termsToAdd, $tax, true);
+        }
+    }
+
+    private function create_global_attribute($name) {
+        $slug = wc_sanitize_taxonomy_name($name);        
+        $taxonomy_name = wc_attribute_taxonomy_name( $slug );
+
+        if (taxonomy_exists($taxonomy_name))
+            return wc_attribute_taxonomy_id_by_name($slug);
+
+        $attribute_id = wc_create_attribute( array(
+            'name'         => $name,
+            'slug'         => $slug,
+            'type'         => 'select',
+            'order_by'     => 'menu_order',
+            'has_archives' => false,
+        ) );
+
+        //Register it as a wordpress taxonomy for just this session. Later on this will be loaded from the woocommerce taxonomy table.
+        register_taxonomy(
+            $taxonomy_name,
+            apply_filters( 'woocommerce_taxonomy_objects_' . $taxonomy_name, array( 'product' ) ),
+            apply_filters( 'woocommerce_taxonomy_args_' . $taxonomy_name, array(
+                'labels'       => array(
+                    'name' => $name,
+                ),
+                'hierarchical' => true,
+                'show_ui'      => false,
+                'query_var'    => true,
+                'rewrite'      => false,
+            ) )
+        );
+
+        //Clear caches
+        delete_transient( 'wc_attribute_taxonomies' );
+
+        return $attribute_id;
+    }
+
+    private function add_attribute_value($name, $value) {
+        $attributes = array();
+
+        $attribute = new WC_Product_Attribute();
+        $attribute->set_id( 0 );
+        $attribute->set_position(0);
+        $attribute->set_visible( true );
+        $attribute->set_variation( true );
+
+        //Look for existing attribute:
+        $existingTaxes = wc_get_attribute_taxonomies();
+
+        //attribute_labels is in the format: array("slug" => "label / name")
+        $attribute_labels = wp_list_pluck( $existingTaxes, 'attribute_label', 'attribute_name' );
+        $slug = array_search( $name, $attribute_labels, true );
+
+        if (!$slug) {
+            //Not found, so create it:
+            $attribute_id = $this->create_global_attribute($name);
+        }
+        else {
+            //Otherwise find it's ID
+            //Taxonomies are in the format: array("slug" => 12, "slug" => 14)
+            $taxonomies = wp_list_pluck($existingTaxes, 'attribute_id', 'attribute_name');
+
+            if (!isset($taxonomies[$slug]))
+                return [];
+
+            $attribute_id = (int)$taxonomies[$slug];
+        }
+
+        $taxonomy_name = wc_attribute_taxonomy_name($slug);
+
+        $attribute->set_id($attribute_id);
+        $attribute->set_name($taxonomy_name);
+        $attribute->set_options([ $value ]);
+
+        $attributes[] = $attribute;
+
+
+        return $attributes;
+    }
+
+    public function get_attribute_term($value, $taxonomy) {
+        //Look if there is already a term for this attribute?
+        $term = get_term_by('name', $value, $taxonomy);
+
+        if (!$term) {
+            //No, create new term.
+            $term = wp_insert_term($value, $taxonomy);
+
+            if (is_wp_error($term)) 
+                return array('id'=>false, 'slug'=>false);
+
+            $termId = $term['term_id'];
+            $term_slug = get_term($termId, $taxonomy)->slug; // Get the term slug
+        }
+        else {
+            //Yes, grab it's id and slug
+            $termId = $term->term_id;
+            $term_slug = $term->slug;
+        }
+
+        return ['id' => $termId, 'slug' => $term_slug];
     }
 
     private function set_status($paging, $current) {

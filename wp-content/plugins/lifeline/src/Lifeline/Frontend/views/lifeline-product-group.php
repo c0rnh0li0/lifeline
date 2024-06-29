@@ -28,5 +28,5 @@
     if ($group->is_bestseller && $group->use_bestseller_cookie)
         echo do_shortcode('[best_selling_products columns="6" limit="6"]');
     else
-        echo do_shortcode('[products ids="' . implode(',', $product_ids) . '" columns="6" limit="6"]');
+        echo do_shortcode('[products ids="' . implode(',', $product_ids) . '" columns="6"]');
 ?>
