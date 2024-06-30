@@ -5,6 +5,7 @@ use stdClass;
 use WC_Product_Attribute;
 use WC_Product_Simple;
 use WC_Tax;
+use WP_Query;
 
 class LifelineSync extends LifelineConnector {
     const SYNC_TYPE_CRON = 1;
@@ -233,6 +234,9 @@ class LifelineSync extends LifelineConnector {
         $paging->count = $count;
         $paging->pages = $pages;
 
+        // collect skus for later deletion
+        $product_skus = [];
+
         for ($i = 0; $i < $pages; $i++) {
             $offset = $i == 0 ? $offset : $offset + $this->limit;
 
@@ -241,14 +245,16 @@ class LifelineSync extends LifelineConnector {
             $paging->offset = $offset;
             $paging->page = $i;
             
-            $responses[] = $this->import($products, $paging);
+            $responses[] = $this->import($products, $paging, $product_skus);
         }
 
         foreach ($responses as $response) {
             $inserted += $response->inserted;
             $updated += $response->updated;
-            $deleted += $response->deleted;
+            // $deleted += $response->deleted;
         }
+
+        $deleted = $this->check_and_delete_products($product_skus);
 
         $log_data = [
             'inserted' => $inserted,
@@ -303,7 +309,7 @@ class LifelineSync extends LifelineConnector {
         wp_die();
     }
 
-    public function import($products, $paging) {
+    public function import($products, $paging, &$product_skus) {
         $return = new stdClass();
         $return->inserted = 0;
         $return->updated = 0;
@@ -314,10 +320,10 @@ class LifelineSync extends LifelineConnector {
         foreach($products as $i => $product) {
             $product_id = wc_get_product_id_by_sku($product->sifra);
 
-            if ($product_id == 0)
-                $return->inserted++;
-            else 
+            if (is_numeric($product_id) && $product_id > 0)
                 $return->updated++;
+            else 
+                $return->inserted++;
 
             $woo_product = $product_id == 0 || !$product_id ? new WC_Product_Simple() : wc_get_product($product_id);
 
@@ -334,17 +340,14 @@ class LifelineSync extends LifelineConnector {
             
             $woo_product->set_attributes($attribs);
 
-            // $woo_product->set_props([
-            //     'attributes' => $attribs,
-            //     //Set any other properties of the product here you want - price, name, etc.
-            // ]);
-
             $ddv = (int) $product->ddv;
             $woo_product->set_tax_class($this->tax_classes["$ddv"]); // standard
 
             $woo_product->set_status('publish');
 
             $product_id = $woo_product->save();
+
+            $product_skus[$product->sifra] = $product_id;
 
             $this->set_terms($attribs, $product_id);
 
@@ -354,6 +357,36 @@ class LifelineSync extends LifelineConnector {
         }
 
         return $return;
+    }
+
+    private function check_and_delete_products($skus) {
+        $empty_skus = [];
+
+        foreach($skus as $key => $value){
+            if(!empty($value))
+                $empty_skus[] = $value;
+        }
+
+        $products = new WP_Query(
+            [
+                'post_type'  => [ 'product' ],
+                'post_status' => 'publish',
+                'posts_per_page' => -1,
+                'paged' => 1,
+                'post__not_in' => $empty_skus
+            ]
+        );
+
+        $deleted = 0;
+
+        while($products->have_posts()) : $products->the_post();
+            $product = wc_get_product($products->post->ID);
+            $product->delete();
+
+            $deleted++;
+        endwhile;
+
+        return $deleted;
     }
 
     private function set_terms($attribs, $product_id) {
