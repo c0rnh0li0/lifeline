@@ -135,7 +135,7 @@ defined( 'ABSPATH' ) || exit;
 					<h2>
 						<span>Брендови</span>
 						<?php if ( !wp_is_mobile() ) : ?>
-							<a href="#">Комплетна листа на брендови»</a>
+							<a href="<?php echo home_url('/brands/'); ?>">Комплетна листа на брендови»</a>
 						<?php endif; ?>
 					</h2>
 
@@ -146,11 +146,28 @@ defined( 'ABSPATH' ) || exit;
 				</header>
 
 				<div class="brands-container">				
+					<?php 
+						$terms = get_terms([
+							'taxonomy' => 'pa_manufacturer'
+						]);
+						
+						// $brands = [];
+						
+						// for ($i = 0; $i < 6; $i++)
+						// 	$brands[] = $terms[rand(0, count($terms) - 1)];
+						$brands = array_rand($terms, 6);
 
+						foreach ($brands as $index) { ?> 
+						
+						<a href="<?php echo home_url('/brands/' . $terms[$index]->slug . '/'); ?>">
+							<?php echo $terms[$index]->name; ?>
+						</a><br />
+
+					<?php } ?>
 				</div>
 
 				<?php if ( wp_is_mobile() ) : ?>
-					<div class="more-items"><a href="#">Комплетна листа на брендови»</a></div>
+					<div class="more-items"><a href="<?php echo home_url('/brands/'); ?>">Комплетна листа на брендови»</a></div>
 				<?php endif; ?>
 
 			</div>	

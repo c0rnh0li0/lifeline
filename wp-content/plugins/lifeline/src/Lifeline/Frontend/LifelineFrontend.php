@@ -7,6 +7,7 @@ use Lifeline\Controller\LifelineGroups;
 class LifelineFrontend {
     public static $shortcodes = [
         'product-group' => ['product_group', 1],
+        'product-manufacturers' => ['manufacturers', 1],
     ];
 
     public function __construct() {
@@ -32,5 +33,19 @@ class LifelineFrontend {
         $frontendGroups = new LifelineGroups();
 
         return $frontendGroups->product_group_shortcode($id);
+    }
+
+    public function manufacturers() {
+        $terms = get_terms([
+            'taxonomy' => 'pa_manufacturer'
+        ]);
+
+        ob_start();
+
+        require_once LIFELINE_TEMPLATES_DIR . 'lifeline-manufacturers.php';
+
+        $content = ob_get_clean();
+
+        return $content;
     }
 }

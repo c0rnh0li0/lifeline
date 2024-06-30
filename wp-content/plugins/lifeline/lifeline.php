@@ -36,6 +36,8 @@ $lifeline_active = !empty($active_plugins) && in_array(basename(__DIR__) . '/lif
 function activate_lifeline() {
 	\Lifeline\Lifeline::activate();
 
+	flush_rewrite_rules();
+	
 	if (!wp_next_scheduled('ll_sync_cron'))
         wp_schedule_event(strtotime('00:00:00'), 'daily', 'll_sync_cron');
 }
@@ -55,7 +57,8 @@ register_deactivation_hook(__FILE__, 'deactivate_lifeline');
 register_uninstall_hook(__FILE__, 'uninstall_lifeline');
 
 if ($lifeline_active) {
-	require plugin_dir_path(__FILE__) . '/ajax.php';
+	require_once plugin_dir_path(__FILE__) . '/rewrite_rules.php';
+	require_once plugin_dir_path(__FILE__) . '/ajax.php';
 }
 
 function run_lifeline() {
