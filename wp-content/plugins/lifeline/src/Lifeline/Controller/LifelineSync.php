@@ -320,10 +320,10 @@ class LifelineSync extends LifelineConnector {
         foreach($products as $i => $product) {
             $product_id = wc_get_product_id_by_sku($product->sifra);
 
-            if (is_numeric($product_id) && $product_id > 0)
-                $return->updated++;
-            else 
+            if ($product_id == 0)
                 $return->inserted++;
+            else 
+                $return->updated++;
 
             $woo_product = $product_id == 0 || !$product_id ? new WC_Product_Simple() : wc_get_product($product_id);
 
