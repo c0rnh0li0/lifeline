@@ -8,7 +8,7 @@
 
 				<h2>
 					<span>Најпродавани</span>
-					<a href="#">Комплетна листа на најпродавани производи»</a>
+					<a href="<?php echo home_url('/bestsellers/'); ?>">Комплетна листа на најпродавани производи»</a>
 				</h2>
 
 				<div class="title-separator">

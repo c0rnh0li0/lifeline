@@ -15,6 +15,7 @@
             <tbody class="table-group-divider">
             <?php if (count($sync_logs)) { ?>
                 <?php foreach ($sync_logs as $log) { ?>
+                    <?php $log->logs = str_replace('"', "'", $log->logs); ?>
                 <tr>
                     <td scope="row">
                         <?php 

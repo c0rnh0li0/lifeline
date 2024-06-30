@@ -96,7 +96,7 @@ defined( 'ABSPATH' ) || exit;
 				<h2>
 					<span>Најпродавани</span>
 					<?php if ( !wp_is_mobile() ) : ?>
-						<a href="#">Комплетна листа на најпродавани производи»</a>
+						<a href="<?php echo home_url('/bestsellers/'); ?>">Комплетна листа на најпродавани производи»</a>
 					<?php endif; ?>
 				</h2>
 
@@ -111,7 +111,7 @@ defined( 'ABSPATH' ) || exit;
 			</div>
 
 			<?php if ( wp_is_mobile() ) : ?>
-				<div class="more-items"><a href="#">Комплетна листа на најпродавани производи»</a></div>
+				<div class="more-items"><a href="<?php echo home_url('/bestsellers/'); ?>">Комплетна листа на најпродавани производи»</a></div>
 			<?php endif; ?>
 
 		</div>	
