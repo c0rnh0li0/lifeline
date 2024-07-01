@@ -15021,7 +15021,7 @@ body {
   padding-right: 63px;
 }
 .wrapper.menu-wrapper .header-bottom .lifeline-profile {
-  display: flex;
+  display: flex !important;
   flex-direction: row;
   gap: 30px;
   justify-content: flex-end;
@@ -15154,39 +15154,33 @@ body {
   border-bottom: 1px solid #DADBDC;
   padding-bottom: 20px;
 }
-.woocommerce #woocommerce-wrapper #content #primary div.product div.summary .price .woocommerce-Price-amount.amount {
+.woocommerce #woocommerce-wrapper #content #primary div.product div.summary .price del {
+  display: inline-block;
+  text-decoration: none;
+  font-size: 1.25rem;
+}
+.woocommerce #woocommerce-wrapper #content #primary div.product div.summary .price del .woocommerce-Price-amount.amount {
   display: block;
   width: 100%;
 }
-.woocommerce #woocommerce-wrapper #content #primary div.product div.summary .price .woocommerce-Price-amount.amount del {
+.woocommerce #woocommerce-wrapper #content #primary div.product div.summary .price del .woocommerce-Price-amount.amount bdi {
   display: inline-block;
   text-decoration: line-through;
   color: #333333;
 }
-.woocommerce #woocommerce-wrapper #content #primary div.product div.summary .price .woocommerce-Price-amount.amount del span {
-  font-size: 1.25rem;
-  font-weight: 400;
-  text-decoration: none;
-  color: #333333;
-}
-.woocommerce #woocommerce-wrapper #content #primary div.product div.summary .price .woocommerce-Price-amount.amount ins {
+.woocommerce #woocommerce-wrapper #content #primary div.product div.summary .price ins {
   display: inline-block;
   text-decoration: none;
   color: #8AAC54;
 }
-.woocommerce #woocommerce-wrapper #content #primary div.product div.summary .price .woocommerce-Price-amount.amount ins span {
+.woocommerce #woocommerce-wrapper #content #primary div.product div.summary .price ins .woocommerce-Price-amount.amount {
   font-size: 2rem;
   font-weight: 600;
   text-decoration: none;
   color: #8AAC54;
 }
-.woocommerce #woocommerce-wrapper #content #primary div.product div.summary .price .woocommerce-Price-amount.amount ins span span {
-  font-size: 1.25rem;
-  font-weight: 400;
-}
-.woocommerce #woocommerce-wrapper #content #primary div.product div.summary .price .woocommerce-Price-amount.amount bdi {
-  width: 100%;
-  text-align: center;
+.woocommerce #woocommerce-wrapper #content #primary div.product div.summary .price ins .woocommerce-Price-amount.amount bdi {
+  color: #8AAC54;
 }
 .woocommerce #woocommerce-wrapper #content #primary div.product .woocommerce-tabs.wc-tabs-wrapper .tabs.wc-tabs {
   display: none;
@@ -15275,7 +15269,6 @@ body {
   flex-wrap: nowrap;
   flex-direction: row;
   padding: 15px 20px 15px 20px;
-  background: #FFF;
 }
 .woocommerce #woocommerce-wrapper #content #primary ul.products li.product a .price del {
   display: inline-block;
@@ -15290,6 +15283,7 @@ body {
   font-weight: 400;
   color: #333333;
   text-decoration: line-through !important;
+  color: #666 !important;
 }
 .woocommerce #woocommerce-wrapper #content #primary ul.products li.product a .price del .woocommerce-Price-amount.amount bdi .woocommerce-Price-currencySymbol {
   font-size: 1rem;
@@ -15352,6 +15346,45 @@ body {
 .woocommerce #woocommerce-wrapper #content #primary nav.woocommerce-pagination ul.page-numbers li a:hover, .woocommerce #woocommerce-wrapper #content #primary nav.woocommerce-pagination ul.page-numbers li a:focus {
   background: #8AAC54;
   color: #FFF;
+}
+.woocommerce #customer_login .btn-outline-primary, .woocommerce #customer_login .wpcf7 input[type=submit], .wpcf7 .woocommerce #customer_login input[type=submit] {
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  color: #FFF;
+  font-weight: 400;
+  padding: 8px 15px;
+  text-decoration: none;
+  background: #8AAC54;
+}
+.woocommerce #customer_login .btn-outline-primary:hover, .woocommerce #customer_login .wpcf7 input[type=submit]:hover, .wpcf7 .woocommerce #customer_login input[type=submit]:hover, .woocommerce #customer_login .btn-outline-primary:focus, .woocommerce #customer_login .wpcf7 input[type=submit]:focus, .wpcf7 .woocommerce #customer_login input[type=submit]:focus {
+  background-color: #6f8a43;
+  color: #FFF;
+  border: none;
+  text-decoration: none;
+}
+.woocommerce form .form-row input.input-text, .woocommerce form .form-row textarea {
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.woocommerce-page .wc-block-checkout__actions .wc-block-checkout__actions_row .components-button {
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  color: #FFF;
+  font-weight: 400;
+  padding: 8px 15px;
+  text-decoration: none;
+  background: #8AAC54;
+}
+.woocommerce-page .wc-block-checkout__actions .wc-block-checkout__actions_row .components-button:hover, .woocommerce-page .wc-block-checkout__actions .wc-block-checkout__actions_row .components-button:focus {
+  background-color: #6f8a43;
+  color: #FFF;
+  border: none;
+  text-decoration: none;
 }
 
 header#wrapper-navbar {
@@ -16378,6 +16411,7 @@ body.woocommerce-cart #page #content ul.wc-block-grid__products li.wc-block-grid
   border: none;
   text-decoration: none;
 }
+
 @media (min-width: 1700px) {
   .container {
     width: 1440px;
