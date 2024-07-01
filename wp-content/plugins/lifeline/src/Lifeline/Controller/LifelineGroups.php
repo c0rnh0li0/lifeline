@@ -16,6 +16,9 @@ class LifelineGroups {
 
         $group = $wpdb->get_row("SELECT * FROM " . $table_prefix . LIFELINE_FE_GROUPS_DB . " WHERE id = $group_id");
 
+        if (!$group)
+            return '';
+        
         if ($group->active == 0)
             return '';
 

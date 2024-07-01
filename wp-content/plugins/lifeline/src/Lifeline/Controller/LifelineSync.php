@@ -2,8 +2,8 @@
 namespace Lifeline\Controller;
 
 use stdClass;
+use WC_Product;
 use WC_Product_Attribute;
-use WC_Product_Simple;
 use WC_Tax;
 use WP_Query;
 
@@ -197,6 +197,10 @@ class LifelineSync extends LifelineConnector {
     }
 
     public function sync($type = self::SYNC_TYPE_UNKNOWN) {
+        ini_set('xdebug.var_display_max_depth', -1);
+        ini_set('xdebug.var_display_max_children', -1);
+        ini_set('xdebug.var_display_max_data', -1);
+
         $this->log_file = plugin_dir_path(__FILE__) . "/sync.log";
 
         set_time_limit(0);
@@ -206,7 +210,6 @@ class LifelineSync extends LifelineConnector {
         $deleted = 0;
 
         // $this->sync_taxes();
-        // $taxonomy_id = $this->set_attribute('brand');
         
         $count = $this->count();
 
@@ -311,13 +314,14 @@ class LifelineSync extends LifelineConnector {
 
     public function import($products, $paging, &$product_skus) {
         $return = new stdClass();
+
         $return->inserted = 0;
         $return->updated = 0;
         $return->deleted = 0;
 
         $count = 1; 
 
-        foreach($products as $i => $product) {
+        foreach($products as $product) {
             $product_id = wc_get_product_id_by_sku($product->sifra);
 
             if ($product_id == 0)
@@ -325,13 +329,17 @@ class LifelineSync extends LifelineConnector {
             else 
                 $return->updated++;
 
-            $woo_product = $product_id == 0 || !$product_id ? new WC_Product_Simple() : wc_get_product($product_id);
+            $woo_product = $product_id == 0 || !$product_id ? new WC_Product() : wc_get_product($product_id);
 
+            
             $woo_product->set_name($product->naziv);
-            $woo_product->set_sku($product->sifra);
+
+            if ($product_id == 0)
+                $woo_product->set_sku($product->sifra);
+            
             $woo_product->set_regular_price($product->maloprodazna);
             $woo_product->set_price($product->maloprodazna);
-            $woo_product->set_description($product->opis);
+            $woo_product->set_description($product->opis && !empty($product->opis) ? $product->opis : "");
             $woo_product->set_manage_stock(true);
             $woo_product->set_stock_quantity($product->zaliha);
             $woo_product->set_stock_status($product->zaliha > 0 ? 'instock' : 'outofstock');
