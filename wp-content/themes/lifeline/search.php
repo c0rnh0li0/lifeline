@@ -14,18 +14,13 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 ?>
 
-<div class="wrapper" id="search-wrapper">
+<div class="wrapper" id="page-wrapper">
 
 	<div class="<?php echo esc_attr( $container ); ?>" id="content" tabindex="-1">
 
 		<div class="row">
 
-			<?php
-			// Do the left sidebar check and open div#primary.
-			get_template_part( 'global-templates/left-sidebar-check' );
-			?>
-
-			<main class="site-main" id="main">
+			<main class="site-main col-12" id="main">
 
 				<?php if ( have_posts() ) : ?>
 
@@ -68,16 +63,13 @@ $container = get_theme_mod( 'understrap_container_type' );
 			<?php
 			// Display the pagination component.
 			understrap_pagination();
-
-			// Do the right sidebar check and close div#primary.
-			get_template_part( 'global-templates/right-sidebar-check' );
 			?>
 
 		</div><!-- .row -->
 
 	</div><!-- #content -->
 
-</div><!-- #search-wrapper -->
+</div><!-- #page-wrapper -->
 
 <?php
 get_footer();
