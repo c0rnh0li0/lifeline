@@ -24,7 +24,17 @@ $container = get_theme_mod( 'understrap_container_type' );
 		<!-- Your site branding in the menu -->
 		<?php get_template_part( 'global-templates/navbar-branding' ); ?>		
 
-		
+		<?php if ( !wp_is_mobile() ) : ?>
+			<div class="wrapper search-home">
+				<div class="<?php echo esc_attr( $container ); ?>">	
+					<div class="row search-mobile">					
+						<div class="search-home col-9">
+							<?php get_search_form(); ?>
+						</div>
+					</div>
+				</div>
+			</div>
+		<?php endif; ?>
 
 		<div class="phone">
 			<a href="tel:+389070217128"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/icons/icon-phone.svg" alt="Phone" /><span>070 217 128</span></a>
@@ -105,7 +115,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 					?>
 				</div>
 
-				<div class="d-none d-sm-block col-md-2 lifeline-profile">
+				<div class="d-none d-sm-flex d-sm-block col-md-2 lifeline-profile">
 					<?php /* <a href="#" class="profile-button create-profile"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/icons/icon-profile.svg" alt="Create profile"><span>Креирај профил</span></a>
 					<a href="#" class="profile-button profile-login"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/icons/icon-login.svg" alt="Profile login"><span>Најави се</span></a> */ ?>
 					<?php if ( is_user_logged_in() ) { ?>
