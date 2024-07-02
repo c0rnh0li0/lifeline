@@ -1,7 +1,5 @@
 <?php
 
-// $dir = 'E:/wamp64/www/tepperefka';
-
 include_once 'wp-load.php';
 
 require 'wp-content/plugins/lifeline/vendor/autoload.php';
