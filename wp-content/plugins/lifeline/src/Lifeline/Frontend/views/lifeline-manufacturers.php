@@ -17,5 +17,5 @@
         foreach ($terms as $term) { ?>
             <a href="<?php echo home_url('/brands/' . $term->slug . '/'); ?>">
                 <?php echo $term->name; ?>
-            </a><br />
+            </a>
 <?php } } ?>
