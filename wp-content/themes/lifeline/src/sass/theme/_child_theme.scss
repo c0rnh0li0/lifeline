@@ -1106,14 +1106,15 @@ header#wrapper-navbar {
                 align-items: center;
                 min-height: 130px;
                 background: $white;
-                font-size: 1.25rem;
+                font-size: 0.875rem;
                 text-decoration: none;
+                text-align: center;
                 color: $text;
                 font-weight: 600;
                 margin-bottom: 20px;
                 &:hover, &:focus {
-                    background: $darkgrey;
-                    color: ($text, 10%);
+                    background: $green;
+                    color: $white;
                 }
             }
         }  
@@ -1832,6 +1833,128 @@ body.woocommerce-cart #page #content ul.wc-block-grid__products {
                 display: inline-block;                 
                 width: 1em;
                 margin-left: -1em;
+            }
+        }
+    }
+}
+
+.wrapper#page-wrapper {
+    .brands-page {
+        .entry-content {
+            h2 {
+                border: none;
+                padding: 0;
+                color: $green;
+            }
+            .products.columns-4 {
+                border-top: 1px solid $grey;
+                padding-top: 20px;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                margin-bottom: 30px;
+                &::before {
+                    display: none;
+                }
+                &::after {
+                    display: none;
+                }
+                li.product {
+                    margin: 0;
+                    border:1px solid $darkgrey;
+                    margin-bottom: 30px;
+                    filter: $mainshadow;
+                    background: $grey;
+                    float: none;
+                    width: 24%;
+                    margin-bottom: 30px;
+                    a {
+                        text-decoration: none;
+                        color: $text;
+                        img {
+                            margin-bottom: 20px;
+                            border-bottom: 3px solid $green;
+                        }
+                        h2 {
+                            text-decoration: none;
+                            font-size: 1rem;
+                            font-weight: 600;
+                            padding: 0 20px;
+                            margin-bottom: 10px;
+                            min-height: 70px;
+                            color: $text;
+                            border: none;
+                        }
+                        .price {
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            flex-wrap: nowrap;
+                            flex-direction: row;
+                            padding: 15px 20px 15px 20px;
+                            del {
+                                display: inline-block;
+                                text-decoration: line-through;
+                                color: $text;
+                                .woocommerce-Price-amount.amount {
+                                    text-decoration: line-through;
+                                    bdi {
+                                        font-size: 1rem;
+                                        font-weight: 400;                                            
+                                        color: $text;
+                                        text-decoration: line-through !important;
+                                        color: $lightgrey !important;
+                                        .woocommerce-Price-currencySymbol {
+                                            font-size: 1rem;
+                                            font-weight: 400;
+                                            color: $text;
+                                        }
+                                    }
+                                }
+                            }
+                            .woocommerce-Price-amount.amount {
+                                display: block;
+                                width: 100%;
+                                bdi {
+                                    display: inline-block;
+                                    text-decoration: none;
+                                    color: $purple;
+                                    font-size: 1.25rem;
+                                    font-weight: 600;
+                                    width: 100%;
+                                    text-align: center;
+                                    span {
+                                        font-size: 0.875rem;
+                                        font-weight: 600;
+                                    }
+                                }
+                            }     
+                                                            
+                        }
+                    }
+                    .add-to-cart-container {
+                        padding: 10px 20px 20px 20px;
+                        text-align: center;
+                        .product_type_simple {
+                            color: $white;
+                            background: $green url(../img/icons/icon-readmore.svg) 12px 6px no-repeat;
+                            background-size: auto 24px;
+                            padding: 8px 15px 8px 40px;
+                            border: none;
+                            &.add_to_cart_button {
+                                background: $green url(../img/icons/icon-cart-white.svg) 12px 6px no-repeat;
+                                background-size: auto 24px;
+                            }
+                            &:hover, &:focus {
+                                background-color: darken($green, 10%);
+                                color: $white;
+                                border: none;
+                                text-decoration: none;
+                            }
+                        }
+                    } 
+                }
             }
         }
     }
