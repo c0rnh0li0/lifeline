@@ -43,11 +43,11 @@ $container = get_theme_mod( 'understrap_container_type' );
 		<div class="top-buttons">
 			<a href="#" target="_blank"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/icons/icon-heart-plus.svg" alt="Heart plus" /></a>
 			<?php 
-				// wp_nav_menu( array(
-				// 'theme_location' => 'cart-menu',
-				// 'container'      => false,
-				// 'menu_class'     => 'x-nav sf-menu'
-				// ) ); 
+				wp_nav_menu( array(
+				 'theme_location' => 'cart-menu',
+				 'container'      => false,
+				 'menu_class'     => 'x-nav sf-menu'
+				 ) ); 
 				?>
 		</div>
 		
