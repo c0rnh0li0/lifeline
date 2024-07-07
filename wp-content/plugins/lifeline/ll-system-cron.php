@@ -1,8 +1,8 @@
 <?php
 
-include_once 'wp-load.php';
+include_once ABSPATH . 'wp-load.php';
 
-require 'wp-content/plugins/lifeline/vendor/autoload.php';
+require ABSPATH . 'wp-content/plugins/lifeline/vendor/autoload.php';
 
 set_time_limit(0);
 

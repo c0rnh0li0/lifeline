@@ -23,3 +23,19 @@ function lifeline_rewrite_rules() {
 	foreach ($lifeline_rw as $rule => $url)
 		add_rewrite_rule($rule, $url, 'top');	
 }
+
+add_action('rest_api_init', function() {
+	register_rest_route('lifeline/v1', '/groups', [
+		'method' => 'GET',
+		'callback' => 'lifeline_rest_route_groups',
+		'permission_callback' => '__return_true'
+	]);
+});
+
+function lifeline_rest_route_groups($data) {
+	$groupsController = new \Lifeline\Controller\LifelineGroups();
+
+	$groups = $groupsController->get_active_groups();
+
+	return rest_ensure_response($groups);
+}

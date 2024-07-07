@@ -1,0 +1,27 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "lifeline-block/lifeline-blocks",
+	"version": "0.1.0",
+	"title": "Lifeline blocks",
+	"category": "widgets",
+	"icon": "edit-page",
+	"description": "Displays product groups for Lifeline",
+	"example": {},
+	"attributes": {
+		"lifelineGroupId": {
+			"type": "integer"
+		}
+	},
+	"supports": {
+		"html": true,
+		"color": {
+			"background": false,
+			"text": true
+		}
+	},	
+	"textdomain": "lifeline-blocks",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css"
+}

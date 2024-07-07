@@ -2,33 +2,33 @@
 
 namespace Lifeline;
 
-use Lifeline\Controller\LifelineSync;
+// use Lifeline\Controller\LifelineSync;
 
 class Lifeline {
     public $connection;
 
     public function __construct() {
-        if (in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_option('active_plugins')))) {
-            // add_action( 'woocommerce_loaded', [$this, 'woocommerce_hook'] );        
-            add_action( 'wp_loaded', [$this, 'woocommerce_hook'] );        
-        }
+        // if (in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_option('active_plugins')))) {
+        //     // add_action( 'woocommerce_loaded', [$this, 'woocommerce_hook'] );        
+        //     add_action( 'wp_loaded', [$this, 'woocommerce_hook'] );        
+        // }
     }
 
-    public function woocommerce_hook() {
-        if (!is_admin()) {
-            if (isset($_REQUEST['sync'])) {
-                $sync = new LifelineSync();
+    // public function woocommerce_hook() {
+    //     if (!is_admin()) {
+    //         if (isset($_REQUEST['sync'])) {
+    //             $sync = new LifelineSync();
             
-                $sync->sync($sync::SYNC_TYPE_MANUAL);
-            }
+    //             $sync->sync($sync::SYNC_TYPE_MANUAL);
+    //         }
 
-            if (isset($_REQUEST['restore'])) {
-                $sync = new LifelineSync();
+    //         if (isset($_REQUEST['restore'])) {
+    //             $sync = new LifelineSync();
             
-                $sync->restore_wc_data();
-            }
-        }
-    }
+    //             $sync->restore_wc_data();
+    //         }
+    //     }
+    // }
 
     public function run() {
         if (is_admin())
