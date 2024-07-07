@@ -17,5 +17,5 @@
 
 !/wp-content/plugins
 /wp-content/plugins/*
-!/wp-content/plugins/lifeline
+!/wp-content/plugins/lifeline*
 /vendor/

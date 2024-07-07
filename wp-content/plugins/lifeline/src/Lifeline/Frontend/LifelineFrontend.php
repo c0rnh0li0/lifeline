@@ -6,7 +6,7 @@ use Lifeline\Controller\LifelineGroups;
 
 class LifelineFrontend {
     public static $shortcodes = [
-        'product-group' => ['product_group', 1],
+        'product-group' => ['product_group', 3],
         'product-manufacturers' => ['manufacturers', 1],
     ];
 
@@ -29,10 +29,10 @@ class LifelineFrontend {
     }
 
     // Shortcodes 
-    public function product_group($id) {
+    public function product_group($id, $display_title, $columns) {
         $frontendGroups = new LifelineGroups();
 
-        return $frontendGroups->product_group_shortcode($id);
+        return $frontendGroups->product_group_shortcode($id, $display_title, $columns);
     }
 
     public function manufacturers() {

@@ -43,6 +43,14 @@ class LifelineGroups {
         return $groups;
     }
 
+    public function get_active_groups() {
+        global $table_prefix, $wpdb;
+
+        $groups = $wpdb->get_results("SELECT id AS value, group_name AS label FROM " . $table_prefix . LIFELINE_FE_GROUPS_DB . " WHERE active = 1");
+
+        return $groups;
+    }
+
     public function new_group() {
         $group = new stdClass();
 

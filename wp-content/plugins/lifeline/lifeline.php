@@ -59,6 +59,7 @@ register_uninstall_hook(__FILE__, 'uninstall_lifeline');
 if ($lifeline_active) {
 	require_once plugin_dir_path(__FILE__) . '/rewrite_rules.php';
 	require_once plugin_dir_path(__FILE__) . '/ajax.php';
+	require_once(plugin_dir_path(__FILE__) . '/ll-wp-cron.php');
 }
 
 function run_lifeline() {
