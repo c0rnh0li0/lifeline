@@ -16719,12 +16719,16 @@ body.woocommerce-cart #page #content ul.wc-block-grid__products li.wc-block-grid
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
+  justify-content: center;
   align-items: center;
+  height: 100%;
+  background: #f0f0f0;
+  border: 3px solid #8AAC54;
 }
 .contact-container .contact-left .contacts-content .contact-logo {
-  width: 200px;
+  width: 224px;
   display: block;
-  margin-bottom: 24px;
+  margin-bottom: 30px;
 }
 .contact-container .contact-left .contacts-content .contact-logo img {
   width: 100%;
@@ -16961,6 +16965,13 @@ body.woocommerce-cart #page #content ul.wc-block-grid__products li.wc-block-grid
   margin-bottom: 20px;
   margin-top: 10px;
   text-align: left;
+}
+.wrapper#single-wrapper .category-blog .entry-content p:has(> img) {
+  text-align: center;
+}
+.wrapper#single-wrapper .category-blog .entry-content p:has(> img) img {
+  max-width: 100%;
+  display: inline-block;
 }
 .wrapper#single-wrapper .navigation.post-navigation {
   display: none;

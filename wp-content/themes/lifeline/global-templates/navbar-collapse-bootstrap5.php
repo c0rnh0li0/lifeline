@@ -52,8 +52,8 @@ $container = get_theme_mod( 'understrap_container_type' );
 		</div>
 		
 		<div class="social">
-			<a href="#" target="_blank"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/icons/facebook.svg" alt="Facebook" /></a>
-			<a href="#" target="_blank"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/icons/instagram.svg" alt="Instagram" /></a>
+			<a href="https://www.facebook.com/lifeline.apteka" target="_blank"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/icons/facebook.svg" alt="Facebook" /></a>
+			<a href="https://www.instagram.com/lifeline.pharmacy/" target="_blank"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/icons/instagram.svg" alt="Instagram" /></a>
 		</div>
 
 		<button
