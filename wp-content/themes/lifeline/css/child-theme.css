@@ -15070,97 +15070,33 @@ body {
   color: #FFF;
 }
 
-.woocommerce #woocommerce-wrapper #content {
-  padding-top: 180px;
-}
-.woocommerce #woocommerce-wrapper #content #primary .woocommerce-breadcrumb {
-  margin-bottom: 10px;
-}
-.woocommerce #woocommerce-wrapper #content #primary h1, .woocommerce #woocommerce-wrapper #content #primary .h1 {
-  margin: 0 0 20px 0;
-  border-bottom: 5px solid #F7F8F9;
-  padding: 0 0 20px 0;
-  font-size: 2.25rem;
-  line-height: 120%;
-  color: #B05687;
-}
-.woocommerce #woocommerce-wrapper #content #primary h2, .woocommerce #woocommerce-wrapper #content #primary .h2 {
-  margin: 0 0 20px 0;
-  border-bottom: 5px solid #F7F8F9;
-  padding: 0 0 20px 0;
-  font-size: 1.75rem;
-  line-height: 120%;
-  color: #B05687;
-}
-.woocommerce #woocommerce-wrapper #content #primary p {
-  margin-bottom: 20px;
-  font-size: 1rem;
-  line-height: 140%;
-}
-.woocommerce #woocommerce-wrapper #content #primary p:last-of-type {
-  margin-bottom: 0;
-}
-.woocommerce #woocommerce-wrapper #content #primary ul {
-  list-style: disc;
-  margin: 0 0 20px 0;
-  padding: 0;
-}
-.woocommerce #woocommerce-wrapper #content #primary ul li {
-  margin-left: 20px;
-  margin-bottom: 5px;
-}
-.woocommerce #woocommerce-wrapper #content #primary ul li:last-of-type {
-  margin-bottom: 0;
-}
-.woocommerce #woocommerce-wrapper #content #primary ol {
-  list-style: decimal;
-  margin: 0 0 20px 0;
-  padding: 0;
-}
-.woocommerce #woocommerce-wrapper #content #primary ol li {
-  margin-left: 20px;
-  margin-bottom: 5px;
-}
-.woocommerce #woocommerce-wrapper #content #primary ol li:last-of-type {
-  margin-bottom: 0;
-}
-.woocommerce #woocommerce-wrapper #content #primary a {
-  text-decoration: underline;
-  color: #8AAC54;
-}
-.woocommerce #woocommerce-wrapper #content #primary a:hover, .woocommerce #woocommerce-wrapper #content #primary a:focus {
-  color: #7c9b4b;
-}
-.woocommerce #woocommerce-wrapper #content #primary table.shop_attributes .woocommerce-product-attributes-item__value p {
-  margin-bottom: 0;
-}
-.woocommerce #woocommerce-wrapper #content #primary div.product {
+.wrapper#page-wrapper .woocommerce div.product, .wrapper#single-wrapper .woocommerce div.product {
   display: flex;
   flex-direction: row;
   grid-template-columns: repeat(auto-fill, 20%);
   flex-wrap: wrap;
   justify-content: space-between;
 }
-.woocommerce #woocommerce-wrapper #content #primary div.product .woocommerce-product-gallery {
+.wrapper#page-wrapper .woocommerce div.product .woocommerce-product-gallery, .wrapper#single-wrapper .woocommerce div.product .woocommerce-product-gallery {
   width: 600px;
   border: 1px solid #DADBDC;
   float: none;
 }
-.woocommerce #woocommerce-wrapper #content #primary div.product .woocommerce-tabs.wc-tabs-wrapper #tab-additional_information {
+.wrapper#page-wrapper .woocommerce div.product .woocommerce-tabs.wc-tabs-wrapper #tab-additional_information, .wrapper#single-wrapper .woocommerce div.product .woocommerce-tabs.wc-tabs-wrapper #tab-additional_information {
   width: 600px;
   max-width: 100%;
 }
-.woocommerce #woocommerce-wrapper #content #primary div.product .woocommerce-tabs.wc-tabs-wrapper #tab-additional_information .woocommerce-product-attributes th, .woocommerce #woocommerce-wrapper #content #primary div.product .woocommerce-tabs.wc-tabs-wrapper #tab-additional_information .woocommerce-product-attributes td {
+.wrapper#page-wrapper .woocommerce div.product .woocommerce-tabs.wc-tabs-wrapper #tab-additional_information .woocommerce-product-attributes th, .wrapper#page-wrapper .woocommerce div.product .woocommerce-tabs.wc-tabs-wrapper #tab-additional_information .woocommerce-product-attributes td, .wrapper#single-wrapper .woocommerce div.product .woocommerce-tabs.wc-tabs-wrapper #tab-additional_information .woocommerce-product-attributes th, .wrapper#single-wrapper .woocommerce div.product .woocommerce-tabs.wc-tabs-wrapper #tab-additional_information .woocommerce-product-attributes td {
   width: 50%;
 }
-.woocommerce #woocommerce-wrapper #content #primary div.product div.summary {
+.wrapper#page-wrapper .woocommerce div.product div.summary, .wrapper#single-wrapper .woocommerce div.product div.summary {
   background: #F7F8F9;
   padding: 20px;
   border: 1px solid #DADBDC;
   float: none;
   align-self: flex-start;
 }
-.woocommerce #woocommerce-wrapper #content #primary div.product div.summary .price {
+.wrapper#page-wrapper .woocommerce div.product div.summary .price, .wrapper#single-wrapper .woocommerce div.product div.summary .price {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -15169,54 +15105,54 @@ body {
   border-bottom: 1px solid #DADBDC;
   padding-bottom: 20px;
 }
-.woocommerce #woocommerce-wrapper #content #primary div.product div.summary .price .woocommerce-Price-amount.amount {
+.wrapper#page-wrapper .woocommerce div.product div.summary .price .woocommerce-Price-amount.amount, .wrapper#single-wrapper .woocommerce div.product div.summary .price .woocommerce-Price-amount.amount {
   font-size: 2rem;
   font-weight: 600;
   text-decoration: none;
   color: #8AAC54;
 }
-.woocommerce #woocommerce-wrapper #content #primary div.product div.summary .price .woocommerce-Price-amount.amount bdi {
+.wrapper#page-wrapper .woocommerce div.product div.summary .price .woocommerce-Price-amount.amount bdi, .wrapper#single-wrapper .woocommerce div.product div.summary .price .woocommerce-Price-amount.amount bdi {
   color: #8AAC54;
 }
-.woocommerce #woocommerce-wrapper #content #primary div.product div.summary .price del {
+.wrapper#page-wrapper .woocommerce div.product div.summary .price del, .wrapper#single-wrapper .woocommerce div.product div.summary .price del {
   display: inline-block;
   text-decoration: none;
   font-size: 1.25rem;
 }
-.woocommerce #woocommerce-wrapper #content #primary div.product div.summary .price del .woocommerce-Price-amount.amount {
+.wrapper#page-wrapper .woocommerce div.product div.summary .price del .woocommerce-Price-amount.amount, .wrapper#single-wrapper .woocommerce div.product div.summary .price del .woocommerce-Price-amount.amount {
   display: block;
   width: 100%;
 }
-.woocommerce #woocommerce-wrapper #content #primary div.product div.summary .price del .woocommerce-Price-amount.amount bdi {
+.wrapper#page-wrapper .woocommerce div.product div.summary .price del .woocommerce-Price-amount.amount bdi, .wrapper#single-wrapper .woocommerce div.product div.summary .price del .woocommerce-Price-amount.amount bdi {
   display: inline-block;
   text-decoration: line-through;
   color: #333333;
 }
-.woocommerce #woocommerce-wrapper #content #primary div.product div.summary .price ins {
+.wrapper#page-wrapper .woocommerce div.product div.summary .price ins, .wrapper#single-wrapper .woocommerce div.product div.summary .price ins {
   display: inline-block;
   text-decoration: none;
   color: #8AAC54;
 }
-.woocommerce #woocommerce-wrapper #content #primary div.product div.summary .price ins .woocommerce-Price-amount.amount {
+.wrapper#page-wrapper .woocommerce div.product div.summary .price ins .woocommerce-Price-amount.amount, .wrapper#single-wrapper .woocommerce div.product div.summary .price ins .woocommerce-Price-amount.amount {
   font-size: 2rem;
   font-weight: 600;
   text-decoration: none;
   color: #8AAC54;
 }
-.woocommerce #woocommerce-wrapper #content #primary div.product div.summary .price ins .woocommerce-Price-amount.amount bdi {
+.wrapper#page-wrapper .woocommerce div.product div.summary .price ins .woocommerce-Price-amount.amount bdi, .wrapper#single-wrapper .woocommerce div.product div.summary .price ins .woocommerce-Price-amount.amount bdi {
   color: #8AAC54;
 }
-.woocommerce #woocommerce-wrapper #content #primary div.product .woocommerce-tabs.wc-tabs-wrapper .tabs.wc-tabs {
+.wrapper#page-wrapper .woocommerce div.product .woocommerce-tabs.wc-tabs-wrapper .tabs.wc-tabs, .wrapper#single-wrapper .woocommerce div.product .woocommerce-tabs.wc-tabs-wrapper .tabs.wc-tabs {
   display: none;
 }
-.woocommerce #woocommerce-wrapper #content #primary div.product .related.products {
+.wrapper#page-wrapper .woocommerce div.product .related.products, .wrapper#single-wrapper .woocommerce div.product .related.products {
   width: 100%;
 }
-.woocommerce #woocommerce-wrapper #content #primary div.product .related.products h2, .woocommerce #woocommerce-wrapper #content #primary div.product .related.products .h2 {
+.wrapper#page-wrapper .woocommerce div.product .related.products h2, .wrapper#page-wrapper .woocommerce div.product .related.products .h2, .wrapper#single-wrapper .woocommerce div.product .related.products h2, .wrapper#single-wrapper .woocommerce div.product .related.products .h2 {
   font-size: 1.75rem;
   margin-bottom: 20px;
 }
-.woocommerce #woocommerce-wrapper #content #primary div.product .related.products ul.products li.product a h2, .woocommerce #woocommerce-wrapper #content #primary div.product .related.products ul.products li.product a .h2 {
+.wrapper#page-wrapper .woocommerce div.product .related.products ul.products li.product a h2, .wrapper#page-wrapper .woocommerce div.product .related.products ul.products li.product a .h2, .wrapper#single-wrapper .woocommerce div.product .related.products ul.products li.product a h2, .wrapper#single-wrapper .woocommerce div.product .related.products ul.products li.product a .h2 {
   text-decoration: none;
   font-size: 1rem;
   font-weight: 600;
@@ -15224,68 +15160,68 @@ body {
   margin-bottom: 10px;
   min-height: 80px;
 }
-.woocommerce #woocommerce-wrapper #content #primary div.product .related.products ul.products li {
+.wrapper#page-wrapper .woocommerce div.product .related.products ul.products li, .wrapper#single-wrapper .woocommerce div.product .related.products ul.products li {
   width: 100%;
 }
-.woocommerce #woocommerce-wrapper #content #primary div.product .related.products ul.products .woocommerce-Price-amount.amount {
+.wrapper#page-wrapper .woocommerce div.product .related.products ul.products .woocommerce-Price-amount.amount, .wrapper#single-wrapper .woocommerce div.product .related.products ul.products .woocommerce-Price-amount.amount {
   font-size: 2rem;
   font-weight: 600;
   text-decoration: none;
   color: #8AAC54;
 }
-.woocommerce #woocommerce-wrapper #content #primary div.product .related.products ul.products .woocommerce-Price-amount.amount bdi {
+.wrapper#page-wrapper .woocommerce div.product .related.products ul.products .woocommerce-Price-amount.amount bdi, .wrapper#single-wrapper .woocommerce div.product .related.products ul.products .woocommerce-Price-amount.amount bdi {
   color: #8AAC54;
 }
-.woocommerce #woocommerce-wrapper #content #primary div.product .related.products ul.products del {
+.wrapper#page-wrapper .woocommerce div.product .related.products ul.products del, .wrapper#single-wrapper .woocommerce div.product .related.products ul.products del {
   display: inline-block;
   text-decoration: none;
   font-size: 1.25rem;
 }
-.woocommerce #woocommerce-wrapper #content #primary div.product .related.products ul.products del .woocommerce-Price-amount.amount {
+.wrapper#page-wrapper .woocommerce div.product .related.products ul.products del .woocommerce-Price-amount.amount, .wrapper#single-wrapper .woocommerce div.product .related.products ul.products del .woocommerce-Price-amount.amount {
   display: block;
   width: 100%;
 }
-.woocommerce #woocommerce-wrapper #content #primary div.product .related.products ul.products del .woocommerce-Price-amount.amount bdi {
+.wrapper#page-wrapper .woocommerce div.product .related.products ul.products del .woocommerce-Price-amount.amount bdi, .wrapper#single-wrapper .woocommerce div.product .related.products ul.products del .woocommerce-Price-amount.amount bdi {
   display: inline-block;
   text-decoration: line-through;
   color: #333333;
 }
-.woocommerce #woocommerce-wrapper #content #primary div.product .related.products ul.products ins {
+.wrapper#page-wrapper .woocommerce div.product .related.products ul.products ins, .wrapper#single-wrapper .woocommerce div.product .related.products ul.products ins {
   display: inline-block;
   text-decoration: none;
   color: #8AAC54;
 }
-.woocommerce #woocommerce-wrapper #content #primary div.product .related.products ul.products ins .woocommerce-Price-amount.amount {
+.wrapper#page-wrapper .woocommerce div.product .related.products ul.products ins .woocommerce-Price-amount.amount, .wrapper#single-wrapper .woocommerce div.product .related.products ul.products ins .woocommerce-Price-amount.amount {
   font-size: 2rem;
   font-weight: 600;
   text-decoration: none;
   color: #8AAC54;
 }
-.woocommerce #woocommerce-wrapper #content #primary div.product .related.products ul.products ins .woocommerce-Price-amount.amount bdi {
+.wrapper#page-wrapper .woocommerce div.product .related.products ul.products ins .woocommerce-Price-amount.amount bdi, .wrapper#single-wrapper .woocommerce div.product .related.products ul.products ins .woocommerce-Price-amount.amount bdi {
   color: #8AAC54;
 }
-.woocommerce #woocommerce-wrapper #content #primary div.product .related.products ul.products.columns-4 {
+.wrapper#page-wrapper .woocommerce div.product .related.products ul.products.columns-4, .wrapper#single-wrapper .woocommerce div.product .related.products ul.products.columns-4 {
   grid-template-columns: repeat(auto-fill, 23.5%);
 }
-.woocommerce #woocommerce-wrapper #content #primary div.product .related.products ul.products.columns-5 {
+.wrapper#page-wrapper .woocommerce div.product .related.products ul.products.columns-5, .wrapper#single-wrapper .woocommerce div.product .related.products ul.products.columns-5 {
   grid-template-columns: repeat(auto-fill, 18.5%);
 }
-.woocommerce #woocommerce-wrapper #content #primary div.product .related.products ul.products.columns-6 {
+.wrapper#page-wrapper .woocommerce div.product .related.products ul.products.columns-6, .wrapper#single-wrapper .woocommerce div.product .related.products ul.products.columns-6 {
   grid-template-columns: repeat(auto-fill, 18.5%);
 }
-.woocommerce #woocommerce-wrapper #content #primary div.product .related.products ul.products.columns-6 li a.woocommerce-loop-product__link h2, .woocommerce #woocommerce-wrapper #content #primary div.product .related.products ul.products.columns-6 li a.woocommerce-loop-product__link .h2 {
+.wrapper#page-wrapper .woocommerce div.product .related.products ul.products.columns-6 li a.woocommerce-loop-product__link h2, .wrapper#page-wrapper .woocommerce div.product .related.products ul.products.columns-6 li a.woocommerce-loop-product__link .h2, .wrapper#single-wrapper .woocommerce div.product .related.products ul.products.columns-6 li a.woocommerce-loop-product__link h2, .wrapper#single-wrapper .woocommerce div.product .related.products ul.products.columns-6 li a.woocommerce-loop-product__link .h2 {
   padding: 0 15px;
 }
-.woocommerce #woocommerce-wrapper #content #primary div.product .related.products ul.products.columns-6 li a.woocommerce-loop-product__link .price {
+.wrapper#page-wrapper .woocommerce div.product .related.products ul.products.columns-6 li a.woocommerce-loop-product__link .price, .wrapper#single-wrapper .woocommerce div.product .related.products ul.products.columns-6 li a.woocommerce-loop-product__link .price {
   padding: 15px;
 }
-.woocommerce #woocommerce-wrapper #content #primary div.product .related.products ul.products.columns-6 li a.woocommerce-loop-product__link .price .woocommerce-Price-amount.amount bdi {
+.wrapper#page-wrapper .woocommerce div.product .related.products ul.products.columns-6 li a.woocommerce-loop-product__link .price .woocommerce-Price-amount.amount bdi, .wrapper#single-wrapper .woocommerce div.product .related.products ul.products.columns-6 li a.woocommerce-loop-product__link .price .woocommerce-Price-amount.amount bdi {
   color: #8AAC54;
 }
-.woocommerce #woocommerce-wrapper #content #primary div.product .related.products ul.products.columns-6 li a.woocommerce-loop-product__link .price del .woocommerce-Price-amount.amount bdi {
+.wrapper#page-wrapper .woocommerce div.product .related.products ul.products.columns-6 li a.woocommerce-loop-product__link .price del .woocommerce-Price-amount.amount bdi, .wrapper#single-wrapper .woocommerce div.product .related.products ul.products.columns-6 li a.woocommerce-loop-product__link .price del .woocommerce-Price-amount.amount bdi {
   font-size: 0.875rem;
 }
-.woocommerce #woocommerce-wrapper #content #primary div.product .cart .btn, .woocommerce #woocommerce-wrapper #content #primary div.product .cart .wpcf7 input[type=submit], .wpcf7 .woocommerce #woocommerce-wrapper #content #primary div.product .cart input[type=submit], .woocommerce #woocommerce-wrapper #content #primary div.product .cart .woocommerce-notices-wrapper .woocommerce-message a.button, .woocommerce-notices-wrapper .woocommerce-message .woocommerce #woocommerce-wrapper #content #primary div.product .cart a.button, .woocommerce #woocommerce-wrapper #content #primary div.product .cart .woocommerce-info a.button, .woocommerce-info .woocommerce #woocommerce-wrapper #content #primary div.product .cart a.button, .woocommerce #woocommerce-wrapper #content #primary div.product .add-to-cart-container .btn, .woocommerce #woocommerce-wrapper #content #primary div.product .add-to-cart-container .wpcf7 input[type=submit], .wpcf7 .woocommerce #woocommerce-wrapper #content #primary div.product .add-to-cart-container input[type=submit], .woocommerce #woocommerce-wrapper #content #primary div.product .add-to-cart-container .woocommerce-notices-wrapper .woocommerce-message a.button, .woocommerce-notices-wrapper .woocommerce-message .woocommerce #woocommerce-wrapper #content #primary div.product .add-to-cart-container a.button, .woocommerce #woocommerce-wrapper #content #primary div.product .add-to-cart-container .woocommerce-info a.button, .woocommerce-info .woocommerce #woocommerce-wrapper #content #primary div.product .add-to-cart-container a.button {
+.wrapper#page-wrapper .woocommerce div.product .cart .btn, .wrapper#page-wrapper .woocommerce div.product .cart .wpcf7 input[type=submit], .wpcf7 .wrapper#page-wrapper .woocommerce div.product .cart input[type=submit], .wrapper#page-wrapper .woocommerce div.product .cart .woocommerce-notices-wrapper .woocommerce-message a.button, .woocommerce-notices-wrapper .woocommerce-message .wrapper#page-wrapper .woocommerce div.product .cart a.button, .wrapper#page-wrapper .woocommerce div.product .cart .woocommerce-info a.button, .woocommerce-info .wrapper#page-wrapper .woocommerce div.product .cart a.button, .wrapper#page-wrapper .woocommerce div.product .add-to-cart-container .btn, .wrapper#page-wrapper .woocommerce div.product .add-to-cart-container .wpcf7 input[type=submit], .wpcf7 .wrapper#page-wrapper .woocommerce div.product .add-to-cart-container input[type=submit], .wrapper#page-wrapper .woocommerce div.product .add-to-cart-container .woocommerce-notices-wrapper .woocommerce-message a.button, .woocommerce-notices-wrapper .woocommerce-message .wrapper#page-wrapper .woocommerce div.product .add-to-cart-container a.button, .wrapper#page-wrapper .woocommerce div.product .add-to-cart-container .woocommerce-info a.button, .woocommerce-info .wrapper#page-wrapper .woocommerce div.product .add-to-cart-container a.button, .wrapper#single-wrapper .woocommerce div.product .cart .btn, .wrapper#single-wrapper .woocommerce div.product .cart .wpcf7 input[type=submit], .wpcf7 .wrapper#single-wrapper .woocommerce div.product .cart input[type=submit], .wrapper#single-wrapper .woocommerce div.product .cart .woocommerce-notices-wrapper .woocommerce-message a.button, .woocommerce-notices-wrapper .woocommerce-message .wrapper#single-wrapper .woocommerce div.product .cart a.button, .wrapper#single-wrapper .woocommerce div.product .cart .woocommerce-info a.button, .woocommerce-info .wrapper#single-wrapper .woocommerce div.product .cart a.button, .wrapper#single-wrapper .woocommerce div.product .add-to-cart-container .btn, .wrapper#single-wrapper .woocommerce div.product .add-to-cart-container .wpcf7 input[type=submit], .wpcf7 .wrapper#single-wrapper .woocommerce div.product .add-to-cart-container input[type=submit], .wrapper#single-wrapper .woocommerce div.product .add-to-cart-container .woocommerce-notices-wrapper .woocommerce-message a.button, .woocommerce-notices-wrapper .woocommerce-message .wrapper#single-wrapper .woocommerce div.product .add-to-cart-container a.button, .wrapper#single-wrapper .woocommerce div.product .add-to-cart-container .woocommerce-info a.button, .woocommerce-info .wrapper#single-wrapper .woocommerce div.product .add-to-cart-container a.button {
   background: #8AAC54 url(../img/icons/icon-cart-white.svg) 12px 6px no-repeat;
   background-size: auto 24px;
   border: none;
@@ -15297,34 +15233,98 @@ body {
   text-decoration: none;
   filter: drop-shadow(0px 0.1px 0.3px rgba(0, 0, 0, 0.1)) drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.2));
 }
-.woocommerce #woocommerce-wrapper #content #primary div.product .cart .btn.product_type_simple, .woocommerce #woocommerce-wrapper #content #primary div.product .cart .wpcf7 input.product_type_simple[type=submit], .wpcf7 .woocommerce #woocommerce-wrapper #content #primary div.product .cart input.product_type_simple[type=submit], .woocommerce #woocommerce-wrapper #content #primary div.product .cart .woocommerce-notices-wrapper .woocommerce-message a.product_type_simple.button, .woocommerce-notices-wrapper .woocommerce-message .woocommerce #woocommerce-wrapper #content #primary div.product .cart a.product_type_simple.button, .woocommerce #woocommerce-wrapper #content #primary div.product .cart .woocommerce-info a.product_type_simple.button, .woocommerce-info .woocommerce #woocommerce-wrapper #content #primary div.product .cart a.product_type_simple.button, .woocommerce #woocommerce-wrapper #content #primary div.product .add-to-cart-container .btn.product_type_simple, .woocommerce #woocommerce-wrapper #content #primary div.product .add-to-cart-container .wpcf7 input.product_type_simple[type=submit], .wpcf7 .woocommerce #woocommerce-wrapper #content #primary div.product .add-to-cart-container input.product_type_simple[type=submit], .woocommerce #woocommerce-wrapper #content #primary div.product .add-to-cart-container .woocommerce-notices-wrapper .woocommerce-message a.product_type_simple.button, .woocommerce-notices-wrapper .woocommerce-message .woocommerce #woocommerce-wrapper #content #primary div.product .add-to-cart-container a.product_type_simple.button, .woocommerce #woocommerce-wrapper #content #primary div.product .add-to-cart-container .woocommerce-info a.product_type_simple.button, .woocommerce-info .woocommerce #woocommerce-wrapper #content #primary div.product .add-to-cart-container a.product_type_simple.button {
+.wrapper#page-wrapper .woocommerce div.product .cart .btn.product_type_simple, .wrapper#page-wrapper .woocommerce div.product .cart .wpcf7 input.product_type_simple[type=submit], .wpcf7 .wrapper#page-wrapper .woocommerce div.product .cart input.product_type_simple[type=submit], .wrapper#page-wrapper .woocommerce div.product .cart .woocommerce-notices-wrapper .woocommerce-message a.product_type_simple.button, .woocommerce-notices-wrapper .woocommerce-message .wrapper#page-wrapper .woocommerce div.product .cart a.product_type_simple.button, .wrapper#page-wrapper .woocommerce div.product .cart .woocommerce-info a.product_type_simple.button, .woocommerce-info .wrapper#page-wrapper .woocommerce div.product .cart a.product_type_simple.button, .wrapper#page-wrapper .woocommerce div.product .add-to-cart-container .btn.product_type_simple, .wrapper#page-wrapper .woocommerce div.product .add-to-cart-container .wpcf7 input.product_type_simple[type=submit], .wpcf7 .wrapper#page-wrapper .woocommerce div.product .add-to-cart-container input.product_type_simple[type=submit], .wrapper#page-wrapper .woocommerce div.product .add-to-cart-container .woocommerce-notices-wrapper .woocommerce-message a.product_type_simple.button, .woocommerce-notices-wrapper .woocommerce-message .wrapper#page-wrapper .woocommerce div.product .add-to-cart-container a.product_type_simple.button, .wrapper#page-wrapper .woocommerce div.product .add-to-cart-container .woocommerce-info a.product_type_simple.button, .woocommerce-info .wrapper#page-wrapper .woocommerce div.product .add-to-cart-container a.product_type_simple.button, .wrapper#single-wrapper .woocommerce div.product .cart .btn.product_type_simple, .wrapper#single-wrapper .woocommerce div.product .cart .wpcf7 input.product_type_simple[type=submit], .wpcf7 .wrapper#single-wrapper .woocommerce div.product .cart input.product_type_simple[type=submit], .wrapper#single-wrapper .woocommerce div.product .cart .woocommerce-notices-wrapper .woocommerce-message a.product_type_simple.button, .woocommerce-notices-wrapper .woocommerce-message .wrapper#single-wrapper .woocommerce div.product .cart a.product_type_simple.button, .wrapper#single-wrapper .woocommerce div.product .cart .woocommerce-info a.product_type_simple.button, .woocommerce-info .wrapper#single-wrapper .woocommerce div.product .cart a.product_type_simple.button, .wrapper#single-wrapper .woocommerce div.product .add-to-cart-container .btn.product_type_simple, .wrapper#single-wrapper .woocommerce div.product .add-to-cart-container .wpcf7 input.product_type_simple[type=submit], .wpcf7 .wrapper#single-wrapper .woocommerce div.product .add-to-cart-container input.product_type_simple[type=submit], .wrapper#single-wrapper .woocommerce div.product .add-to-cart-container .woocommerce-notices-wrapper .woocommerce-message a.product_type_simple.button, .woocommerce-notices-wrapper .woocommerce-message .wrapper#single-wrapper .woocommerce div.product .add-to-cart-container a.product_type_simple.button, .wrapper#single-wrapper .woocommerce div.product .add-to-cart-container .woocommerce-info a.product_type_simple.button, .woocommerce-info .wrapper#single-wrapper .woocommerce div.product .add-to-cart-container a.product_type_simple.button {
   background: #8AAC54 url(../img/icons/icon-readmore.svg) 12px 6px no-repeat;
 }
-.woocommerce #woocommerce-wrapper #content #primary div.product .cart .btn:hover, .woocommerce #woocommerce-wrapper #content #primary div.product .cart .wpcf7 input[type=submit]:hover, .wpcf7 .woocommerce #woocommerce-wrapper #content #primary div.product .cart input[type=submit]:hover, .woocommerce #woocommerce-wrapper #content #primary div.product .cart .woocommerce-notices-wrapper .woocommerce-message a.button:hover, .woocommerce-notices-wrapper .woocommerce-message .woocommerce #woocommerce-wrapper #content #primary div.product .cart a.button:hover, .woocommerce #woocommerce-wrapper #content #primary div.product .cart .woocommerce-info a.button:hover, .woocommerce-info .woocommerce #woocommerce-wrapper #content #primary div.product .cart a.button:hover, .woocommerce #woocommerce-wrapper #content #primary div.product .cart .btn:focus, .woocommerce #woocommerce-wrapper #content #primary div.product .cart .wpcf7 input[type=submit]:focus, .wpcf7 .woocommerce #woocommerce-wrapper #content #primary div.product .cart input[type=submit]:focus, .woocommerce #woocommerce-wrapper #content #primary div.product .cart .woocommerce-notices-wrapper .woocommerce-message a.button:focus, .woocommerce-notices-wrapper .woocommerce-message .woocommerce #woocommerce-wrapper #content #primary div.product .cart a.button:focus, .woocommerce #woocommerce-wrapper #content #primary div.product .cart .woocommerce-info a.button:focus, .woocommerce-info .woocommerce #woocommerce-wrapper #content #primary div.product .cart a.button:focus, .woocommerce #woocommerce-wrapper #content #primary div.product .add-to-cart-container .btn:hover, .woocommerce #woocommerce-wrapper #content #primary div.product .add-to-cart-container .wpcf7 input[type=submit]:hover, .wpcf7 .woocommerce #woocommerce-wrapper #content #primary div.product .add-to-cart-container input[type=submit]:hover, .woocommerce #woocommerce-wrapper #content #primary div.product .add-to-cart-container .woocommerce-notices-wrapper .woocommerce-message a.button:hover, .woocommerce-notices-wrapper .woocommerce-message .woocommerce #woocommerce-wrapper #content #primary div.product .add-to-cart-container a.button:hover, .woocommerce #woocommerce-wrapper #content #primary div.product .add-to-cart-container .woocommerce-info a.button:hover, .woocommerce-info .woocommerce #woocommerce-wrapper #content #primary div.product .add-to-cart-container a.button:hover, .woocommerce #woocommerce-wrapper #content #primary div.product .add-to-cart-container .btn:focus, .woocommerce #woocommerce-wrapper #content #primary div.product .add-to-cart-container .wpcf7 input[type=submit]:focus, .wpcf7 .woocommerce #woocommerce-wrapper #content #primary div.product .add-to-cart-container input[type=submit]:focus, .woocommerce #woocommerce-wrapper #content #primary div.product .add-to-cart-container .woocommerce-notices-wrapper .woocommerce-message a.button:focus, .woocommerce-notices-wrapper .woocommerce-message .woocommerce #woocommerce-wrapper #content #primary div.product .add-to-cart-container a.button:focus, .woocommerce #woocommerce-wrapper #content #primary div.product .add-to-cart-container .woocommerce-info a.button:focus, .woocommerce-info .woocommerce #woocommerce-wrapper #content #primary div.product .add-to-cart-container a.button:focus {
+.wrapper#page-wrapper .woocommerce div.product .cart .btn:hover, .wrapper#page-wrapper .woocommerce div.product .cart .wpcf7 input[type=submit]:hover, .wpcf7 .wrapper#page-wrapper .woocommerce div.product .cart input[type=submit]:hover, .wrapper#page-wrapper .woocommerce div.product .cart .woocommerce-notices-wrapper .woocommerce-message a.button:hover, .woocommerce-notices-wrapper .woocommerce-message .wrapper#page-wrapper .woocommerce div.product .cart a.button:hover, .wrapper#page-wrapper .woocommerce div.product .cart .woocommerce-info a.button:hover, .woocommerce-info .wrapper#page-wrapper .woocommerce div.product .cart a.button:hover, .wrapper#page-wrapper .woocommerce div.product .cart .btn:focus, .wrapper#page-wrapper .woocommerce div.product .cart .wpcf7 input[type=submit]:focus, .wpcf7 .wrapper#page-wrapper .woocommerce div.product .cart input[type=submit]:focus, .wrapper#page-wrapper .woocommerce div.product .cart .woocommerce-notices-wrapper .woocommerce-message a.button:focus, .woocommerce-notices-wrapper .woocommerce-message .wrapper#page-wrapper .woocommerce div.product .cart a.button:focus, .wrapper#page-wrapper .woocommerce div.product .cart .woocommerce-info a.button:focus, .woocommerce-info .wrapper#page-wrapper .woocommerce div.product .cart a.button:focus, .wrapper#page-wrapper .woocommerce div.product .add-to-cart-container .btn:hover, .wrapper#page-wrapper .woocommerce div.product .add-to-cart-container .wpcf7 input[type=submit]:hover, .wpcf7 .wrapper#page-wrapper .woocommerce div.product .add-to-cart-container input[type=submit]:hover, .wrapper#page-wrapper .woocommerce div.product .add-to-cart-container .woocommerce-notices-wrapper .woocommerce-message a.button:hover, .woocommerce-notices-wrapper .woocommerce-message .wrapper#page-wrapper .woocommerce div.product .add-to-cart-container a.button:hover, .wrapper#page-wrapper .woocommerce div.product .add-to-cart-container .woocommerce-info a.button:hover, .woocommerce-info .wrapper#page-wrapper .woocommerce div.product .add-to-cart-container a.button:hover, .wrapper#page-wrapper .woocommerce div.product .add-to-cart-container .btn:focus, .wrapper#page-wrapper .woocommerce div.product .add-to-cart-container .wpcf7 input[type=submit]:focus, .wpcf7 .wrapper#page-wrapper .woocommerce div.product .add-to-cart-container input[type=submit]:focus, .wrapper#page-wrapper .woocommerce div.product .add-to-cart-container .woocommerce-notices-wrapper .woocommerce-message a.button:focus, .woocommerce-notices-wrapper .woocommerce-message .wrapper#page-wrapper .woocommerce div.product .add-to-cart-container a.button:focus, .wrapper#page-wrapper .woocommerce div.product .add-to-cart-container .woocommerce-info a.button:focus, .woocommerce-info .wrapper#page-wrapper .woocommerce div.product .add-to-cart-container a.button:focus, .wrapper#single-wrapper .woocommerce div.product .cart .btn:hover, .wrapper#single-wrapper .woocommerce div.product .cart .wpcf7 input[type=submit]:hover, .wpcf7 .wrapper#single-wrapper .woocommerce div.product .cart input[type=submit]:hover, .wrapper#single-wrapper .woocommerce div.product .cart .woocommerce-notices-wrapper .woocommerce-message a.button:hover, .woocommerce-notices-wrapper .woocommerce-message .wrapper#single-wrapper .woocommerce div.product .cart a.button:hover, .wrapper#single-wrapper .woocommerce div.product .cart .woocommerce-info a.button:hover, .woocommerce-info .wrapper#single-wrapper .woocommerce div.product .cart a.button:hover, .wrapper#single-wrapper .woocommerce div.product .cart .btn:focus, .wrapper#single-wrapper .woocommerce div.product .cart .wpcf7 input[type=submit]:focus, .wpcf7 .wrapper#single-wrapper .woocommerce div.product .cart input[type=submit]:focus, .wrapper#single-wrapper .woocommerce div.product .cart .woocommerce-notices-wrapper .woocommerce-message a.button:focus, .woocommerce-notices-wrapper .woocommerce-message .wrapper#single-wrapper .woocommerce div.product .cart a.button:focus, .wrapper#single-wrapper .woocommerce div.product .cart .woocommerce-info a.button:focus, .woocommerce-info .wrapper#single-wrapper .woocommerce div.product .cart a.button:focus, .wrapper#single-wrapper .woocommerce div.product .add-to-cart-container .btn:hover, .wrapper#single-wrapper .woocommerce div.product .add-to-cart-container .wpcf7 input[type=submit]:hover, .wpcf7 .wrapper#single-wrapper .woocommerce div.product .add-to-cart-container input[type=submit]:hover, .wrapper#single-wrapper .woocommerce div.product .add-to-cart-container .woocommerce-notices-wrapper .woocommerce-message a.button:hover, .woocommerce-notices-wrapper .woocommerce-message .wrapper#single-wrapper .woocommerce div.product .add-to-cart-container a.button:hover, .wrapper#single-wrapper .woocommerce div.product .add-to-cart-container .woocommerce-info a.button:hover, .woocommerce-info .wrapper#single-wrapper .woocommerce div.product .add-to-cart-container a.button:hover, .wrapper#single-wrapper .woocommerce div.product .add-to-cart-container .btn:focus, .wrapper#single-wrapper .woocommerce div.product .add-to-cart-container .wpcf7 input[type=submit]:focus, .wpcf7 .wrapper#single-wrapper .woocommerce div.product .add-to-cart-container input[type=submit]:focus, .wrapper#single-wrapper .woocommerce div.product .add-to-cart-container .woocommerce-notices-wrapper .woocommerce-message a.button:focus, .woocommerce-notices-wrapper .woocommerce-message .wrapper#single-wrapper .woocommerce div.product .add-to-cart-container a.button:focus, .wrapper#single-wrapper .woocommerce div.product .add-to-cart-container .woocommerce-info a.button:focus, .woocommerce-info .wrapper#single-wrapper .woocommerce div.product .add-to-cart-container a.button:focus {
   background-color: #6f8a43;
   color: #FFF;
   border: none;
   text-decoration: none;
 }
-.woocommerce #woocommerce-wrapper #content #primary ul.products {
+.wrapper#page-wrapper .woocommerce #woocommerce-wrapper #content, .wrapper#single-wrapper .woocommerce #woocommerce-wrapper #content {
+  padding-top: 180px;
+}
+.wrapper#page-wrapper .woocommerce #woocommerce-wrapper #content #primary .woocommerce-breadcrumb, .wrapper#single-wrapper .woocommerce #woocommerce-wrapper #content #primary .woocommerce-breadcrumb {
+  margin-bottom: 10px;
+}
+.wrapper#page-wrapper .woocommerce #woocommerce-wrapper #content #primary h1, .wrapper#page-wrapper .woocommerce #woocommerce-wrapper #content #primary .h1, .wrapper#single-wrapper .woocommerce #woocommerce-wrapper #content #primary h1, .wrapper#single-wrapper .woocommerce #woocommerce-wrapper #content #primary .h1 {
+  margin: 0 0 20px 0;
+  border-bottom: 5px solid #F7F8F9;
+  padding: 0 0 20px 0;
+  font-size: 2.25rem;
+  line-height: 120%;
+  color: #B05687;
+}
+.wrapper#page-wrapper .woocommerce #woocommerce-wrapper #content #primary h2, .wrapper#page-wrapper .woocommerce #woocommerce-wrapper #content #primary .h2, .wrapper#single-wrapper .woocommerce #woocommerce-wrapper #content #primary h2, .wrapper#single-wrapper .woocommerce #woocommerce-wrapper #content #primary .h2 {
+  margin: 0 0 20px 0;
+  border-bottom: 5px solid #F7F8F9;
+  padding: 0 0 20px 0;
+  font-size: 1.75rem;
+  line-height: 120%;
+  color: #B05687;
+}
+.wrapper#page-wrapper .woocommerce #woocommerce-wrapper #content #primary p, .wrapper#single-wrapper .woocommerce #woocommerce-wrapper #content #primary p {
+  margin-bottom: 20px;
+  font-size: 1rem;
+  line-height: 140%;
+}
+.wrapper#page-wrapper .woocommerce #woocommerce-wrapper #content #primary p:last-of-type, .wrapper#single-wrapper .woocommerce #woocommerce-wrapper #content #primary p:last-of-type {
+  margin-bottom: 0;
+}
+.wrapper#page-wrapper .woocommerce #woocommerce-wrapper #content #primary ul, .wrapper#single-wrapper .woocommerce #woocommerce-wrapper #content #primary ul {
+  list-style: disc;
+  margin: 0 0 20px 0;
+  padding: 0;
+}
+.wrapper#page-wrapper .woocommerce #woocommerce-wrapper #content #primary ul li, .wrapper#single-wrapper .woocommerce #woocommerce-wrapper #content #primary ul li {
+  margin-left: 20px;
+  margin-bottom: 5px;
+}
+.wrapper#page-wrapper .woocommerce #woocommerce-wrapper #content #primary ul li:last-of-type, .wrapper#single-wrapper .woocommerce #woocommerce-wrapper #content #primary ul li:last-of-type {
+  margin-bottom: 0;
+}
+.wrapper#page-wrapper .woocommerce #woocommerce-wrapper #content #primary ol, .wrapper#single-wrapper .woocommerce #woocommerce-wrapper #content #primary ol {
+  list-style: decimal;
+  margin: 0 0 20px 0;
+  padding: 0;
+}
+.wrapper#page-wrapper .woocommerce #woocommerce-wrapper #content #primary ol li, .wrapper#single-wrapper .woocommerce #woocommerce-wrapper #content #primary ol li {
+  margin-left: 20px;
+  margin-bottom: 5px;
+}
+.wrapper#page-wrapper .woocommerce #woocommerce-wrapper #content #primary ol li:last-of-type, .wrapper#single-wrapper .woocommerce #woocommerce-wrapper #content #primary ol li:last-of-type {
+  margin-bottom: 0;
+}
+.wrapper#page-wrapper .woocommerce #woocommerce-wrapper #content #primary a, .wrapper#single-wrapper .woocommerce #woocommerce-wrapper #content #primary a {
+  text-decoration: underline;
+  color: #8AAC54;
+}
+.wrapper#page-wrapper .woocommerce #woocommerce-wrapper #content #primary a:hover, .wrapper#page-wrapper .woocommerce #woocommerce-wrapper #content #primary a:focus, .wrapper#single-wrapper .woocommerce #woocommerce-wrapper #content #primary a:hover, .wrapper#single-wrapper .woocommerce #woocommerce-wrapper #content #primary a:focus {
+  color: #7c9b4b;
+}
+.wrapper#page-wrapper .woocommerce #woocommerce-wrapper #content #primary table.shop_attributes .woocommerce-product-attributes-item__value p, .wrapper#single-wrapper .woocommerce #woocommerce-wrapper #content #primary table.shop_attributes .woocommerce-product-attributes-item__value p {
+  margin-bottom: 0;
+}
+.wrapper#page-wrapper .woocommerce #woocommerce-wrapper #content #primary ul.products, .wrapper#single-wrapper .woocommerce #woocommerce-wrapper #content #primary ul.products {
   display: grid;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
   grid-template-columns: repeat(auto-fill, 100px);
 }
-.woocommerce #woocommerce-wrapper #content #primary ul.products::before {
+.wrapper#page-wrapper .woocommerce #woocommerce-wrapper #content #primary ul.products::before, .wrapper#single-wrapper .woocommerce #woocommerce-wrapper #content #primary ul.products::before {
   display: none;
 }
-.woocommerce #woocommerce-wrapper #content #primary ul.products::after {
+.wrapper#page-wrapper .woocommerce #woocommerce-wrapper #content #primary ul.products::after, .wrapper#single-wrapper .woocommerce #woocommerce-wrapper #content #primary ul.products::after {
   content: "";
   flex: auto;
   display: none;
 }
-.woocommerce #woocommerce-wrapper #content #primary ul.products.columns-5 li {
+.wrapper#page-wrapper .woocommerce #woocommerce-wrapper #content #primary ul.products.columns-5 li, .wrapper#single-wrapper .woocommerce #woocommerce-wrapper #content #primary ul.products.columns-5 li {
   width: 18.5%;
 }
-.woocommerce #woocommerce-wrapper #content #primary ul.products li.product {
+.wrapper#page-wrapper .woocommerce #woocommerce-wrapper #content #primary ul.products li.product, .wrapper#single-wrapper .woocommerce #woocommerce-wrapper #content #primary ul.products li.product {
   margin: 0;
   border: 1px solid #DADBDC;
   margin-bottom: 30px;
@@ -15333,15 +15333,15 @@ body {
   float: none;
   width: 100%;
 }
-.woocommerce #woocommerce-wrapper #content #primary ul.products li.product a {
+.wrapper#page-wrapper .woocommerce #woocommerce-wrapper #content #primary ul.products li.product a, .wrapper#single-wrapper .woocommerce #woocommerce-wrapper #content #primary ul.products li.product a {
   text-decoration: none;
   color: #333333;
 }
-.woocommerce #woocommerce-wrapper #content #primary ul.products li.product a img {
+.wrapper#page-wrapper .woocommerce #woocommerce-wrapper #content #primary ul.products li.product a img, .wrapper#single-wrapper .woocommerce #woocommerce-wrapper #content #primary ul.products li.product a img {
   margin-bottom: 20px;
   border-bottom: 3px solid #8AAC54;
 }
-.woocommerce #woocommerce-wrapper #content #primary ul.products li.product a h2, .woocommerce #woocommerce-wrapper #content #primary ul.products li.product a .h2 {
+.wrapper#page-wrapper .woocommerce #woocommerce-wrapper #content #primary ul.products li.product a h2, .wrapper#page-wrapper .woocommerce #woocommerce-wrapper #content #primary ul.products li.product a .h2, .wrapper#single-wrapper .woocommerce #woocommerce-wrapper #content #primary ul.products li.product a h2, .wrapper#single-wrapper .woocommerce #woocommerce-wrapper #content #primary ul.products li.product a .h2 {
   text-decoration: none;
   font-size: 1rem;
   font-weight: 600;
@@ -15351,7 +15351,7 @@ body {
   color: #333333;
   border: none;
 }
-.woocommerce #woocommerce-wrapper #content #primary ul.products li.product a .price {
+.wrapper#page-wrapper .woocommerce #woocommerce-wrapper #content #primary ul.products li.product a .price, .wrapper#single-wrapper .woocommerce #woocommerce-wrapper #content #primary ul.products li.product a .price {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -15359,31 +15359,31 @@ body {
   flex-direction: row;
   padding: 15px 20px 15px 20px;
 }
-.woocommerce #woocommerce-wrapper #content #primary ul.products li.product a .price del {
+.wrapper#page-wrapper .woocommerce #woocommerce-wrapper #content #primary ul.products li.product a .price del, .wrapper#single-wrapper .woocommerce #woocommerce-wrapper #content #primary ul.products li.product a .price del {
   display: inline-block;
   text-decoration: line-through;
   color: #333333;
 }
-.woocommerce #woocommerce-wrapper #content #primary ul.products li.product a .price del .woocommerce-Price-amount.amount {
+.wrapper#page-wrapper .woocommerce #woocommerce-wrapper #content #primary ul.products li.product a .price del .woocommerce-Price-amount.amount, .wrapper#single-wrapper .woocommerce #woocommerce-wrapper #content #primary ul.products li.product a .price del .woocommerce-Price-amount.amount {
   text-decoration: line-through;
 }
-.woocommerce #woocommerce-wrapper #content #primary ul.products li.product a .price del .woocommerce-Price-amount.amount bdi {
+.wrapper#page-wrapper .woocommerce #woocommerce-wrapper #content #primary ul.products li.product a .price del .woocommerce-Price-amount.amount bdi, .wrapper#single-wrapper .woocommerce #woocommerce-wrapper #content #primary ul.products li.product a .price del .woocommerce-Price-amount.amount bdi {
   font-size: 1rem;
   font-weight: 400;
   color: #333333;
   text-decoration: line-through !important;
   color: #666 !important;
 }
-.woocommerce #woocommerce-wrapper #content #primary ul.products li.product a .price del .woocommerce-Price-amount.amount bdi .woocommerce-Price-currencySymbol {
+.wrapper#page-wrapper .woocommerce #woocommerce-wrapper #content #primary ul.products li.product a .price del .woocommerce-Price-amount.amount bdi .woocommerce-Price-currencySymbol, .wrapper#single-wrapper .woocommerce #woocommerce-wrapper #content #primary ul.products li.product a .price del .woocommerce-Price-amount.amount bdi .woocommerce-Price-currencySymbol {
   font-size: 1rem;
   font-weight: 400;
   color: #333333;
 }
-.woocommerce #woocommerce-wrapper #content #primary ul.products li.product a .price .woocommerce-Price-amount.amount {
+.wrapper#page-wrapper .woocommerce #woocommerce-wrapper #content #primary ul.products li.product a .price .woocommerce-Price-amount.amount, .wrapper#single-wrapper .woocommerce #woocommerce-wrapper #content #primary ul.products li.product a .price .woocommerce-Price-amount.amount {
   display: block;
   width: 100%;
 }
-.woocommerce #woocommerce-wrapper #content #primary ul.products li.product a .price .woocommerce-Price-amount.amount bdi {
+.wrapper#page-wrapper .woocommerce #woocommerce-wrapper #content #primary ul.products li.product a .price .woocommerce-Price-amount.amount bdi, .wrapper#single-wrapper .woocommerce #woocommerce-wrapper #content #primary ul.products li.product a .price .woocommerce-Price-amount.amount bdi {
   display: inline-block;
   text-decoration: none;
   color: #B05687;
@@ -15392,32 +15392,32 @@ body {
   width: 100%;
   text-align: center;
 }
-.woocommerce #woocommerce-wrapper #content #primary ul.products li.product a .price .woocommerce-Price-amount.amount bdi span {
+.wrapper#page-wrapper .woocommerce #woocommerce-wrapper #content #primary ul.products li.product a .price .woocommerce-Price-amount.amount bdi span, .wrapper#single-wrapper .woocommerce #woocommerce-wrapper #content #primary ul.products li.product a .price .woocommerce-Price-amount.amount bdi span {
   font-size: 0.875rem;
   font-weight: 600;
 }
-.woocommerce #woocommerce-wrapper #content #primary ul.products li.product .add-to-cart-container {
+.wrapper#page-wrapper .woocommerce #woocommerce-wrapper #content #primary ul.products li.product .add-to-cart-container, .wrapper#single-wrapper .woocommerce #woocommerce-wrapper #content #primary ul.products li.product .add-to-cart-container {
   padding: 10px 20px 20px 20px;
   text-align: center;
 }
-.woocommerce #woocommerce-wrapper #content #primary ul.products li.product .add-to-cart-container .product_type_simple {
+.wrapper#page-wrapper .woocommerce #woocommerce-wrapper #content #primary ul.products li.product .add-to-cart-container .product_type_simple, .wrapper#single-wrapper .woocommerce #woocommerce-wrapper #content #primary ul.products li.product .add-to-cart-container .product_type_simple {
   color: #FFF;
   background: #8AAC54 url(../img/icons/icon-readmore.svg) 12px 6px no-repeat;
   background-size: auto 24px;
   padding: 8px 15px 8px 40px;
   border: none;
 }
-.woocommerce #woocommerce-wrapper #content #primary ul.products li.product .add-to-cart-container .product_type_simple.add_to_cart_button {
+.wrapper#page-wrapper .woocommerce #woocommerce-wrapper #content #primary ul.products li.product .add-to-cart-container .product_type_simple.add_to_cart_button, .wrapper#single-wrapper .woocommerce #woocommerce-wrapper #content #primary ul.products li.product .add-to-cart-container .product_type_simple.add_to_cart_button {
   background: #8AAC54 url(../img/icons/icon-cart-white.svg) 12px 6px no-repeat;
   background-size: auto 24px;
 }
-.woocommerce #woocommerce-wrapper #content #primary ul.products li.product .add-to-cart-container .product_type_simple:hover, .woocommerce #woocommerce-wrapper #content #primary ul.products li.product .add-to-cart-container .product_type_simple:focus {
+.wrapper#page-wrapper .woocommerce #woocommerce-wrapper #content #primary ul.products li.product .add-to-cart-container .product_type_simple:hover, .wrapper#page-wrapper .woocommerce #woocommerce-wrapper #content #primary ul.products li.product .add-to-cart-container .product_type_simple:focus, .wrapper#single-wrapper .woocommerce #woocommerce-wrapper #content #primary ul.products li.product .add-to-cart-container .product_type_simple:hover, .wrapper#single-wrapper .woocommerce #woocommerce-wrapper #content #primary ul.products li.product .add-to-cart-container .product_type_simple:focus {
   background-color: #6f8a43;
   color: #FFF;
   border: none;
   text-decoration: none;
 }
-.woocommerce #customer_login .btn-outline-primary, .woocommerce #customer_login .wpcf7 input[type=submit], .wpcf7 .woocommerce #customer_login input[type=submit] {
+.wrapper#page-wrapper .woocommerce #customer_login .btn-outline-primary, .wrapper#page-wrapper .woocommerce #customer_login .wpcf7 input[type=submit], .wpcf7 .wrapper#page-wrapper .woocommerce #customer_login input[type=submit], .wrapper#single-wrapper .woocommerce #customer_login .btn-outline-primary, .wrapper#single-wrapper .woocommerce #customer_login .wpcf7 input[type=submit], .wpcf7 .wrapper#single-wrapper .woocommerce #customer_login input[type=submit] {
   border: none;
   border-radius: 10px;
   font-size: 1rem;
@@ -15427,13 +15427,13 @@ body {
   text-decoration: none;
   background: #8AAC54;
 }
-.woocommerce #customer_login .btn-outline-primary:hover, .woocommerce #customer_login .wpcf7 input[type=submit]:hover, .wpcf7 .woocommerce #customer_login input[type=submit]:hover, .woocommerce #customer_login .btn-outline-primary:focus, .woocommerce #customer_login .wpcf7 input[type=submit]:focus, .wpcf7 .woocommerce #customer_login input[type=submit]:focus {
+.wrapper#page-wrapper .woocommerce #customer_login .btn-outline-primary:hover, .wrapper#page-wrapper .woocommerce #customer_login .wpcf7 input[type=submit]:hover, .wpcf7 .wrapper#page-wrapper .woocommerce #customer_login input[type=submit]:hover, .wrapper#page-wrapper .woocommerce #customer_login .btn-outline-primary:focus, .wrapper#page-wrapper .woocommerce #customer_login .wpcf7 input[type=submit]:focus, .wpcf7 .wrapper#page-wrapper .woocommerce #customer_login input[type=submit]:focus, .wrapper#single-wrapper .woocommerce #customer_login .btn-outline-primary:hover, .wrapper#single-wrapper .woocommerce #customer_login .wpcf7 input[type=submit]:hover, .wpcf7 .wrapper#single-wrapper .woocommerce #customer_login input[type=submit]:hover, .wrapper#single-wrapper .woocommerce #customer_login .btn-outline-primary:focus, .wrapper#single-wrapper .woocommerce #customer_login .wpcf7 input[type=submit]:focus, .wpcf7 .wrapper#single-wrapper .woocommerce #customer_login input[type=submit]:focus {
   background-color: #6f8a43;
   color: #FFF;
   border: none;
   text-decoration: none;
 }
-.woocommerce form .form-row input.input-text, .woocommerce form .form-row textarea {
+.wrapper#page-wrapper .woocommerce form .form-row input.input-text, .wrapper#page-wrapper .woocommerce form .form-row textarea, .wrapper#single-wrapper .woocommerce form .form-row input.input-text, .wrapper#single-wrapper .woocommerce form .form-row textarea {
   padding: 0.375rem 0.75rem;
   font-size: 1rem;
   font-weight: 400;
