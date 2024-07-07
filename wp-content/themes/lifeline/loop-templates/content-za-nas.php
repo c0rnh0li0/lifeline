@@ -9,7 +9,7 @@
 defined( 'ABSPATH' ) || exit;
 ?>
 
-<article <?php post_class(); ?> id="post-<?php the_ID(); ?>">
+<article <?php post_class(); ?> id="post-<?php the_ID(); ?>" class="blogs">
 
 	<?php
 	if ( ! is_page_template( 'page-templates/no-title.php' ) ) {
