@@ -24,7 +24,7 @@ defined( 'ABSPATH' ) || exit;
 
 	<div class="entry-content">
 
-        <div class="brands-container">
+        <div>
 
             <?php
             the_content();
