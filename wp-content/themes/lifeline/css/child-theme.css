@@ -15264,7 +15264,7 @@ body {
 .wrapper#page-wrapper .woocommerce ul.products li.product a .price .woocommerce-Price-amount.amount bdi, .wrapper#single-wrapper .woocommerce ul.products li.product a .price .woocommerce-Price-amount.amount bdi {
   display: inline-block;
   text-decoration: none;
-  color: #B05687;
+  color: #8AAC54;
   font-size: 1.25rem;
   font-weight: 600;
   width: 100%;
@@ -15273,6 +15273,8 @@ body {
 .wrapper#page-wrapper .woocommerce ul.products li.product a .price .woocommerce-Price-amount.amount bdi span, .wrapper#single-wrapper .woocommerce ul.products li.product a .price .woocommerce-Price-amount.amount bdi span {
   font-size: 0.875rem;
   font-weight: 600;
+  margin-left: 5px;
+  display: inline-block;
 }
 .wrapper#page-wrapper .woocommerce ul.products li.product .add-to-cart-container, .wrapper#single-wrapper .woocommerce ul.products li.product .add-to-cart-container {
   padding: 10px 20px 20px 20px;
@@ -15450,6 +15452,9 @@ body {
 }
 .wrapper#woocommerce-wrapper #content #primary div.product div.summary .price .woocommerce-Price-amount.amount bdi {
   color: #8AAC54;
+}
+.wrapper#woocommerce-wrapper #content #primary div.product div.summary .price .woocommerce-Price-amount.amount bdi .woocommerce-Price-currencySymbol {
+  font-size: 1.25rem;
 }
 .wrapper#woocommerce-wrapper #content #primary div.product div.summary .price del {
   display: inline-block;
@@ -16242,7 +16247,7 @@ header#wrapper-navbar nav#main-nav .social a img {
 .product-carousel-container .product-carousel .products-container .woocommerce ul.products li.product a .price .woocommerce-Price-amount.amount bdi {
   display: inline-block;
   text-decoration: none;
-  color: #B05687;
+  color: #8AAC54;
   font-size: 1.25rem;
   font-weight: 600;
   width: 100%;
@@ -16251,6 +16256,8 @@ header#wrapper-navbar nav#main-nav .social a img {
 .product-carousel-container .product-carousel .products-container .woocommerce ul.products li.product a .price .woocommerce-Price-amount.amount bdi span {
   font-size: 0.875rem;
   font-weight: 600;
+  margin-left: 5px;
+  display: inline-block;
 }
 .product-carousel-container .product-carousel .products-container .woocommerce ul.products li.product .add-to-cart-container {
   padding: 10px 20px 20px 20px;
@@ -16441,7 +16448,7 @@ header#wrapper-navbar nav#main-nav .social a img {
 .brands-container .brands-carousel .brands-container ul.products li.product a .price .woocommerce-Price-amount.amount bdi {
   display: inline-block;
   text-decoration: none;
-  color: #B05687;
+  color: #8AAC54;
   font-size: 1.25rem;
   font-weight: 600;
   width: 100%;
@@ -16450,6 +16457,8 @@ header#wrapper-navbar nav#main-nav .social a img {
 .brands-container .brands-carousel .brands-container ul.products li.product a .price .woocommerce-Price-amount.amount bdi span {
   font-size: 0.875rem;
   font-weight: 600;
+  margin-left: 5px;
+  display: inline-block;
 }
 .brands-container .brands-carousel .brands-container ul.products li.product .add-to-cart-container {
   padding: 10px 20px 20px 20px;

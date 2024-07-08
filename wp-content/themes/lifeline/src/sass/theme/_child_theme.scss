@@ -339,7 +339,7 @@ body {
                             bdi {
                                 display: inline-block;
                                 text-decoration: none;
-                                color: $purple;
+                                color: $green;
                                 font-size: 1.25rem;
                                 font-weight: 600;
                                 width: 100%;
@@ -347,6 +347,8 @@ body {
                                 span {
                                     font-size: 0.875rem;
                                     font-weight: 600;
+                                    margin-left: 5px;
+                                    display: inline-block;
                                 }
                             }
                         }     
@@ -388,6 +390,7 @@ body {
                             .woocommerce-Price-amount.amount {
                                 bdi {
                                     color: $green;
+
                                 }
                             }
                             del {
@@ -552,6 +555,9 @@ body {
                             color: $green;  
                             bdi {
                                 color: $green;
+                                .woocommerce-Price-currencySymbol {
+                                    font-size: 1.25rem;
+                                }
                             }
                         }
                         del {
@@ -1350,7 +1356,7 @@ header#wrapper-navbar {
                                     bdi {
                                         display: inline-block;
                                         text-decoration: none;
-                                        color: $purple;
+                                        color: $green;
                                         font-size: 1.25rem;
                                         font-weight: 600;
                                         width: 100%;
@@ -1358,6 +1364,8 @@ header#wrapper-navbar {
                                         span {
                                             font-size: 0.875rem;
                                             font-weight: 600;
+                                            margin-left: 5px;
+                                            display: inline-block;
                                         }
                                     }
                                 }     
@@ -1555,7 +1563,7 @@ header#wrapper-navbar {
                                 bdi {
                                     display: inline-block;
                                     text-decoration: none;
-                                    color: $purple;
+                                    color: $green;
                                     font-size: 1.25rem;
                                     font-weight: 600;
                                     width: 100%;
@@ -1563,6 +1571,8 @@ header#wrapper-navbar {
                                     span {
                                         font-size: 0.875rem;
                                         font-weight: 600;
+                                        margin-left: 5px;
+                                        display: inline-block;
                                     }
                                 }
                             }     
