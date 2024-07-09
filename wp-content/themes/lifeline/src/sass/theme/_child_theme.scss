@@ -1449,7 +1449,7 @@ header#wrapper-navbar {
                 }
             }       
         }      
-        .brands-container {
+        .brands-name-container {
             display: grid;
             flex-direction: row;
             flex-wrap: wrap;
@@ -1465,7 +1465,7 @@ header#wrapper-navbar {
                 content: "";
                 flex: auto;
             }
-            a.brand-single-container {
+            a {
                 display: flex;
                 width: 100%;
                 padding: 20px;
