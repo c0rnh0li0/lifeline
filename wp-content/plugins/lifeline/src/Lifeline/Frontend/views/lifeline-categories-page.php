@@ -7,4 +7,4 @@
         $limit = 20;
     }
     
-    echo do_shortcode('[best_selling_products paginate="true" limit="' . $limit . '" columns="' . $columns . '"]');
+    echo do_shortcode('[product_categories number="0" parent="0"]');
