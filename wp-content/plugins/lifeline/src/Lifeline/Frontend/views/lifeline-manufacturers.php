@@ -10,13 +10,15 @@
 
         echo "<h2>$term->name</h2>";
 ?>
-        <div class="brands-container">
+        <div class="brands-products-container">
             <?php echo do_shortcode('[product_attribute attribute="manufacturer" terms="' . $slug . '" operator="IN" paginate="true"]'); ?>
         </div>
-<?php
-    } else {
-        foreach ($terms as $term) { ?>
-            <a href="<?php echo home_url('/brands/' . $term->slug . '/'); ?>">
+<?php } else { ?>
+    <div class="brands-name-container">
+        <?php foreach ($terms as $term) { ?>
+            <a href="<?php echo home_url('/brands/' . $term->slug . '/'); ?>" class="brand-single-container">
                 <?php echo $term->name; ?>
             </a>
-<?php } } ?>
+        <?php } ?>
+    </div>
+<?php } ?>
