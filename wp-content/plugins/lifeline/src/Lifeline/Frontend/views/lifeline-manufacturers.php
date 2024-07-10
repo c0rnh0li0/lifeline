@@ -20,7 +20,7 @@
             <?php echo do_shortcode('[product_attribute attribute="manufacturer" terms="' . $slug . '" operator="IN" paginate="true" columns="' . $columns . '" limit="' . $limit . '"]'); ?>
         </div>
 <?php } else { ?>
-    <div class="brands-name-container">
+    <div class="brands-name-container brands-page-container">
         <?php foreach ($terms as $term) { ?>
             <a href="<?php echo home_url('/brands/' . $term->slug . '/'); ?>" class="brand-single-container">
                 <?php echo $term->name; ?>

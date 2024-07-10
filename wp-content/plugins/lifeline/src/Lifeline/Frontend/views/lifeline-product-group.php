@@ -12,6 +12,8 @@
 
     if (wp_is_mobile())
         $columns = 2;
+
+    $container_class = is_home() || is_front_page() ? "lifeline-slider-group" : "";
 ?>
 
 <?php // var_dump($args); ?>  
@@ -41,7 +43,7 @@
     <div class="lifeline-product-group">
         <?php
             if ($group->is_bestseller && $group->use_bestseller_cookie)
-                echo do_shortcode('[best_selling_products columns="' . $columns . '" limit="6"]');                
+                echo do_shortcode('[best_selling_products columns="' . $columns . '" limit="18" class="' . $container_class . '"]');                
             else
                 echo do_shortcode('[products ids="' . implode(',', $product_ids) . '" columns="' . $columns . '"]');
         ?>

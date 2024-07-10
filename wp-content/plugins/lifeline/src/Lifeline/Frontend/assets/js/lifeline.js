@@ -87,14 +87,18 @@ window.Lifeline || (window.Lifeline = {});
             if (Lifeline.isMobile)
                 scrollFactor = 2;
 
-            $('.lifeline-product-group .products, .brands-name-container').slick({
+            var slick_opts = {
                 slidesToShow: scrollFactor,
                 slidesToScroll: scrollFactor,
                 dots: false,
-                // infinite: true,
+                infinite: true,
                 autoplay: true,
                 // autoplaySpeed: 2000,
-            });
+            };
+
+            $('.lifeline-slider-group .products').slick(slick_opts);
+
+            $('.brands-name-container:not(.brands-page-container)').slick(slick_opts);
         }
     };
 
