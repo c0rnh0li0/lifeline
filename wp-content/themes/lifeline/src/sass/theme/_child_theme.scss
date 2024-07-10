@@ -1279,8 +1279,7 @@ header#wrapper-navbar {
 }	
 
 .product-carousel-container {
-    .product-carousel {
-        min-height: 200px;        
+    .product-carousel {           
         .entry-header {
             h2 {
                 display: flex;
@@ -1329,6 +1328,8 @@ header#wrapper-navbar {
         }  
         .products-container {
             .woocommerce {
+                min-height: 0;
+                min-width: 0;
                 ul.products {
                     display: grid;
                     flex-direction: row;
@@ -1577,7 +1578,11 @@ header#wrapper-navbar {
                     background: $green;
                 }
             }       
-        }      
+        }    
+        .brands-carousel-wrapper {
+            min-height: 0;
+            min-width: 0;
+        }  
         .brands-name-container {
             display: grid;
             flex-direction: row;
@@ -3468,6 +3473,36 @@ body.woocommerce-cart #page #content ul.wc-block-grid__products {
 
     .wrapper#page-wrapper nav.woocommerce-pagination ul.page-numbers li a, .wrapper#page-wrapper nav.woocommerce-pagination ul.page-numbers li span, .wrapper#single-wrapper nav.woocommerce-pagination ul.page-numbers li a, .wrapper#single-wrapper nav.woocommerce-pagination ul.page-numbers li span {
         padding: 6px 11px;
+    }
+
+    .woocommerce-account .woocommerce-MyAccount-content, .woocommerce-account .woocommerce-MyAccount-navigation {
+        margin-bottom: 40px;
+    }
+
+    .woocommerce form .form-row-first, .woocommerce form .form-row-last, .woocommerce-page form .form-row-first, .woocommerce-page form .form-row-last {
+        width: 100%;
+        margin-bottom: 0 !important;
+    }
+
+    .woocommerce-address-fields__field-wrapper {
+        p {
+            &:last-of-type {
+                margin-top: 15px;
+            }
+        }
+        .select2-container--default {
+            .select2-selection--single {
+                height: 38px;
+                .select2-selection__rendered {
+                    margin-top: 4px;
+                    padding-left: 10px;
+                }
+                .select2-container--default .select2-selection--single .select2-selection__arrow {
+                    top: 6px;
+                    right: 4px;
+                }
+            }
+        }
     }
 
 }
