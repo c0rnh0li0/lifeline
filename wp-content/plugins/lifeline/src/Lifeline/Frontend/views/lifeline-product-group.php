@@ -9,6 +9,9 @@
     $display_title = isset($args['display_title']) && $args['display_title'] == '1';
 
     $columns = isset($args['columns']) && is_numeric($args['columns']) ? (int) $args['columns'] : 6;
+
+    if (wp_is_mobile())
+        $columns = 2;
 ?>
 
 <?php // var_dump($args); ?>  
@@ -25,7 +28,7 @@
         </div>
         <?php } ?>
 
-        <?php if (!empty($group->starts_at) && !empty($group->ends_at)) { ?>
+        <?php if (!empty($group->starts_at) && !empty($group->ends_at && !$group->is_bestseller)) { ?>
             <div class="col h6 text-end">
                 <?php echo $expired ? '<del>' : ''; ?>
                 од <?php echo date('d.m.Y', strtotime($group->starts_at)); ?> 
@@ -38,7 +41,7 @@
     <div class="lifeline-product-group">
         <?php
             if ($group->is_bestseller && $group->use_bestseller_cookie)
-                echo do_shortcode('[best_selling_products columns="' . $columns . '" limit="6"]');
+                echo do_shortcode('[best_selling_products columns="' . $columns . '" limit="6"]');                
             else
                 echo do_shortcode('[products ids="' . implode(',', $product_ids) . '" columns="' . $columns . '"]');
         ?>

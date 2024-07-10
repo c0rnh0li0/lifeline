@@ -8,6 +8,8 @@ class LifelineFrontend {
     public static $shortcodes = [
         'product-group' => ['product_group', 3],
         'product-manufacturers' => ['manufacturers', 1],
+        'product-bestsellers' => ['bestsellers', 1],
+        'product-categories' => ['categories', 1],
     ];
 
     public function __construct() {
@@ -43,6 +45,26 @@ class LifelineFrontend {
         ob_start();
 
         require_once LIFELINE_TEMPLATES_DIR . 'lifeline-manufacturers.php';
+
+        $content = ob_get_clean();
+
+        return $content;
+    }
+
+    public function bestsellers($dummy) {
+        ob_start();
+
+        require_once LIFELINE_TEMPLATES_DIR . 'lifeline-bestsellers-page.php';
+
+        $content = ob_get_clean();
+
+        return $content;
+    }
+
+    public function categories($dummy) {
+        ob_start();
+
+        require_once LIFELINE_TEMPLATES_DIR . 'lifeline-categories-page.php';
 
         $content = ob_get_clean();
 

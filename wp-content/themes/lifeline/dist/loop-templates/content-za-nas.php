@@ -9,7 +9,7 @@
 defined( 'ABSPATH' ) || exit;
 ?>
 
-<article <?php post_class(); ?> id="post-<?php the_ID(); ?>">
+<article <?php post_class(); ?> id="post-<?php the_ID(); ?>" class="blogs">
 
 	<?php
 	if ( ! is_page_template( 'page-templates/no-title.php' ) ) {
@@ -41,7 +41,7 @@ defined( 'ABSPATH' ) || exit;
                     <a href="<?php echo get_stylesheet_directory_uri(); ?>/img/lifeline-photos/lifeline-002.webp"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/lifeline-photos/lifeline-002-t.webp" alt="Lifeline pharmacy 002"></a>
                 </div>
                 <div class="photozoom col-12 col-md-4">
-                    <a href="<?php echo get_stylesheet_directory_uri(); ?>/img/lifeline-photos/lifeline-003.webp"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/lifeline-photos/lifeline-002-t.webp" alt="Lifeline pharmacy 003"></a>
+                    <a href="<?php echo get_stylesheet_directory_uri(); ?>/img/lifeline-photos/lifeline-003.webp"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/lifeline-photos/lifeline-003-t.webp" alt="Lifeline pharmacy 003"></a>
                 </div>
             </div>
         </div>

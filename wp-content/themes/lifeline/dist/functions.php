@@ -128,4 +128,8 @@ function register_header_menu() {
 	register_nav_menu('cart-menu',__( 'Cart menu' ));
   }
   add_action( 'init', 'register_header_menu' );
+
+// Trim zeros in price decimals
+ 
+ add_filter( 'woocommerce_price_trim_zeros', '__return_true' );
  

@@ -107,7 +107,7 @@ defined( 'ABSPATH' ) || exit;
 			</header>
 
 			<div class="products-container">				
-				<?php echo do_shortcode('[product-group id="3"]'); ?>
+				<?php echo do_shortcode('[product-group id="1"]'); ?>
 			</div>
 
 			<?php if ( wp_is_mobile() ) : ?>
@@ -145,7 +145,7 @@ defined( 'ABSPATH' ) || exit;
 
 				</header>
 
-				<div class="brands-container">				
+				<div class="brands-name-container">				
 					<?php 
 						$terms = get_terms([
 							'taxonomy' => 'pa_manufacturer'
@@ -177,8 +177,3 @@ defined( 'ABSPATH' ) || exit;
 	</div> <!-- .container -->
 
 </div>
-
-
-
-
-

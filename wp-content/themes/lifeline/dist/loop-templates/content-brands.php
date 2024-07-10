@@ -24,13 +24,9 @@ defined( 'ABSPATH' ) || exit;
 
 	<div class="entry-content">
 
-        <div>
-
-            <?php
-            the_content();
-            ?>
-
-    </div>
+        <?php
+        the_content();
+        ?>
 
 	</div><!-- .entry-content -->
 
