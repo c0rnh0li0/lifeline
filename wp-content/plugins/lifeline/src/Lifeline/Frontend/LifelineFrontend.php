@@ -33,11 +33,15 @@ class LifelineFrontend {
     }
 
     public function register_scripts() {
-        $this->scripts();
-        $this->styles();
+        add_action( 'wp_enqueue_scripts', [$this, 'scripts']);
+        add_action( 'wp_enqueue_scripts', [$this, 'styles']);
+
+        // $this->scripts();
+        // $this->styles();
     }
 
-    private function scripts() {
+    public function scripts() {
+
         wp_enqueue_script('lifeline_slick', plugin_dir_url( __FILE__ ) . 'assets/js/slick.min.js', [ 'jquery' ], null, true);
         
         wp_enqueue_script('lifeline_frontend', plugin_dir_url( __FILE__ ) . 'assets/js/lifeline.js', [ 'jquery' ], null, true);
@@ -47,7 +51,7 @@ class LifelineFrontend {
         ]);
     }
 
-    private function styles() {
+    public function styles() {
         wp_enqueue_style( 'lifeline_slick_css', plugin_dir_url( __FILE__ ) . 'assets/css/slick.css', array(), null, 'all' );
         wp_enqueue_style( 'lifeline_slick_theme_css', plugin_dir_url( __FILE__ ) . 'assets/css/slick-theme.css', array(), null, 'all' );
         wp_enqueue_style( 'lifeline_frontend_css', plugin_dir_url( __FILE__ ) . 'assets/css/lifeline.css', array(), null, 'all' );
