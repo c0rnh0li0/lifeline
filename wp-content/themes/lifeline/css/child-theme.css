@@ -16158,9 +16158,6 @@ header#wrapper-navbar nav#main-nav .social a img {
   background: #F7F8F9;
 }
 
-.product-carousel-container .product-carousel {
-  min-height: 200px;
-}
 .product-carousel-container .product-carousel .entry-header h2, .product-carousel-container .product-carousel .entry-header .h2 {
   display: flex;
   flex-direction: row;
@@ -16204,6 +16201,10 @@ header#wrapper-navbar nav#main-nav .social a img {
   left: 0;
   z-index: 20;
   background: #8AAC54;
+}
+.product-carousel-container .product-carousel .products-container .woocommerce {
+  min-height: 0;
+  min-width: 0;
 }
 .product-carousel-container .product-carousel .products-container .woocommerce ul.products {
   display: grid;
@@ -16429,6 +16430,10 @@ header#wrapper-navbar nav#main-nav .social a img {
   left: 0;
   z-index: 20;
   background: #8AAC54;
+}
+.brands-container .brands-carousel .brands-carousel-wrapper {
+  min-height: 0;
+  min-width: 0;
 }
 .brands-container .brands-carousel .brands-name-container {
   display: grid;
@@ -18148,6 +18153,27 @@ body.woocommerce-cart #page #content ul.wc-block-grid__products li.wc-block-grid
   }
   .wrapper#page-wrapper nav.woocommerce-pagination ul.page-numbers li a, .wrapper#page-wrapper nav.woocommerce-pagination ul.page-numbers li span, .wrapper#single-wrapper nav.woocommerce-pagination ul.page-numbers li a, .wrapper#single-wrapper nav.woocommerce-pagination ul.page-numbers li span {
     padding: 6px 11px;
+  }
+  .woocommerce-account .woocommerce-MyAccount-content, .woocommerce-account .woocommerce-MyAccount-navigation {
+    margin-bottom: 40px;
+  }
+  .woocommerce form .form-row-first, .woocommerce form .form-row-last, .woocommerce-page form .form-row-first, .woocommerce-page form .form-row-last {
+    width: 100%;
+    margin-bottom: 0 !important;
+  }
+  .woocommerce-address-fields__field-wrapper p:last-of-type {
+    margin-top: 15px;
+  }
+  .woocommerce-address-fields__field-wrapper .select2-container--default .select2-selection--single {
+    height: 38px;
+  }
+  .woocommerce-address-fields__field-wrapper .select2-container--default .select2-selection--single .select2-selection__rendered {
+    margin-top: 4px;
+    padding-left: 10px;
+  }
+  .woocommerce-address-fields__field-wrapper .select2-container--default .select2-selection--single .select2-container--default .select2-selection--single .select2-selection__arrow {
+    top: 6px;
+    right: 4px;
   }
 }
 .has-blue-color,
