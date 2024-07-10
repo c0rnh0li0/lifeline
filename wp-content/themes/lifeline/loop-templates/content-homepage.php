@@ -155,13 +155,13 @@ defined( 'ABSPATH' ) || exit;
 						
 						// for ($i = 0; $i < 6; $i++)
 						// 	$brands[] = $terms[rand(0, count($terms) - 1)];
-						$brands = array_rand($terms, 6);
+						$brands = array_rand($terms, 18);
 
 						foreach ($brands as $index) { ?> 
 						
 						<a href="<?php echo home_url('/brands/' . $terms[$index]->slug . '/'); ?>">
 							<?php echo $terms[$index]->name; ?>
-						</a><br />
+						</a>
 
 					<?php } ?>
 				</div>

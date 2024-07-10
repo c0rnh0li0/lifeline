@@ -161,7 +161,7 @@ defined( 'ABSPATH' ) || exit;
 						
 						<a href="<?php echo home_url('/brands/' . $terms[$index]->slug . '/'); ?>">
 							<?php echo $terms[$index]->name; ?>
-						</a><br />
+						</a>
 
 					<?php } ?>
 				</div>

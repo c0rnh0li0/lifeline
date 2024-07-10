@@ -18,6 +18,8 @@ class LifelineFrontend {
 
     public function init() {
         $this->register_hooks();
+
+        $this->register_scripts();
     }
 
     public function register_hooks() {
@@ -28,6 +30,27 @@ class LifelineFrontend {
         foreach (self::$shortcodes as $shortcode_key => $shortcode_val) {
             add_shortcode($shortcode_key, [$this, $shortcode_val[0]], 10, $shortcode_val[1]);
         }
+    }
+
+    public function register_scripts() {
+        $this->scripts();
+        $this->styles();
+    }
+
+    private function scripts() {
+        wp_enqueue_script('lifeline_slick', plugin_dir_url( __FILE__ ) . 'assets/js/slick.min.js', [ 'jquery' ], null, true);
+        
+        wp_enqueue_script('lifeline_frontend', plugin_dir_url( __FILE__ ) . 'assets/js/lifeline.js', [ 'jquery' ], null, true);
+
+        wp_localize_script('lifeline_frontend', 'lifeline_frontend_ajax', [ 
+            'ajaxurl' => admin_url('admin-ajax.php') 
+        ]);
+    }
+
+    private function styles() {
+        wp_enqueue_style( 'lifeline_slick_css', plugin_dir_url( __FILE__ ) . 'assets/css/slick.css', array(), null, 'all' );
+        wp_enqueue_style( 'lifeline_slick_theme_css', plugin_dir_url( __FILE__ ) . 'assets/css/slick-theme.css', array(), null, 'all' );
+        wp_enqueue_style( 'lifeline_frontend_css', plugin_dir_url( __FILE__ ) . 'assets/css/lifeline.css', array(), null, 'all' );
     }
 
     // Shortcodes 
