@@ -92,13 +92,14 @@ window.Lifeline || (window.Lifeline = {});
                 slidesToScroll: scrollFactor,
                 dots: false,
                 infinite: true,
-                autoplay: true,
+                autoplay: false,
                 // autoplaySpeed: 2000,
             };
 
             $('.lifeline-slider-group .products').slick(slick_opts);
 
-            $('.brands-name-container:not(.brands-page-container)').slick(slick_opts);
+            slick_opts.slidesToShow = 12;
+            $('.brands-slider-container').slick(slick_opts);
         }
     };
 

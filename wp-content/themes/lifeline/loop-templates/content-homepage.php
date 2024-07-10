@@ -107,7 +107,7 @@ defined( 'ABSPATH' ) || exit;
 			</header>
 
 			<div class="products-container">				
-				<?php echo do_shortcode('[product-group id="1"]'); ?>
+				<?php echo do_shortcode('[product-group id="3"]'); ?>
 			</div>
 
 			<?php if ( wp_is_mobile() ) : ?>
@@ -146,17 +146,18 @@ defined( 'ABSPATH' ) || exit;
 				</header>
 
 				<div class="brands-carousel-wrapper">
-					<div class="brands-name-container">				
+					<div class="brands-slider-container">				
 						<?php 
 							$terms = get_terms([
 								'taxonomy' => 'pa_manufacturer'
 							]);
 							
-							// $brands = [];
-							
-							// for ($i = 0; $i < 6; $i++)
-							// 	$brands[] = $terms[rand(0, count($terms) - 1)];
-							$brands = array_rand($terms, 18);
+							$total_brands = 24;
+
+							if (wp_is_mobile())
+								$total_brands = 12;
+
+							$brands = array_rand($terms, $total_brands);
 
 							foreach ($brands as $index) { ?> 
 							

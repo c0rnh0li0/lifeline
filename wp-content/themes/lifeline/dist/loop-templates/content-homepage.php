@@ -107,7 +107,7 @@ defined( 'ABSPATH' ) || exit;
 			</header>
 
 			<div class="products-container">				
-				<?php echo do_shortcode('[product-group id="1"]'); ?>
+				<?php echo do_shortcode('[product-group id="3"]'); ?>
 			</div>
 
 			<?php if ( wp_is_mobile() ) : ?>
@@ -145,27 +145,29 @@ defined( 'ABSPATH' ) || exit;
 
 				</header>
 
-				<div class="brands-name-container">				
-					<?php 
-						$terms = get_terms([
-							'taxonomy' => 'pa_manufacturer'
-						]);
-						
-						// $brands = [];
-						
-						// for ($i = 0; $i < 6; $i++)
-						// 	$brands[] = $terms[rand(0, count($terms) - 1)];
-						$brands = array_rand($terms, 6);
+				<div class="brands-carousel-wrapper">
+					<div class="brands-slider-container">				
+						<?php 
+							$terms = get_terms([
+								'taxonomy' => 'pa_manufacturer'
+							]);
+							
+							$total_brands = 24;
 
-						foreach ($brands as $index) { ?> 
-						
-						<a href="<?php echo home_url('/brands/' . $terms[$index]->slug . '/'); ?>">
-							<?php echo $terms[$index]->name; ?>
-						</a>
+							if (wp_is_mobile())
+								$total_brands = 12;
 
-					<?php } ?>
+							$brands = array_rand($terms, $total_brands);
+
+							foreach ($brands as $index) { ?> 
+							
+							<a href="<?php echo home_url('/brands/' . $terms[$index]->slug . '/'); ?>">
+								<?php echo $terms[$index]->name; ?>
+							</a>
+
+						<?php } ?>
+					</div>
 				</div>
-
 				<?php if ( wp_is_mobile() ) : ?>
 					<div class="more-items"><a href="<?php echo home_url('/brands/'); ?>">Комплетна листа на брендови»</a></div>
 				<?php endif; ?>
