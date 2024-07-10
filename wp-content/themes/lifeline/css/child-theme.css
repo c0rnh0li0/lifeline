@@ -17929,7 +17929,7 @@ body.woocommerce-cart #page #content ul.wc-block-grid__products li.wc-block-grid
   .wrapper#page-wrapper .entry-content.za-nas .h2, .wrapper#page-wrapper .entry-content.za-nas h2 {
     margin-bottom: 20px;
   }
-  .wp-block-woocommerce-checkout {
+  .wrapper#page-wrapper .wp-block-woocommerce-checkout {
     padding-top: 0px;
   }
   .wrapper#page-wrapper .h2, .wrapper#page-wrapper h2, .wrapper#single-wrapper .h2, .wrapper#single-wrapper h2 {
