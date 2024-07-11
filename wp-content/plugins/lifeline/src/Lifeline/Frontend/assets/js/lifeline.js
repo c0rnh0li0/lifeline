@@ -98,7 +98,11 @@ window.Lifeline || (window.Lifeline = {});
 
             $('.lifeline-slider-group .products').slick(slick_opts);
 
-            slick_opts.slidesToShow = 12;
+            slick_opts.slidesToShow = 6;
+
+            if (Lifeline.isMobile)
+                slick_opts.slidesToShow = 2;
+
             $('.brands-slider-container').slick(slick_opts);
         }
     };
