@@ -3070,10 +3070,15 @@ body.woocommerce-cart #page #content ul.wc-block-grid__products {
                 .featured-image {
                     display: block;
                     margin-bottom: 15px;
-                    img {
-                        width: 100%;
+                    a {
                         display: block;
-                    }
+                        width: 100%;
+                        filter: $mainshadow;
+                        img {
+                            width: 100%;
+                            display: block;
+                        }
+                    }                    
                 }
                 h2 {
                     margin: 0px;
@@ -3110,10 +3115,15 @@ body.woocommerce-cart #page #content ul.wc-block-grid__products {
                 .featured-image {
                     display: block;
                     margin-bottom: 15px;
-                    img {
-                        width: 100%;
+                    a {
                         display: block;
-                    }
+                        width: 100%;
+                        filter: $mainshadow;
+                        img {
+                            width: 100%;
+                            display: block;
+                        }
+                    }                    
                 }
                 h2 {
                     margin: 0px;

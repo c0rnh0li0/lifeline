@@ -53,7 +53,7 @@ defined( 'ABSPATH' ) || exit;
                 ?>
                 <div class="col-12 col-md-3 akcija-post">
                     <div class="akcija-post-container">
-                        <div class="featured-image"><?php echo get_the_post_thumbnail( $post->ID, 'large' ); ?></div>
+                        <div class="featured-image"><a href="<?php the_permalink(); ?>"><?php echo get_the_post_thumbnail( $post->ID, 'large', [ 'alt' => esc_html ( get_the_title() ) ] ); ?></a></div>
                         <div class="entry-meta">
                             <?php the_time('F j, Y'); ?>
                         </div>
