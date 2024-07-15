@@ -18,20 +18,23 @@ defined( 'ABSPATH' ) || exit;
 			<div class="main-carousel">
 				<div id="carouselExampleDark" class="carousel slide" data-bs-ride="carousel">				
 					<div class="carousel-inner">
-						<div class="carousel-item active" data-bs-interval="10000">
-							<a href="https://orion.com.mk/users/web1_apteka/promotiven-set/%d0%bc%d0%b5%d1%81%d0%b5%d1%86-%d0%bd%d0%b0-eucerin/">
-								<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/temp-sliders/eucerin-big.webp" alt="Slide 001" class="d-block w-100">
-							</a>						
-						</div>
-						<div class="carousel-item" data-bs-interval="2000">
-							<a href="https://orion.com.mk/users/web1_apteka/promotiven-set/%d0%b5%d0%ba%d1%81%d0%ba%d0%bb%d1%83%d0%b7%d0%b8%d0%b2%d0%bd%d0%b8-%d1%81%d0%b5%d1%82%d0%be%d0%b2%d0%b8-%d0%bd%d0%b0-bioderma-%d0%b2%d0%be-%d0%bc%d0%b5%d1%81%d0%b5%d1%86-%d1%98%d1%83%d0%bb%d0%b8/">
-								<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/temp-sliders/bioderma-big.webp" alt="Slide 002" class="d-block w-100">						
-						</div>
-						<div class="carousel-item">
-							<a href="https://orion.com.mk/users/web1_apteka/promotiven-set/%d0%bf%d1%80%d0%be%d0%bc%d0%be%d1%82%d0%b8%d0%b2%d0%bd%d0%b8-%d1%81%d0%b5%d1%82%d0%be%d0%b2%d0%b8-%d0%bd%d0%b0-%d0%b1%d0%b5%d0%ba%d1%83%d1%82%d0%b0%d0%bd/">
-								<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/temp-sliders/becutan-big.webp" alt="Slide 003" class="d-block w-100">
-							</a>
-						</div>
+					<?php if( have_rows('main-homepage-slider', 'option') ): while ( have_rows('main-homepage-slider', 'option') ) : the_row(); ?>
+						<?php if( have_rows('main-slider-slides', 'option') ): $counter = 0; while ( have_rows('main-slider-slides', 'option') ) : the_row();  ?>					
+								<?php 
+								$klasa = "carousel-item";
+								if ( $counter == 0) : $klasa = "carousel-item active"; endif;
+								$optvalue = get_sub_field('homepage-slide');
+								$optimg = get_sub_field('big-banner');
+								$optlink = get_permalink( $optvalue->ID );
+								$opttitle = $optvalue->post_title;
+								?>		
+								<div class="<?php echo esc_html( $klasa ); ?>" data-bs-interval="4000">
+									<a href="<?php echo esc_html( $optlink ); ?>">
+										<img src="<?php echo esc_html( $optimg ); ?>" alt="<?php echo esc_html( $opttitle ); ?>" class="d-block w-100">
+									</a>						
+								</div>	
+							<?php $counter++; endwhile; ?><?php endif; ?>
+						<?php endwhile; ?><?php endif; ?>
 					</div>
 					<div class="carousel-indicators">
 						<button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -55,10 +58,34 @@ defined( 'ABSPATH' ) || exit;
 			<div class="recommend-block">
 				<h2><span>Наша препорака</span></h2>
 				<div class="recommend-inner">
-					<a href="https://orion.com.mk/users/web1_apteka/akcija/%d0%b3%d0%be%d0%bb%d0%b5%d0%bc%d0%b8-%d0%bf%d0%be%d0%bf%d1%83%d1%81%d1%82%d0%b8-%d0%bd%d0%b0-uriage-%d0%bf%d1%80%d0%be%d0%b8%d0%b7%d0%b2%d0%be%d0%b4%d0%b8-%d0%b2%d0%be-lifeline/" class="lifeline-offer"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/temp-sliders/uriage-600x600.webp" alt="Offer 001"></a>
-					<a href="https://orion.com.mk/users/web1_apteka/akcija/%d0%bc%d0%b5%d1%81%d0%b5%d1%86-%d0%bd%d0%b0-bioderma-%d0%b2%d0%be-lifeline/" class="lifeline-offer"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/temp-sliders/bioderma-600x600.webp" alt="Offer 002"></a>
-					<a href="https://orion.com.mk/users/web1_apteka/akcija/eucerin-%d0%bf%d1%80%d0%be%d0%b8%d0%b7%d0%b2%d0%be%d0%b4%d0%b8-%d1%81%d0%be-25-%d0%bf%d0%be%d0%bf%d1%83%d1%81%d1%82-%d1%81%d0%b0%d0%bc%d0%be-%d0%be%d0%b2%d0%be%d1%98-%d0%bc%d0%b5%d1%81%d0%b5%d1%86/" class="lifeline-offer"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/temp-sliders/eucerin-600x600.webp" alt="Offer 003"></a>
-					<a href="https://orion.com.mk/users/web1_apteka/akcija/%d0%bc%d0%b5%d1%81%d0%b5%d1%86-%d0%bd%d0%b0-%d0%b1%d0%b5%d0%ba%d1%83%d1%82%d0%b0%d0%bd-%d0%bf%d1%80%d0%be%d0%b8%d0%b7%d0%b2%d0%be%d0%b4%d0%b8/" class="lifeline-offer"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/temp-sliders/becutan-600x600.webp" alt="Offer 004"></a>
+					<?php if( have_rows('recomended-posts', 'option') ): while ( have_rows('recomended-posts', 'option') ) : the_row(); ?>		
+						<?php 
+						$kockatl = get_sub_field('post-top-left');
+						$kockatr = get_sub_field('post-top-right');
+						$kockabl = get_sub_field('post-down-left');
+						$kockabr = get_sub_field('post-down-right');
+						$linktl = get_permalink( $kockatl->ID );
+						$titletl = $kockatl->post_title;
+						$srctl = wp_get_attachment_image_src( get_post_thumbnail_id($kockatl->ID), 'full' );
+						$feattl = $srctl[0];
+						$linktr = get_permalink( $kockatr->ID );
+						$titletr = $kockatr->post_title;
+						$srctr = wp_get_attachment_image_src( get_post_thumbnail_id($kockatr->ID), 'full' );
+						$feattr = $srctr[0];
+						$linkbl = get_permalink( $kockabl->ID );
+						$titlebl = $kockabl->post_title;
+						$srcbl = wp_get_attachment_image_src( get_post_thumbnail_id($kockabl->ID), 'full' );
+						$featbl = $srcbl[0];
+						$linkbr = get_permalink( $kockabr->ID );
+						$titlebr = $kockabr->post_title;
+						$srcbr = wp_get_attachment_image_src( get_post_thumbnail_id($kockabr->ID), 'full' );
+						$featbr = $srcbr[0];
+						?>		
+						<a href="<?php echo esc_html( $linktl ); ?>" class="lifeline-offer"><img src="<?php echo esc_html( $feattl ); ?>" alt="<?php echo esc_html( $titletl ); ?>"></a>	
+						<a href="<?php echo esc_html( $linktr ); ?>" class="lifeline-offer"><img src="<?php echo esc_html( $feattr ); ?>" alt="<?php echo esc_html( $titletr ); ?>"></a>	
+						<a href="<?php echo esc_html( $linkbl ); ?>" class="lifeline-offer"><img src="<?php echo esc_html( $featbl ); ?>" alt="<?php echo esc_html( $titlebl ); ?>"></a>	
+						<a href="<?php echo esc_html( $linkbr ); ?>" class="lifeline-offer"><img src="<?php echo esc_html( $featbr ); ?>" alt="<?php echo esc_html( $titlebr ); ?>"></a>	
+					<?php endwhile; ?><?php endif; ?>
 				</div>
 			</div>
 
