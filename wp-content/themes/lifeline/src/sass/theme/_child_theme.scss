@@ -2080,7 +2080,6 @@ body.woocommerce-checkout, body.woocommerce-cart {
                                     margin-bottom: 10px;
                                     .wc-block-components-order-summary__content {
                                         padding-bottom: 20px;
-                                        border-bottom: 1px solid $darkgrey;
                                     }
 
                                 }
@@ -3278,6 +3277,22 @@ body.woocommerce-cart #page #content ul.wc-block-grid__products {
             }
         }
     }
+}
+
+.xoo-wsc-body, .xoo-wsc-body span.amount, .xoo-wsc-body a {
+    font-size: 14px;
+    color: $text;
+    line-height: 130%;
+}
+
+.xoo-wsc-markup .xoo-wsc-container .xoo-wsc-header .xoo-wsch-top .xoo-wsch-text {
+    font-size: 1.25rem;
+}
+
+span.xoo-wsc-footer-txt {
+    font-size: 0.875rem;
+    line-height: 120%;
+    color: $text;
 }
 
 
