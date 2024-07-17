@@ -18031,6 +18031,10 @@ span.xoo-wsc-footer-txt {
   font-size: 12px !important;
 }
 
+.dgwt-wcas-style-pirx.dgwt-wcas-search-focused .dgwt-wcas-sf-wrapp input[type=search].dgwt-wcas-search-input {
+  border-color: #8AAC54;
+}
+
 .dgwt-wcas-pd-addtc.js-dgwt-wcas-pd-addtc .add-to-cart-container .btn.product_type_simple, .dgwt-wcas-pd-addtc.js-dgwt-wcas-pd-addtc .add-to-cart-container .wpcf7 input.product_type_simple[type=submit], .wpcf7 .dgwt-wcas-pd-addtc.js-dgwt-wcas-pd-addtc .add-to-cart-container input.product_type_simple[type=submit], .dgwt-wcas-pd-addtc.js-dgwt-wcas-pd-addtc .add-to-cart-container .woocommerce-notices-wrapper .woocommerce-message a.product_type_simple.button, .woocommerce-notices-wrapper .woocommerce-message .dgwt-wcas-pd-addtc.js-dgwt-wcas-pd-addtc .add-to-cart-container a.product_type_simple.button, .dgwt-wcas-pd-addtc.js-dgwt-wcas-pd-addtc .add-to-cart-container .woocommerce-info a.product_type_simple.button, .woocommerce-info .dgwt-wcas-pd-addtc.js-dgwt-wcas-pd-addtc .add-to-cart-container a.product_type_simple.button {
   background: #8AAC54 url(../img/icons/icon-readmore.svg) 12px 6px no-repeat;
   background-size: auto 24px;
