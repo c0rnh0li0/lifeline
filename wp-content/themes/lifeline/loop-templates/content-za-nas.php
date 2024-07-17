@@ -64,7 +64,7 @@ defined( 'ABSPATH' ) || exit;
                             </a>
                             <a class="footer-contact" href="https://maps.app.goo.gl/u75AJ43y9cyeppJ89" target="_blank">
                                 <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/icons/icon-location.svg" alt="Lifeline location" />
-                                <span>Париска 15, Скопје</span>
+                                <span><?php _e('st. Pariska 15, Skopje','woothemes'); ?></span>
                             </a>
                         </div>
                     </div>                    

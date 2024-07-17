@@ -56,7 +56,7 @@ defined( 'ABSPATH' ) || exit;
 			</div>
 
 			<div class="recommend-block">
-				<h2><span>Наша препорака</span></h2>
+				<h2><span><?php _e('We recommend','woothemes'); ?></span></h2>
 				<div class="recommend-inner">
 					<?php if( have_rows('recomended-posts', 'option') ): while ( have_rows('recomended-posts', 'option') ) : the_row(); ?>		
 						<?php 
@@ -114,9 +114,9 @@ defined( 'ABSPATH' ) || exit;
 			<header class="entry-header">
 
 				<h2>
-					<span>Најпродавани</span>
+					<span><?php _e('Bestsellers','woothemes'); ?></span>
 					<?php if ( !wp_is_mobile() ) : ?>
-						<a href="<?php echo home_url('/bestsellers/'); ?>">Комплетна листа на најпродавани производи»</a>
+						<a href="<?php echo home_url('/bestsellers/'); ?>"><?php _e('Complete list of bestsellers»','woothemes'); ?></a>
 					<?php endif; ?>
 				</h2>
 
@@ -131,7 +131,7 @@ defined( 'ABSPATH' ) || exit;
 			</div>
 
 			<?php if ( wp_is_mobile() ) : ?>
-				<div class="more-items"><a href="<?php echo home_url('/bestsellers/'); ?>">Комплетна листа на најпродавани производи»</a></div>
+				<div class="more-items"><a href="<?php echo home_url('/bestsellers/'); ?>"><?php _e('Complete list of bestsellers»','woothemes'); ?></a></div>
 			<?php endif; ?>
 
 		</div>	
@@ -153,9 +153,9 @@ defined( 'ABSPATH' ) || exit;
 				<header class="entry-header">
 
 					<h2>
-						<span>Брендови</span>
+						<span><?php _e('Brands','woothemes'); ?></span>
 						<?php if ( !wp_is_mobile() ) : ?>
-							<a href="<?php echo home_url('/brands/'); ?>">Комплетна листа на брендови»</a>
+							<a href="<?php echo home_url('/brands/'); ?>"><?php _e('Complete list of brands»','woothemes'); ?></a>
 						<?php endif; ?>
 					</h2>
 
@@ -189,7 +189,7 @@ defined( 'ABSPATH' ) || exit;
 					</div>
 				</div>
 				<?php if ( wp_is_mobile() ) : ?>
-					<div class="more-items"><a href="<?php echo home_url('/brands/'); ?>">Комплетна листа на брендови»</a></div>
+					<div class="more-items"><a href="<?php echo home_url('/brands/'); ?>"><?php _e('Complete list of brands»','woothemes'); ?></a></div>
 				<?php endif; ?>
 
 			</div>	

@@ -30,6 +30,11 @@ defined( 'ABSPATH' ) || exit;
 
         <div class="container-fluid px-0">
             <div class="row no-gutters gx-4">
+            <?php if(ICL_LANGUAGE_CODE=='mk'): ?>
+				<?php $cat = 'promotiven-set' ?>
+				<?php elseif(ICL_LANGUAGE_CODE=='en'): ?>
+				<?php $cat = 'promo-sets' ?>
+			<?php endif; ?>
             <?php
                 $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
                 $args = array(
@@ -38,7 +43,7 @@ defined( 'ABSPATH' ) || exit;
                 'orderby' => 'meta_value',
                 'order' => 'ASC',
                 'posts_per_page' => -1,
-                'category_name' => 'promotiven-set',
+                'category_name' => $cat,
                 'paged' => $paged
                 );
                 $custom_query = new WP_Query( $args );
