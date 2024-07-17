@@ -23,7 +23,9 @@ class LifelineConnector {
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
     );
 
-    public function __construct() {
+    public function __construct() { }
+
+    public function connect() {
         global $wpdb, $table_prefix;
         $ll_settings = $wpdb->get_row("SELECT * FROM " . $table_prefix . LIFELINE_SETTINGS_DB);
 

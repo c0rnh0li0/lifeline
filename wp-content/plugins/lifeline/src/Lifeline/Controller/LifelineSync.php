@@ -201,6 +201,8 @@ class LifelineSync extends LifelineConnector {
         ini_set('xdebug.var_display_max_children', -1);
         ini_set('xdebug.var_display_max_data', -1);
 
+        $this->connect();
+
         $this->log_file = plugin_dir_path(__FILE__) . "/sync.log";
 
         set_time_limit(0);
