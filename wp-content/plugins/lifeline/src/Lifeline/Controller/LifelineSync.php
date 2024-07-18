@@ -42,10 +42,11 @@ class LifelineSync extends LifelineConnector {
     }
 
     public function restore_wc_data() {
+        ini_set('memory_limit', '-1');
+        set_time_limit(0);
+
         $this->log_file = plugin_dir_path(__FILE__) . "/sync.log";
 
-        set_time_limit(0);
-        
         $updated = 0;
         $untouched = 0;
         $not_found = 0;
@@ -197,6 +198,9 @@ class LifelineSync extends LifelineConnector {
     }
 
     public function sync($type = self::SYNC_TYPE_UNKNOWN) {
+        ini_set('memory_limit', '-1');
+        set_time_limit(0);
+
         ini_set('xdebug.var_display_max_depth', -1);
         ini_set('xdebug.var_display_max_children', -1);
         ini_set('xdebug.var_display_max_data', -1);
@@ -204,8 +208,6 @@ class LifelineSync extends LifelineConnector {
         $this->connect();
 
         $this->log_file = plugin_dir_path(__FILE__) . "/sync.log";
-
-        set_time_limit(0);
 
         $inserted = 0;
         $updated = 0;
