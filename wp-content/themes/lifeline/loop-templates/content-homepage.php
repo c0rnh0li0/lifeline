@@ -166,7 +166,13 @@ defined( 'ABSPATH' ) || exit;
 				</header>
 
 				<div class="brands-carousel-wrapper">
-					<div class="brands-slider-container">				
+					<div class="brands-slider-container">	
+					<?php if(ICL_LANGUAGE_CODE=='mk'): ?>
+						<?php $brand = 'brands' ?>
+						<?php elseif(ICL_LANGUAGE_CODE=='en'): ?>
+						<?php $brand = 'brands-en' ?>
+					<?php endif; ?>
+					
 						<?php 
 							$terms = get_terms([
 								'taxonomy' => 'pa_manufacturer'
@@ -180,8 +186,12 @@ defined( 'ABSPATH' ) || exit;
 							$brands = array_rand($terms, $total_brands);
 
 							foreach ($brands as $index) { ?> 
-							
-							<a href="<?php echo home_url('/brands/' . $terms[$index]->slug . '/'); ?>">
+
+							<?php if(ICL_LANGUAGE_CODE=='mk'): ?>
+								<a href="<?php echo home_url('/brands/' . $terms[$index]->slug . '/'); ?>">
+								<?php elseif(ICL_LANGUAGE_CODE=='en'): ?>
+								<a href="<?php echo home_url('/brands-en/' . $terms[$index]->slug . '/'); ?>">
+							<?php endif; ?>
 								<?php echo $terms[$index]->name; ?>
 							</a>
 

@@ -33,32 +33,32 @@ $container = get_theme_mod( 'understrap_container_type' );
 								<div class="ecommerce-img">
 									<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/icons/ecommerce-icon-001.webp" alt="Ecommerce icon 001" />
 								</div>
-								<p class="ecommerce-title">Бесплатна достава</p>
-								<span>За нарачки над 1.500 ден.</span>
+								<p class="ecommerce-title"><?php _e('Free delivery','woothemes'); ?></p>
+								<span><?php _e('On all orthers over 1500 den.','woothemes'); ?></span>
 							</div>
 
 							<div class="ecommerce-element">
 								<div class="ecommerce-img">
 									<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/icons/ecommerce-icon-002.webp" alt="Ecommerce icon 002" />
 								</div>
-								<p class="ecommerce-title">БЕЗБЕДНО ПЛАЌАЊЕ</p>
-								<span>Со сите типови на електронски картички</span>							
+								<p class="ecommerce-title"><?php _e('Secure payment','woothemes'); ?></p>
+								<span><?php _e('For all types of cards','woothemes'); ?></span>							
 							</div>
 
 							<div class="ecommerce-element">
 								<div class="ecommerce-img">
 									<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/icons/ecommerce-icon-003.webp" alt="Ecommerce icon 003" />
 								</div>
-								<p class="ecommerce-title">КОРИСНИЧКА ПОДДРШКА</p>
-								<span>Нудиме поддршка за Вас</span>							
+								<p class="ecommerce-title"><?php _e('Customer support','woothemes'); ?></p>
+								<span><?php _e('We are always here for your questions','woothemes'); ?></span>							
 							</div>
 
 							<div class="ecommerce-element">
 								<div class="ecommerce-img">
 									<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/icons/ecommerce-icon-004.webp" alt="Ecommerce icon 004" />
 								</div>
-								<p class="ecommerce-title">ВРАЌАЊЕ НА СРЕДСТВА</p>
-								<span>Можност за замена или враќање на средства</span>
+								<p class="ecommerce-title"><?php _e('Cache refunds','woothemes'); ?></p>
+								<span><?php _e('Possibility of exchange or refund','woothemes'); ?></span>
 							</div>
 
 						</div>					
@@ -115,7 +115,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 								<span id="copyright">
 									<script>document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))</script>
 								</span>
-								<span>, Сите права се задржани</span>
+								<span>, <?php _e('All rights reserved','woothemes'); ?></span>
 							</div>
 
 							<div class="cards">
