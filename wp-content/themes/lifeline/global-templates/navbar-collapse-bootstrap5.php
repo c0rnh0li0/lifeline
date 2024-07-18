@@ -56,6 +56,10 @@ $container = get_theme_mod( 'understrap_container_type' );
 			<a href="https://www.instagram.com/lifeline.pharmacy/" target="_blank"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/icons/instagram.svg" alt="Instagram" /></a>
 		</div>
 
+		<?php /* <div class="lang-widget">
+			<?php do_action('wpml_add_language_selector'); ?>
+		</div> */ ?>
+
 		<button
 			class="navbar-toggler"
 			type="button"
