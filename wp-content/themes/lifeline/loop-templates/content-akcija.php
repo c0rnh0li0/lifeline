@@ -20,7 +20,11 @@ defined( 'ABSPATH' ) || exit;
     <div class="entry-content">
 
             <?php
-            the_content();            
+            the_content();     
+            
+            $scode = get_field( "action_shortcode" );
+            echo do_shortcode($scode);
+
 		?>
 
 	</div><!-- .entry-content -->
