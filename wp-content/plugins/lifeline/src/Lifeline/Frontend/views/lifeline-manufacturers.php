@@ -1,6 +1,8 @@
 <?php 
     global $wp_query;
 
+    $brand_url = ICL_LANGUAGE_CODE == "mk" ? 'brands' : 'brands-en';
+
     $columns = 5;
     $limit = 15;
 
@@ -17,12 +19,14 @@
         echo "<h2>$term->name</h2>";
 ?>
         <div class="brands-products-container">
-            <?php echo do_shortcode('[product_attribute attribute="manufacturer" terms="' . $slug . '" operator="IN" paginate="true" columns="' . $columns . '" limit="' . $limit . '"]'); ?>
+            <?php 
+                echo do_shortcode('[product_attribute attribute="manufacturer" terms="' . $slug . '" operator="IN" paginate="true" columns="' . $columns . '" limit="' . $limit . '"]');
+            ?>
         </div>
 <?php } else { ?>
     <div class="brands-name-container brands-page-container">
         <?php foreach ($terms as $term) { ?>
-            <a href="<?php echo home_url('/brands/' . $term->slug . '/'); ?>" class="brand-single-container">
+            <a href="<?php echo home_url('/' . $brand_url . '/' . $term->slug . '/'); ?>">
                 <?php echo $term->name; ?>
             </a>
         <?php } ?>

@@ -13,7 +13,10 @@ function lifeline_query_vars($query_vars) {
 function lifeline_rewrite_rules() {
 	$lifeline_rw = [];
 
+	flush_rewrite_rules();
+
 	$lifeline_rw['brands/(.+?)/?$'] = 'index.php?pagename=brands&manufacturer=$matches[1]';
+	$lifeline_rw['brands-en/(.+?)/?$'] = 'index.php?pagename=brands-en&manufacturer=$matches[1]';
 
 	$rules = get_option( 'rewrite_rules' );
 

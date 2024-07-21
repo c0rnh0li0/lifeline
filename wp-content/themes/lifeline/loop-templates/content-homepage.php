@@ -143,6 +143,7 @@ defined( 'ABSPATH' ) || exit;
 <!-- BRANDS -->
 
 <div class="wrapper brands-wrapper" id="brands-wrapper">
+	<?php $brand_url = ICL_LANGUAGE_CODE == "mk" ? 'brands' : 'brands-en'; ?>
 
 	<div class="container brands-container" id="brands-carousel">
 
@@ -151,11 +152,11 @@ defined( 'ABSPATH' ) || exit;
 			<div class="col-12">
 
 				<header class="entry-header">
-
+					
 					<h2>
 						<span><?php _e('Brands','woothemes'); ?></span>
 						<?php if ( !wp_is_mobile() ) : ?>
-							<a href="<?php echo home_url('/brands/'); ?>"><?php _e('Complete list of brands»','woothemes'); ?></a>
+							<a href="<?php echo home_url('/' . $brand_url . '/'); ?>"><?php _e('Complete list of brands»','woothemes'); ?></a>
 						<?php endif; ?>
 					</h2>
 
@@ -166,18 +167,14 @@ defined( 'ABSPATH' ) || exit;
 				</header>
 
 				<div class="brands-carousel-wrapper">
-					<div class="brands-slider-container">	
-					<?php if(ICL_LANGUAGE_CODE=='mk'): ?>
-						<?php $brand = 'brands' ?>
-						<?php elseif(ICL_LANGUAGE_CODE=='en'): ?>
-						<?php $brand = 'brands-en' ?>
-					<?php endif; ?>
-					
+					<div class="brands-slider-container">					
 						<?php 
+							\Lifeline\Frontend\LifelineFrontend::disable_wpml_filters();
 							$terms = get_terms([
 								'taxonomy' => 'pa_manufacturer'
 							]);
-							
+							\Lifeline\Frontend\LifelineFrontend::enable_wpml_filters();
+
 							$total_brands = 24;
 
 							if (wp_is_mobile())
@@ -185,16 +182,10 @@ defined( 'ABSPATH' ) || exit;
 
 							$brands = array_rand($terms, $total_brands);
 
-							foreach ($brands as $index) { ?> 
-
-							<?php if(ICL_LANGUAGE_CODE=='mk'): ?>
-								<a href="<?php echo home_url('/brands/' . $terms[$index]->slug . '/'); ?>">
-								<?php elseif(ICL_LANGUAGE_CODE=='en'): ?>
-								<a href="<?php echo home_url('/brands-en/' . $terms[$index]->slug . '/'); ?>">
-							<?php endif; ?>
-								<?php echo $terms[$index]->name; ?>
-							</a>
-
+							foreach ($brands as $brand) { ?> 
+								<a href="<?php echo home_url('/' . $brand_url . '/' . $terms[$brand]->slug . '/'); ?>">
+									<?php echo $terms[$brand]->name; ?>
+								</a>
 						<?php } ?>
 					</div>
 				</div>

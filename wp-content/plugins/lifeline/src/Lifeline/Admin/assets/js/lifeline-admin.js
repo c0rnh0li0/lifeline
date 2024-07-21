@@ -181,7 +181,7 @@ window.Lifeline || (window.Lifeline = {});
                     },
                     error: function() {
                         console.log('error', arguments);
-                        clearInterval(Lifeline.Admin.status_interval);
+                        // clearInterval(Lifeline.Admin.status_interval);
                     }
                 });
             }, 5000);

@@ -64,10 +64,58 @@ class LifelineFrontend {
         return $frontendGroups->product_group_shortcode($id, $display_title, $columns);
     }
 
+    public static function disable_wpml_filters() {
+        global $sitepress;
+        remove_filter(
+            "get_terms_args", 
+            [$sitepress, "get_terms_args_filter"], 
+            10
+        );
+        remove_filter(
+            "get_term", 
+            [$sitepress, "get_term_adjust_id"], 
+            1
+        );
+        remove_filter(
+            "terms_clauses", 
+            [$sitepress, "terms_clauses"], 
+            10
+        );
+    }
+
+    public static function enable_wpml_filters() {
+        global $sitepress;
+        add_filter(
+            "get_terms_args", 
+            [$sitepress, "get_terms_args_filter"], 
+            10,
+            2
+        );
+        add_filter(
+            "get_term", 
+            [$sitepress, "get_term_adjust_id"], 
+            1
+        );
+        add_filter(
+            "terms_clauses", 
+            [$sitepress, "terms_clauses"], 
+            10,
+            4
+        );
+    }
+
     public function manufacturers() {
-        $terms = get_terms([
-            'taxonomy' => 'pa_manufacturer'
+        $all_languages = apply_filters( 'wpml_active_languages', null, [
+            'skip_missing' => false
         ]);
+
+        self::disable_wpml_filters();
+
+        $terms = get_terms([
+            'taxonomy' => 'pa_manufacturer',
+        ]);
+
+        self::enable_wpml_filters();
 
         ob_start();
 

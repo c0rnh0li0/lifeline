@@ -359,6 +359,20 @@ class LifelineSync extends LifelineConnector {
 
             $product_id = $woo_product->save();
 
+            $all_languages = apply_filters( 'wpml_active_languages', null, [
+                'skip_missing' => false
+            ]);
+
+            foreach($all_languages as $key => $lang) {
+                if ($key == 'mk')
+                    continue;
+
+                $translations = apply_filters('wpml_post_duplicates', $product_id);
+
+                if (!array_key_exists($key, $translations)) 
+                    apply_filters( 'wpml_copy_post_to_language', $product_id, $key, true);
+            }            
+
             $product_skus[$product->sifra] = $product_id;
 
             $this->set_terms($attribs, $product_id);

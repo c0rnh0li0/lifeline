@@ -18,27 +18,23 @@ defined( 'ABSPATH' ) || exit;
 			<div class="main-carousel">
 				<div id="carouselExampleDark" class="carousel slide" data-bs-ride="carousel">				
 					<div class="carousel-inner">
-						<div class="carousel-item active" data-bs-interval="10000">
-						<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/temp-images/main-banner.webp" alt="Slide 001" class="d-block w-100">
-						<div class="carousel-caption d-none d-md-block" style="display: none !important">
-							<h5>First slide label</h5>
-							<p>Some representative placeholder content for the first slide.</p>
-						</div>
-						</div>
-						<div class="carousel-item" data-bs-interval="2000">
-						<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/temp-images/main-banner.webp" alt="Slide 002" class="d-block w-100">
-						<div class="carousel-caption d-none d-md-block" style="display: none !important">
-							<h5>Second slide label</h5>
-							<p>Some representative placeholder content for the second slide.</p>
-						</div>
-						</div>
-						<div class="carousel-item">
-						<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/temp-images/main-banner.webp" alt="Slide 003" class="d-block w-100">
-						<div class="carousel-caption d-none d-md-block" style="display: none !important">
-							<h5>Third slide label</h5>
-							<p>Some representative placeholder content for the third slide.</p>
-						</div>
-						</div>
+					<?php if( have_rows('main-homepage-slider', 'option') ): while ( have_rows('main-homepage-slider', 'option') ) : the_row(); ?>
+						<?php if( have_rows('main-slider-slides', 'option') ): $counter = 0; while ( have_rows('main-slider-slides', 'option') ) : the_row();  ?>					
+								<?php 
+								$klasa = "carousel-item";
+								if ( $counter == 0) : $klasa = "carousel-item active"; endif;
+								$optvalue = get_sub_field('homepage-slide');
+								$optimg = get_sub_field('big-banner');
+								$optlink = get_permalink( $optvalue->ID );
+								$opttitle = $optvalue->post_title;
+								?>		
+								<div class="<?php echo esc_html( $klasa ); ?>" data-bs-interval="4000">
+									<a href="<?php echo esc_html( $optlink ); ?>">
+										<img src="<?php echo esc_html( $optimg ); ?>" alt="<?php echo esc_html( $opttitle ); ?>" class="d-block w-100">
+									</a>						
+								</div>	
+							<?php $counter++; endwhile; ?><?php endif; ?>
+						<?php endwhile; ?><?php endif; ?>
 					</div>
 					<div class="carousel-indicators">
 						<button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -60,12 +56,36 @@ defined( 'ABSPATH' ) || exit;
 			</div>
 
 			<div class="recommend-block">
-				<h2><span>Наша препорака</span></h2>
+				<h2><span><?php _e('We recommend','woothemes'); ?></span></h2>
 				<div class="recommend-inner">
-					<a href="#" class="lifeline-offer"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/temp-images/square-banner-01.webp" alt="Offer 001"></a>
-					<a href="#" class="lifeline-offer"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/temp-images/square-banner-02.webp" alt="Offer 002"></a>
-					<a href="#" class="lifeline-offer"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/temp-images/square-banner-03.webp" alt="Offer 003"></a>
-					<a href="#" class="lifeline-offer"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/temp-images/square-banner-04.webp" alt="Offer 004"></a>
+					<?php if( have_rows('recomended-posts', 'option') ): while ( have_rows('recomended-posts', 'option') ) : the_row(); ?>		
+						<?php 
+						$kockatl = get_sub_field('post-top-left');
+						$kockatr = get_sub_field('post-top-right');
+						$kockabl = get_sub_field('post-down-left');
+						$kockabr = get_sub_field('post-down-right');
+						$linktl = get_permalink( $kockatl->ID );
+						$titletl = $kockatl->post_title;
+						$srctl = wp_get_attachment_image_src( get_post_thumbnail_id($kockatl->ID), 'full' );
+						$feattl = $srctl[0];
+						$linktr = get_permalink( $kockatr->ID );
+						$titletr = $kockatr->post_title;
+						$srctr = wp_get_attachment_image_src( get_post_thumbnail_id($kockatr->ID), 'full' );
+						$feattr = $srctr[0];
+						$linkbl = get_permalink( $kockabl->ID );
+						$titlebl = $kockabl->post_title;
+						$srcbl = wp_get_attachment_image_src( get_post_thumbnail_id($kockabl->ID), 'full' );
+						$featbl = $srcbl[0];
+						$linkbr = get_permalink( $kockabr->ID );
+						$titlebr = $kockabr->post_title;
+						$srcbr = wp_get_attachment_image_src( get_post_thumbnail_id($kockabr->ID), 'full' );
+						$featbr = $srcbr[0];
+						?>		
+						<a href="<?php echo esc_html( $linktl ); ?>" class="lifeline-offer"><img src="<?php echo esc_html( $feattl ); ?>" alt="<?php echo esc_html( $titletl ); ?>"></a>	
+						<a href="<?php echo esc_html( $linktr ); ?>" class="lifeline-offer"><img src="<?php echo esc_html( $feattr ); ?>" alt="<?php echo esc_html( $titletr ); ?>"></a>	
+						<a href="<?php echo esc_html( $linkbl ); ?>" class="lifeline-offer"><img src="<?php echo esc_html( $featbl ); ?>" alt="<?php echo esc_html( $titlebl ); ?>"></a>	
+						<a href="<?php echo esc_html( $linkbr ); ?>" class="lifeline-offer"><img src="<?php echo esc_html( $featbr ); ?>" alt="<?php echo esc_html( $titlebr ); ?>"></a>	
+					<?php endwhile; ?><?php endif; ?>
 				</div>
 			</div>
 
@@ -94,9 +114,9 @@ defined( 'ABSPATH' ) || exit;
 			<header class="entry-header">
 
 				<h2>
-					<span>Најпродавани</span>
+					<span><?php _e('Bestsellers','woothemes'); ?></span>
 					<?php if ( !wp_is_mobile() ) : ?>
-						<a href="<?php echo home_url('/bestsellers/'); ?>">Комплетна листа на најпродавани производи»</a>
+						<a href="<?php echo home_url('/bestsellers/'); ?>"><?php _e('Complete list of bestsellers»','woothemes'); ?></a>
 					<?php endif; ?>
 				</h2>
 
@@ -107,11 +127,11 @@ defined( 'ABSPATH' ) || exit;
 			</header>
 
 			<div class="products-container">				
-				<?php echo do_shortcode('[product-group id="3"]'); ?>
+				<?php echo do_shortcode('[product-group id="1"]'); ?>
 			</div>
 
 			<?php if ( wp_is_mobile() ) : ?>
-				<div class="more-items"><a href="<?php echo home_url('/bestsellers/'); ?>">Комплетна листа на најпродавани производи»</a></div>
+				<div class="more-items"><a href="<?php echo home_url('/bestsellers/'); ?>"><?php _e('Complete list of bestsellers»','woothemes'); ?></a></div>
 			<?php endif; ?>
 
 		</div>	
@@ -123,6 +143,7 @@ defined( 'ABSPATH' ) || exit;
 <!-- BRANDS -->
 
 <div class="wrapper brands-wrapper" id="brands-wrapper">
+	<?php $brand_url = ICL_LANGUAGE_CODE == "mk" ? 'brands' : 'brands-en'; ?>
 
 	<div class="container brands-container" id="brands-carousel">
 
@@ -131,11 +152,11 @@ defined( 'ABSPATH' ) || exit;
 			<div class="col-12">
 
 				<header class="entry-header">
-
+					
 					<h2>
-						<span>Брендови</span>
+						<span><?php _e('Brands','woothemes'); ?></span>
 						<?php if ( !wp_is_mobile() ) : ?>
-							<a href="<?php echo home_url('/brands/'); ?>">Комплетна листа на брендови»</a>
+							<a href="<?php echo home_url('/' . $brand_url . '/'); ?>"><?php _e('Complete list of brands»','woothemes'); ?></a>
 						<?php endif; ?>
 					</h2>
 
@@ -146,12 +167,14 @@ defined( 'ABSPATH' ) || exit;
 				</header>
 
 				<div class="brands-carousel-wrapper">
-					<div class="brands-slider-container">				
+					<div class="brands-slider-container">					
 						<?php 
+							\Lifeline\Frontend\LifelineFrontend::disable_wpml_filters();
 							$terms = get_terms([
 								'taxonomy' => 'pa_manufacturer'
 							]);
-							
+							\Lifeline\Frontend\LifelineFrontend::enable_wpml_filters();
+
 							$total_brands = 24;
 
 							if (wp_is_mobile())
@@ -159,17 +182,15 @@ defined( 'ABSPATH' ) || exit;
 
 							$brands = array_rand($terms, $total_brands);
 
-							foreach ($brands as $index) { ?> 
-							
-							<a href="<?php echo home_url('/brands/' . $terms[$index]->slug . '/'); ?>">
-								<?php echo $terms[$index]->name; ?>
-							</a>
-
+							foreach ($brands as $brand) { ?> 
+								<a href="<?php echo home_url('/' . $brand_url . '/' . $terms[$brand]->slug . '/'); ?>">
+									<?php echo $terms[$brand]->name; ?>
+								</a>
 						<?php } ?>
 					</div>
 				</div>
 				<?php if ( wp_is_mobile() ) : ?>
-					<div class="more-items"><a href="<?php echo home_url('/brands/'); ?>">Комплетна листа на брендови»</a></div>
+					<div class="more-items"><a href="<?php echo home_url('/brands/'); ?>"><?php _e('Complete list of brands»','woothemes'); ?></a></div>
 				<?php endif; ?>
 
 			</div>	

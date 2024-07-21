@@ -3,7 +3,19 @@
 <file name="page-blog.php" server="apteka.orion.com.mk" local="133646601264813853" remote="133646604000000000" Dst="2" />
 <file name="page-brands.php" server="apteka.orion.com.mk" local="133648595289330647" remote="133648595400000000" Dst="2" />
 <file name="search.php" server="apteka.orion.com.mk" local="133643431459193090" remote="133646604000000000" Dst="2" />
-<file name="single.php" server="apteka.orion.com.mk" local="133645959091090117" remote="133646604000000000" Dst="2" />
+<file name="single.php" server="apteka.orion.com.mk" local="133651769525201682" remote="133651807200000000" Dst="2" />
 <file name="single-blog.php" server="apteka.orion.com.mk" local="133646600942261976" remote="133646606400000000" Dst="2" />
 <file name="functions.php" server="apteka.orion.com.mk" local="133649333119248357" remote="133649332800000000" Dst="2" />
+<file name="single-akcija.php" server="apteka.orion.com.mk" local="133651769884082429" remote="133651807200000000" Dst="2" />
+<file name="single-promotiven-set.php" server="apteka.orion.com.mk" local="133651771556558212" remote="133651807200000000" Dst="2" />
+<file name="page-akcii.php" server="apteka.orion.com.mk" local="133651786171596717" remote="133651812600000000" Dst="2" />
+<file name="page-promotivni-setovi.php" server="apteka.orion.com.mk" local="133651789588716696" remote="133651812600000000" Dst="2" />
+<file name="page-about-us.php" server="128.140.64.219:40202//public_html/" local="133657210015644712" remote="133657210940000000" Dst="2" />
+<file name="page-discounts.php" server="128.140.64.219:40202//public_html/" local="133657206929462695" remote="133657210940000000" Dst="2" />
+<file name="page-promo-sets.php" server="128.140.64.219:40202//public_html/" local="133657209655690186" remote="133657210950000000" Dst="2" />
+<file name="single.php" server="128.140.64.219:40202//public_html/" local="133657334495206994" remote="133657334570000000" Dst="2" />
+<file name="page-brands-en.php" server="128.140.64.219:40202//public_html/" local="133657329092867427" remote="133657329250000000" Dst="2" />
+<file name="single-promo-sets.php" server="128.140.64.219:40202//public_html/" local="133657333355681689" remote="133657333840000000" Dst="2" />
+<file name="page-homepage-english.php" server="128.140.64.219:40202//public_html/" local="133657928200623363" remote="133657929340000000" Dst="2" />
+<file name="footer.php" server="128.140.64.219:40202//public_html/" local="133658156886031334" remote="133658157000000000" Dst="2" />
 </dwsync>

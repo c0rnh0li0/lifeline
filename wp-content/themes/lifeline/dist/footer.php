@@ -94,7 +94,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 								</a>
 								<a class="footer-contact" href="mailto:contact@lifeline.mk">
 									<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/icons/icon-mail.svg" alt="Lifeline mail" />
-									<span><a href="mailto:contact@lifeline.mk">contact@lifeline.mk</a></span>
+									<span>contact@lifeline.mk</span>
 								</a>
 								<a class="footer-contact" href="https://maps.app.goo.gl/u75AJ43y9cyeppJ89" target="_blank">
 									<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/icons/icon-location.svg" alt="Lifeline location" />
