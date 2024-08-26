@@ -109,15 +109,14 @@ window.Lifeline || (window.Lifeline = {});
                     Lifeline.Alert.show(data.results);
 
                     Lifeline.Admin.update_progress(100, 'sync');
+                    clearInterval(Lifeline.Admin.status_interval);
 
                     setTimeout(function() {
                         $('.ll-sync-progress-bar').hide();
                         Lifeline.Admin.update_progress(0, 'sync');
 
                         $(sync_btn).show();
-                    }, 3000);
-
-                    clearInterval(Lifeline.Admin.status_interval);                    
+                    }, 3000);   
                 },
                 error: function() {
                     console.log('error', arguments);
@@ -146,6 +145,7 @@ window.Lifeline || (window.Lifeline = {});
                     Lifeline.Alert.show(data.results);
 
                     Lifeline.Admin.update_progress(100, 'restore');
+                    clearInterval(Lifeline.Admin.status_interval);
 
                     setTimeout(function() {
                         $('.ll-restore-progress-bar').hide();
@@ -153,8 +153,6 @@ window.Lifeline || (window.Lifeline = {});
     
                         $(restore_btn).show();
                     }, 3000);
-
-                    clearInterval(Lifeline.Admin.status_interval);
                 },
                 error: function() {
                     console.log('error', arguments);
@@ -175,9 +173,18 @@ window.Lifeline || (window.Lifeline = {});
                     // loading: $(this),
                     success: function(data, msg, xhr) {
                         if (typeof data.status != 'undefined' && data.status > 0) {
-                            Lifeline.Admin.prev_sync_status = data.status;
-                            Lifeline.Admin.update_progress(data.status, what);
-                        }                        
+                            if (data.status == 100) {
+                                clearInterval(Lifeline.Admin.status_interval);
+
+                                $('.ll-sync-progress-bar').hide();
+                                Lifeline.Admin.update_progress(0, what == 'restore' ? 'restore' : 'sync');
+
+                                $(what == 'restore' ? '#old_data_restore' : '#manual_sync').show();
+                            } else {
+                                Lifeline.Admin.prev_sync_status = data.status;
+                                Lifeline.Admin.update_progress(data.status, what);
+                            }                            
+                        }
                     },
                     error: function() {
                         console.log('error', arguments);
@@ -235,7 +242,31 @@ window.Lifeline || (window.Lifeline = {});
 
                 // Tag input
                 $(`#group_${group_id}`).tokenInput(`${lifeline_admin_ajax.ajaxurl}?action=ll_group_products`, {
-                    prePopulate: JSON.parse($(`#group_${group_id}`).val())
+                    prePopulate: JSON.parse($(`#group_${group_id}`).val()),
+                    minChars: 3,
+                    preventDuplicates: true,
+                    onResult: function(result) {
+                        if (!$('.token-input-input-token').find('.group-select-all').length) {
+                            var chk_all = $(`<a href="#" class="group-select-all">Select all</a>`);
+                            
+                            $('.token-input-input-token').prepend(chk_all);
+
+                            $('.group-select-all').off('click').on('click', function(event){
+                                event.preventDefault();
+
+                                $(result).each(function(i, res) {
+                                    $(`#group_${group_id}`).tokenInput("add", {id: res.id, name: res.name});
+                                });
+
+                                $('.group-select-all').remove();
+                                $('.token-input-input-token input').blur();
+
+                                return false;
+                            });
+                        }
+                        
+                        return result;
+                    }
                 });
 
                 // Calendars

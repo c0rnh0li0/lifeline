@@ -3,13 +3,17 @@
         <button name="new_group" class="btn btn-success new-group-btn"><strong>+</strong></button>
     </div>
 
-    <div class="row groups-container">
-        <?php 
-            if ($groups && is_array($groups) && count($groups)) {
-                foreach ($groups as $group) {
-                    require 'lifeline-admin-fe-group.php';
-                }
-            }
-        ?>
+    <div class="row">
+        
     </div>
+</div>
+
+<div class="accordion groups-container" id="llGroupsAccordion">
+    <?php 
+        if ($groups && is_array($groups) && count($groups)) {
+            foreach ($groups as $group) {
+                require 'lifeline-admin-fe-group.php';
+            }
+        }
+    ?>
 </div>

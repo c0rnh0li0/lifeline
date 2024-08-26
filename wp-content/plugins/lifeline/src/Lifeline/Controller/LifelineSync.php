@@ -205,6 +205,10 @@ class LifelineSync extends LifelineConnector {
         ini_set('xdebug.var_display_max_children', -1);
         ini_set('xdebug.var_display_max_data', -1);
 
+        $all_languages = apply_filters( 'wpml_active_languages', null, [
+            'skip_missing' => false
+        ]);
+
         $this->connect();
 
         $this->log_file = plugin_dir_path(__FILE__) . "/sync.log";
@@ -254,6 +258,8 @@ class LifelineSync extends LifelineConnector {
             
             $responses[] = $this->import($products, $paging, $product_skus);
         }
+
+        // $this->inset_translations($product_skus, $all_languages);
 
         foreach ($responses as $response) {
             $inserted += $response->inserted;
@@ -343,7 +349,7 @@ class LifelineSync extends LifelineConnector {
             
             $woo_product->set_regular_price($product->maloprodazna);
             $woo_product->set_price($product->maloprodazna);
-            $woo_product->set_description($product->opis && !empty($product->opis) ? $product->opis : "");
+            // $woo_product->set_description($product->opis && !empty($product->opis) ? $product->opis : "");
             $woo_product->set_manage_stock(true);
             $woo_product->set_stock_quantity($product->zaliha);
             $woo_product->set_stock_status($product->zaliha > 0 ? 'instock' : 'outofstock');
@@ -359,20 +365,6 @@ class LifelineSync extends LifelineConnector {
 
             $product_id = $woo_product->save();
 
-            $all_languages = apply_filters( 'wpml_active_languages', null, [
-                'skip_missing' => false
-            ]);
-
-            foreach($all_languages as $key => $lang) {
-                if ($key == 'mk')
-                    continue;
-
-                $translations = apply_filters('wpml_post_duplicates', $product_id);
-
-                if (!array_key_exists($key, $translations)) 
-                    apply_filters( 'wpml_copy_post_to_language', $product_id, $key, true);
-            }            
-
             $product_skus[$product->sifra] = $product_id;
 
             $this->set_terms($attribs, $product_id);
@@ -383,6 +375,22 @@ class LifelineSync extends LifelineConnector {
         }
 
         return $return;
+    }
+
+    private function inset_translations($products, $all_languages) {
+        $product_ids = array_values($products);
+
+        foreach ($product_ids as $product_id) {
+            $translations = apply_filters('wpml_post_duplicates', $product_id);
+
+            foreach($all_languages as $key => $lang) {
+                if ($key == 'mk')
+                    continue;
+    
+                if (!array_key_exists($key, $translations)) 
+                    apply_filters( 'wpml_copy_post_to_language', $product_id, $key, true);
+            }
+        }        
     }
 
     private function check_and_delete_products($skus) {
@@ -542,7 +550,7 @@ class LifelineSync extends LifelineConnector {
         if (!$this->log_file)
             $this->log_file = plugin_dir_path(__FILE__) . "/sync.log";
 
-        $stat_file = fopen($this->log_file, "w") or die("Unable to open sync file!");
+        $stat_file = fopen($this->log_file, "w") or die(json_encode(['status' => 100]));
 
         $current = $paging->offset + $current;
 
@@ -557,7 +565,7 @@ class LifelineSync extends LifelineConnector {
         if (!$this->log_file)
             $this->log_file = plugin_dir_path(__FILE__) . "/sync.log";
 
-        $stat_file = fopen($this->log_file, "r") or die("Unable to open sync file!");
+        $stat_file = fopen($this->log_file, "r") or die(json_encode(['status' => 100]));
 
         if (filesize($this->log_file) > 0) {
             $content = fread($stat_file, filesize($this->log_file));

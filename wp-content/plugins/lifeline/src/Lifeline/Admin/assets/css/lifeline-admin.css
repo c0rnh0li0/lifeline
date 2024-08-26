@@ -5,6 +5,16 @@
     width: 100% !important;
 }
 
-.ll-fe-group .form-check input {
+.groups-forms .form-check input.form-check-input {
     margin-top: 6px !important;
+}
+
+.token-input-input-token input {
+    width: 100% !important;
+}
+
+.token-input-dropdown {
+    max-height: 300px !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
 }

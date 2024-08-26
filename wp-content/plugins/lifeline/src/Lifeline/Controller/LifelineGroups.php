@@ -97,7 +97,7 @@ class LifelineGroups {
             'post_type'           => 'product',
             'post_status'         => 'publish',
             'ignore_sticky_posts' => 1,
-            'posts_per_page'      => 20,
+            'posts_per_page'      => -1,
             'orderby'             => $ordering_args['orderby'],
             'order'               => $ordering_args['order'],
             'suppress_filters'    => false
@@ -150,6 +150,7 @@ class LifelineGroups {
             'active' => isset($data['active']) ? 1 : 0,
             'is_bestseller' => isset($data['is_bestseller']) ? 1 : 0,
             'use_bestseller_cookie' => isset($data['use_bestseller_cookie']) ? 1 : 0,
+            'discount' => !empty($data['discount']) && is_numeric($data['discount']) ? floatval($data['discount']) : null,
         );
 
         if ($data['id'] == '0')
@@ -159,6 +160,24 @@ class LifelineGroups {
                 array(
                     'id' => $data['id']
                 ));
+
+        if (!empty($data['discount']) && is_numeric($data['discount']) && $starts_at && $ends_at) {
+            $discount_percentage = floatval($data['discount']);
+
+            $products = json_decode(stripslashes($data['products']), true);
+
+            foreach ($products as $product) {
+                $wc_prod = wc_get_product($product['id']);
+
+                $sale_price = $wc_prod->get_price() - (($discount_percentage / 100) * $wc_prod->get_price());
+
+                $wc_prod->set_date_on_sale_from($starts_at);
+                $wc_prod->set_date_on_sale_to($ends_at);
+                $wc_prod->set_sale_price($sale_price);
+
+                $wc_prod->save();
+            }
+        }
 
         $response = new stdClass();
 

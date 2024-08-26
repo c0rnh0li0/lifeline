@@ -20,6 +20,12 @@ class LifelineFrontend {
         $this->register_hooks();
 
         $this->register_scripts();
+
+        // $product_id = wc_get_product_id_by_sku('1036102');
+        // $woo_product = wc_get_product($product_id);
+
+        // var_dump($woo_product->get_description());
+        // var_dump($woo_product->get_short_description());
     }
 
     public function register_hooks() {

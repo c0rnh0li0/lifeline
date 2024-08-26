@@ -175,18 +175,22 @@ defined( 'ABSPATH' ) || exit;
 							]);
 							\Lifeline\Frontend\LifelineFrontend::enable_wpml_filters();
 
-							$total_brands = 24;
+							if (sizeof($terms)) {
+								$total_brands = 24;
 
-							if (wp_is_mobile())
-								$total_brands = 12;
+								if (wp_is_mobile())
+									$total_brands = 12;
 
-							$brands = array_rand($terms, $total_brands);
+								if ($total_brands > sizeof($terms))
+									$total_brands = sizeof($terms);
 
-							foreach ($brands as $brand) { ?> 
-								<a href="<?php echo home_url('/' . $brand_url . '/' . $terms[$brand]->slug . '/'); ?>">
-									<?php echo $terms[$brand]->name; ?>
-								</a>
-						<?php } ?>
+								$brands = array_rand($terms, $total_brands);
+
+								foreach ($brands as $brand) { ?> 
+									<a href="<?php echo home_url('/' . $brand_url . '/' . $terms[$brand]->slug . '/'); ?>">
+										<?php echo $terms[$brand]->name; ?>
+									</a>
+							<?php } } ?>							
 					</div>
 				</div>
 				<?php if ( wp_is_mobile() ) : ?>
