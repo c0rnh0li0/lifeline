@@ -499,6 +499,7 @@ body {
 }
 
 .wrapper#woocommerce-wrapper {
+    margin-bottom: 40px;
     #content {
         padding-top: $odtop;
         #primary {
@@ -525,9 +526,6 @@ body {
                 margin-bottom: 20px;
                 font-size: 1rem;
                 line-height: 140%;
-                &:last-of-type {
-                    margin-bottom: 0;
-                }
             }
             ul {
                 list-style: disc;
@@ -2031,6 +2029,7 @@ header#wrapper-navbar {
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
+        flex: 1;
         gap: 30px;
         .social {
             display: flex;
@@ -2058,7 +2057,7 @@ header#wrapper-navbar {
             text-align: right;
             img {
                 display: inline-block;
-                width: 440px;
+                width: 280px;
             }
         }
     }
@@ -4042,6 +4041,18 @@ span.xoo-wsc-footer-txt {
                 filter: none !important;
             }
         }
+    }
+
+    header#wrapper-navbar nav#main-nav .social, header#wrapper-navbar nav#main-nav .top-buttons {
+        gap: 10px;
+    }
+
+    .wpml-ls-legacy-list-horizontal a {
+        padding: 5px 0px 6px;
+    }
+
+    .wpml-ls-legacy-list-horizontal {
+        padding: 7px 0;
     }
 
 }
