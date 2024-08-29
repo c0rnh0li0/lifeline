@@ -37,9 +37,11 @@ defined( 'ABSPATH' ) || exit;
 						<?php endwhile; ?><?php endif; ?>
 					</div>
 					<div class="carousel-indicators">
-						<button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-						<button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
-						<button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+					<?php if( have_rows('main-homepage-slider', 'option') ): while ( have_rows('main-homepage-slider', 'option') ) : the_row(); ?>						
+						<?php if( have_rows('main-slider-slides', 'option') ): $counter = 0; while ( have_rows('main-slider-slides', 'option') ) : the_row();  ?>		
+							<button type="button" data-bs-target="#carouselExampleDark" class="<?php if($counter == 0) echo 'active';?>" data-bs-slide-to="<?php echo esc_html( $counter ); ?>" aria-label="Slide <?php echo esc_html( $slideto ); ?>"></button>
+						<?php $counter++; endwhile; ?><?php endif; ?>
+					<?php endwhile; ?><?php endif; ?>						
 
 						<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
 							<span class="carousel-control-prev-icon" aria-hidden="true"></span>

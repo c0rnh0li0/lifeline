@@ -15202,6 +15202,17 @@ body {
   flex: auto;
   display: none;
 }
+.wrapper#page-wrapper .woocommerce .products li.product-category, .wrapper#single-wrapper .woocommerce .products li.product-category {
+  list-style: none;
+}
+.wrapper#page-wrapper .woocommerce .products li.product-category a, .wrapper#single-wrapper .woocommerce .products li.product-category a {
+  display: block;
+  width: 100%;
+}
+.wrapper#page-wrapper .woocommerce .products li.product-category a img, .wrapper#single-wrapper .woocommerce .products li.product-category a img {
+  display: block;
+  width: 100%;
+}
 .wrapper#page-wrapper .woocommerce .products.columns-2, .wrapper#single-wrapper .woocommerce .products.columns-2 {
   grid-template-columns: repeat(auto-fill, 48%);
 }
@@ -15320,6 +15331,7 @@ body {
 .wrapper#page-wrapper .woocommerce .products .product .add-to-cart-container, .wrapper#single-wrapper .woocommerce .products .product .add-to-cart-container {
   padding: 10px 20px 20px 20px;
   text-align: center;
+  width: 100%;
 }
 .wrapper#page-wrapper .woocommerce .products .product .add-to-cart-container .product_type_simple, .wrapper#single-wrapper .woocommerce .products .product .add-to-cart-container .product_type_simple {
   color: #FFF;
@@ -15343,6 +15355,9 @@ body {
 }
 .wrapper#page-wrapper .woocommerce .products.columns-6 .product, .wrapper#single-wrapper .woocommerce .products.columns-6 .product {
   width: 100%;
+}
+.wrapper#page-wrapper .woocommerce .products.columns-6 .product a h2, .wrapper#page-wrapper .woocommerce .products.columns-6 .product a .h2, .wrapper#single-wrapper .woocommerce .products.columns-6 .product a h2, .wrapper#single-wrapper .woocommerce .products.columns-6 .product a .h2 {
+  font-size: 0.875rem !important;
 }
 .wrapper#page-wrapper .woocommerce .products.columns-6 .product a.woocommerce-loop-product__link h2, .wrapper#page-wrapper .woocommerce .products.columns-6 .product a.woocommerce-loop-product__link .h2, .wrapper#single-wrapper .woocommerce .products.columns-6 .product a.woocommerce-loop-product__link h2, .wrapper#single-wrapper .woocommerce .products.columns-6 .product a.woocommerce-loop-product__link .h2 {
   padding: 0 15px;
@@ -15731,6 +15746,7 @@ body {
 .wrapper#woocommerce-wrapper #content #primary .products .product .add-to-cart-container {
   padding: 10px 20px 20px 20px;
   text-align: center;
+  width: 100%;
 }
 .wrapper#woocommerce-wrapper #content #primary .products .product .add-to-cart-container .product_type_simple {
   color: #FFF;
@@ -15754,6 +15770,9 @@ body {
 }
 .wrapper#woocommerce-wrapper #content #primary .products.columns-6 .product {
   width: 100%;
+}
+.wrapper#woocommerce-wrapper #content #primary .products.columns-6 .product a h2, .wrapper#woocommerce-wrapper #content #primary .products.columns-6 .product a .h2 {
+  font-size: 0.875rem !important;
 }
 .wrapper#woocommerce-wrapper #content #primary .products.columns-6 .product a.woocommerce-loop-product__link h2, .wrapper#woocommerce-wrapper #content #primary .products.columns-6 .product a.woocommerce-loop-product__link .h2 {
   padding: 0 15px;
@@ -16328,6 +16347,9 @@ header#wrapper-navbar nav#main-nav .social a img {
 .product-carousel-container .product-carousel .products-container .woocommerce .products.columns-6 .product {
   width: 100%;
 }
+.product-carousel-container .product-carousel .products-container .woocommerce .products.columns-6 .product a h2, .product-carousel-container .product-carousel .products-container .woocommerce .products.columns-6 .product a .h2 {
+  font-size: 0.875rem !important;
+}
 .product-carousel-container .product-carousel .products-container .woocommerce .products.columns-6 .product a.woocommerce-loop-product__link h2, .product-carousel-container .product-carousel .products-container .woocommerce .products.columns-6 .product a.woocommerce-loop-product__link .h2 {
   padding: 0 15px;
 }
@@ -16423,6 +16445,7 @@ header#wrapper-navbar nav#main-nav .social a img {
 .product-carousel-container .product-carousel .products-container .woocommerce .products .product .add-to-cart-container {
   padding: 10px 20px 20px 20px;
   text-align: center;
+  width: 100%;
 }
 .product-carousel-container .product-carousel .products-container .woocommerce .products .product .add-to-cart-container .product_type_simple {
   color: #FFF;
@@ -16700,6 +16723,7 @@ header#wrapper-navbar nav#main-nav .social a img {
 .brands-container .brands-carousel .brands-name-container .products .product .add-to-cart-container {
   padding: 10px 20px 20px 20px;
   text-align: center;
+  width: 100%;
 }
 .brands-container .brands-carousel .brands-name-container .products .product .add-to-cart-container .product_type_simple {
   color: #FFF;
@@ -16723,6 +16747,9 @@ header#wrapper-navbar nav#main-nav .social a img {
 }
 .brands-container .brands-carousel .brands-name-container .products.columns-6 .product {
   width: 100%;
+}
+.brands-container .brands-carousel .brands-name-container .products.columns-6 .product a h2, .brands-container .brands-carousel .brands-name-container .products.columns-6 .product a .h2 {
+  font-size: 0.875rem !important;
 }
 .brands-container .brands-carousel .brands-name-container .products.columns-6 .product a.woocommerce-loop-product__link h2, .brands-container .brands-carousel .brands-name-container .products.columns-6 .product a.woocommerce-loop-product__link .h2 {
   padding: 0 15px;
@@ -16749,7 +16776,7 @@ header#wrapper-navbar nav#main-nav .social a img {
   flex-direction: row;
   justify-content: space-between;
   flex-wrap: nowrap;
-  align-items: center;
+  align-items: flex-start;
 }
 .ecommerce-content .ecommerce-element {
   width: 250px;
@@ -17645,6 +17672,7 @@ body.woocommerce-cart #page #content ul.wc-block-grid__products li.wc-block-grid
 .wrapper#page-wrapper .brands-page .entry-content .brands-products-container .products .product .add-to-cart-container {
   padding: 10px 20px 20px 20px;
   text-align: center;
+  width: 100%;
 }
 .wrapper#page-wrapper .brands-page .entry-content .brands-products-container .products .product .add-to-cart-container .product_type_simple {
   color: #FFF;
@@ -18091,6 +18119,17 @@ span.xoo-wsc-footer-txt {
 
 .dgwt-wcas-stock {
   text-align: center;
+}
+
+.woocommerce span.onsale {
+  background: #8AAC54;
+  font-size: 0.75rem;
+  min-width: 50px;
+  min-height: 50px;
+  filter: drop-shadow(0px 0.1px 0.3px rgba(0, 0, 0, 0.1)) drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.2));
+  left: auto;
+  top: 5px;
+  right: 5px;
 }
 
 @media (min-width: 1700px) {

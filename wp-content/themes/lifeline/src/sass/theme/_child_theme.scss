@@ -269,7 +269,7 @@ body {
                         text-decoration: none;
                     }
                 }
-            }                                     
+            }                                       
         }
         .products {
             display: grid;
@@ -286,6 +286,17 @@ body {
                 flex: auto;
                 display: none;
             }
+            li.product-category {
+                list-style: none;
+                a {
+                    display: block;
+                    width: 100%;
+                    img {
+                        display: block;
+                        width: 100%;
+                    }
+                }
+            }          
             &.columns-2 {
                 grid-template-columns: repeat(auto-fill, 48%);
                 .product  {
@@ -413,6 +424,7 @@ body {
                 .add-to-cart-container {
                     padding: 10px 20px 20px 20px;
                     text-align: center;
+                    width: 100%;
                     .product_type_simple {
                         color: $white;
                         background: $green url(../img/icons/icon-readmore.svg) 12px 6px no-repeat;
@@ -436,6 +448,11 @@ body {
                 grid-template-columns: repeat(auto-fill, 15.5%);
                 .product  {
                     width: 100%;
+                    a {
+                        h2 {
+                            font-size: 0.875rem !important;
+                        }
+                    }
                     a.woocommerce-loop-product__link {
                         h2 {
                             padding: 0 15px;
@@ -874,6 +891,7 @@ body {
                     .add-to-cart-container {
                         padding: 10px 20px 20px 20px;
                         text-align: center;
+                        width: 100%;
                         .product_type_simple {
                             color: $white;
                             background: $green url(../img/icons/icon-readmore.svg) 12px 6px no-repeat;
@@ -897,6 +915,11 @@ body {
                     grid-template-columns: repeat(auto-fill, 15.5%);
                     .product  {
                         width: 100%;
+                        a {
+                            h2 {
+                                font-size: 0.875rem !important;
+                            }
+                        }
                         a.woocommerce-loop-product__link {
                             h2 {
                                 padding: 0 15px;
@@ -1478,6 +1501,11 @@ header#wrapper-navbar {
                         grid-template-columns: repeat(auto-fill, 15.5%);
                         .product  {
                             width: 100%;
+                            a {
+                                h2 {
+                                    font-size: 0.875rem !important;
+                                }
+                            }
                             a.woocommerce-loop-product__link {
                                 h2 {
                                     padding: 0 15px;
@@ -1583,6 +1611,7 @@ header#wrapper-navbar {
                         .add-to-cart-container {
                             padding: 10px 20px 20px 20px;
                             text-align: center;
+                            width: 100%;
                             .product_type_simple {
                                 color: $white;
                                 background: $green url(../img/icons/icon-readmore.svg) 12px 6px no-repeat;
@@ -1881,6 +1910,7 @@ header#wrapper-navbar {
                     .add-to-cart-container {
                         padding: 10px 20px 20px 20px;
                         text-align: center;
+                        width: 100%;
                         .product_type_simple {
                             color: $white;
                             background: $green url(../img/icons/icon-readmore.svg) 12px 6px no-repeat;
@@ -1904,6 +1934,11 @@ header#wrapper-navbar {
                     grid-template-columns: repeat(auto-fill, 15.5%);
                     .product  {
                         width: 100%;
+                        a {
+                            h2 {
+                                font-size: 0.875rem !important;
+                            }
+                        }
                         a.woocommerce-loop-product__link {
                             h2 {
                                 padding: 0 15px;
@@ -1943,7 +1978,7 @@ header#wrapper-navbar {
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: nowrap;
-    align-items: center;
+    align-items: flex-start;
     .ecommerce-element{
         width: 250px;
         text-align: center;
@@ -2936,6 +2971,7 @@ body.woocommerce-cart #page #content ul.wc-block-grid__products {
                         .add-to-cart-container {
                             padding: 10px 20px 20px 20px;
                             text-align: center;
+                            width: 100%;
                             .product_type_simple {
                                 color: $white;
                                 background: $green url(../img/icons/icon-readmore.svg) 12px 6px no-repeat;
@@ -3414,6 +3450,17 @@ span.xoo-wsc-footer-txt {
 
 .dgwt-wcas-stock {
     text-align: center;
+}
+
+.woocommerce span.onsale {
+    background: $green;
+    font-size: 0.75rem;
+    min-width: 50px;
+    min-height: 50px;
+    filter: $mainshadow;
+    left: auto;
+    top: 5px;
+    right: 5px;
 }
 
 
