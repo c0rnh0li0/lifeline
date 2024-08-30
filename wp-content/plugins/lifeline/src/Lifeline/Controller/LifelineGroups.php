@@ -169,7 +169,7 @@ class LifelineGroups {
             foreach ($products as $product) {
                 $wc_prod = wc_get_product($product['id']);
 
-                $sale_price = $wc_prod->get_price() - (($discount_percentage / 100) * $wc_prod->get_price());
+                $sale_price = $wc_prod->get_regular_price() - (($discount_percentage / 100) * $wc_prod->get_regular_price());
 
                 $wc_prod->set_date_on_sale_from($starts_at);
                 $wc_prod->set_date_on_sale_to($ends_at);

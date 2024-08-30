@@ -13,7 +13,7 @@ class LifelineFrontend {
     ];
 
     public function __construct() {
-        
+
     }
 
     public function init() {

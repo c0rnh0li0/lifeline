@@ -201,10 +201,6 @@ class LifelineSync extends LifelineConnector {
         ini_set('memory_limit', '-1');
         set_time_limit(0);
 
-        ini_set('xdebug.var_display_max_depth', -1);
-        ini_set('xdebug.var_display_max_children', -1);
-        ini_set('xdebug.var_display_max_data', -1);
-
         $all_languages = apply_filters( 'wpml_active_languages', null, [
             'skip_missing' => false
         ]);
@@ -350,6 +346,8 @@ class LifelineSync extends LifelineConnector {
             $woo_product->set_regular_price($product->maloprodazna);
             $woo_product->set_price($product->maloprodazna);
             // $woo_product->set_description($product->opis && !empty($product->opis) ? $product->opis : "");
+            $woo_product->set_backorders('notify');
+            
             $woo_product->set_manage_stock(true);
             $woo_product->set_stock_quantity($product->zaliha);
             $woo_product->set_stock_status($product->zaliha > 0 ? 'instock' : 'outofstock');
