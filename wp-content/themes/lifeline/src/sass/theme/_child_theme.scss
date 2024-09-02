@@ -160,12 +160,18 @@ body {
                     }
                 }
             }
+            &.sale {
+                span.onsale {
+                    top: -20px;
+                    right: -25px;
+                }
+            }
             div.summary {
                 background: $grey;
                 padding: 20px;
                 border: 1px solid $darkgrey;
                 float: none;
-                align-self: flex-start;
+                align-self: flex-start;                
                 .price {
                     display: flex;
                     justify-content: space-between;
@@ -717,7 +723,13 @@ body {
                             text-decoration: none;
                         }
                     }
-                }                                     
+                }   
+                &.sale {
+                    span.onsale {
+                        top: -20px;
+                        right: -25px;
+                    }
+                }                                  
             }   
             .related.products {
                 width: 100%;
@@ -4100,6 +4112,16 @@ span.xoo-wsc-footer-txt {
 
     .wpml-ls-legacy-list-horizontal {
         padding: 7px 0;
+    }   
+    
+    .wrapper#page-wrapper {
+        .kategorii {
+            .woocommerce {
+                .products.columns-4 {
+                    grid-template-columns: repeat(auto-fill, 48%);
+                }
+            }
+        }
     }
 
 }
