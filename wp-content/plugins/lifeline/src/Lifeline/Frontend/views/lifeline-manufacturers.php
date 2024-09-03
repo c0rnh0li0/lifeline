@@ -25,10 +25,19 @@
         </div>
 <?php } else { ?>
     <div class="brands-name-container brands-page-container">
-        <?php foreach ($terms as $term) { ?>
-            <a href="<?php echo home_url('/' . $brand_url . '/' . $term->slug . '/'); ?>">
+        <?php foreach ($terms as $term) { 
+            $single_brand_url = home_url('/' . $brand_url . '/' . $term->slug . '/');
+
+            // echo '<a href="' . $single_brand_url . '">';
+            // echo $term->name;
+            // echo '</a>';
+        ?>
+        <div class="ll-brand-cart" data-url="<?php echo $single_brand_url; ?>">
+            <a href="<?php echo $single_brand_url; ?>">
                 <?php echo $term->name; ?>
             </a>
+        </div>
+
         <?php } ?>
     </div>
 <?php } ?>

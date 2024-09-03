@@ -41,7 +41,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 		</div>
 
 		<div class="top-buttons">
-			<a href="#" target="_blank"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/icons/icon-heart-plus.svg" alt="Heart plus" /></a>
+			<?php /* <a href="#" target="_blank"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/icons/icon-heart-plus.svg" alt="Heart plus" /></a> */?>
 			<?php 
 				wp_nav_menu( array(
 				  'theme_location' => 'cart-menu',
@@ -56,9 +56,9 @@ $container = get_theme_mod( 'understrap_container_type' );
 			<a href="https://www.instagram.com/lifeline.pharmacy/" target="_blank"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/icons/instagram.svg" alt="Instagram" /></a>
 		</div>
 
-		<?php /* <div class="lang-widget">
+		<div class="lang-widget">
 			<?php do_action('wpml_add_language_selector'); ?>
-		</div> */ ?>
+		</div>
 
 		<button
 			class="navbar-toggler"
@@ -88,7 +88,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 						<a href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>" class="profile-button create-profile" title="<?php _e('My Account','woothemes'); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/icons/icon-mobile-profile.svg" alt="Create profile"><span><?php _e('My Account','woothemes'); ?></span></a>
 					<?php } 
 					else { ?>
-						<a href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>" class="profile-button create-profile" title="<?php _e('Login / Register','woothemes'); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/icon-mobile-profile.svg" alt="Create profile"><span><?php _e('Login / Register','woothemes'); ?></span></a>
+						<a href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>" class="profile-button create-profile" title="<?php _e('Login / Register','woothemes'); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/icons/icon-mobile-profile.svg" alt="Create profile"><span><?php _e('Login / Register','woothemes'); ?></span></a>
 					<?php } ?>
 				</div>
 			</div>
