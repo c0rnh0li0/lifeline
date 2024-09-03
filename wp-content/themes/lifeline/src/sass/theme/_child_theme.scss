@@ -160,12 +160,18 @@ body {
                     }
                 }
             }
+            &.sale {
+                span.onsale {
+                    top: -20px;
+                    right: -25px;
+                }
+            }
             div.summary {
                 background: $grey;
                 padding: 20px;
                 border: 1px solid $darkgrey;
                 float: none;
-                align-self: flex-start;
+                align-self: flex-start;                
                 .price {
                     display: flex;
                     justify-content: space-between;
@@ -717,7 +723,13 @@ body {
                             text-decoration: none;
                         }
                     }
-                }                                     
+                }   
+                &.sale {
+                    span.onsale {
+                        top: -20px;
+                        right: -25px;
+                    }
+                }                                  
             }   
             .related.products {
                 width: 100%;
@@ -4100,6 +4112,54 @@ span.xoo-wsc-footer-txt {
 
     .wpml-ls-legacy-list-horizontal {
         padding: 7px 0;
+    }   
+    
+    .wrapper#page-wrapper {
+        .kategorii {
+            .woocommerce {
+                .products.columns-4 {
+                    grid-template-columns: repeat(auto-fill, 48%);
+                }
+            }
+        }
+    }
+
+    .wrapper#page-wrapper .woocommerce div.product.sale span.onsale, .wrapper#single-wrapper .woocommerce div.product.sale span.onsale {
+        top: 5px;
+        right: 5px;
+    }
+
+    .container.product-carousel-container .product-carousel .products-container .lifeline-product-group .slick-initialized .slick-list .slick-track .product a .price,
+    .wrapper#page-wrapper .woocommerce .products.columns-2 .product a.woocommerce-loop-product__link .price, .wrapper#single-wrapper .woocommerce .products.columns-2 .product a.woocommerce-loop-product__link .price {
+        padding: 10px;
+    }
+
+    .container.product-carousel-container .product-carousel .products-container .lifeline-product-group .slick-initialized .slick-list .slick-track .product a img,
+    .wrapper#page-wrapper .woocommerce .products .product a img, .wrapper#single-wrapper .woocommerce .products .product a img {
+        margin-bottom: 10px;
+    }
+
+    .container.product-carousel-container .product-carousel .products-container .lifeline-product-group .slick-initialized .slick-list .slick-track .product a .h2, .container.product-carousel-container .product-carousel .products-container .lifeline-product-group .slick-initialized .slick-list .slick-track .product a h2,
+    .wrapper#page-wrapper .woocommerce .products .product a .price del .woocommerce-Price-amount.amount bdi .woocommerce-Price-currencySymbol, .wrapper#single-wrapper .woocommerce .products .product a .price del .woocommerce-Price-amount.amount bdi .woocommerce-Price-currencySymbol {
+        font-size: .75rem;
+    }
+
+    .container.product-carousel-container .product-carousel .products-container .lifeline-product-group .slick-initialized .slick-list .slick-track .product a .price .woocommerce-Price-amount.amount bdi span,
+    .wrapper#page-wrapper .woocommerce .products .product a .price .woocommerce-Price-amount.amount bdi span, .wrapper#single-wrapper .woocommerce .products .product a .price .woocommerce-Price-amount.amount bdi span {
+        font-size: .75rem;
+    }
+
+    .container.product-carousel-container .product-carousel .products-container .lifeline-product-group .slick-initialized .slick-list .slick-track .product a .price .woocommerce-Price-amount.amount bdi,
+    .wrapper#page-wrapper .woocommerce .products.columns-2 .product a.woocommerce-loop-product__link .price .woocommerce-Price-amount.amount bdi, .wrapper#single-wrapper .woocommerce .products.columns-2 .product a.woocommerce-loop-product__link .price .woocommerce-Price-amount.amount bdi {
+        font-size: 1rem;
+    }
+
+    .container.product-carousel-container .product-carousel .products-container .lifeline-product-group .slick-initialized .slick-list .slick-track .product a .price del .woocommerce-Price-amount.amount bdi {
+        font-size: 0.875rem;
+    }
+
+    .wrapper#page-wrapper .woocommerce .products .product a, .wrapper#single-wrapper .woocommerce .products .product a {
+        overflow-x: hidden;
     }
 
 }
