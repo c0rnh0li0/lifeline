@@ -104,6 +104,14 @@ window.Lifeline || (window.Lifeline = {});
                 slick_opts.slidesToShow = 2;
 
             $('.brands-slider-container').slick(slick_opts);
+
+            $('.brands-page-container a').off('click').on('click', function(event){
+                event.preventDefault();
+                
+                window.location.href = $(this).closest('div.ll-brand-cart').data('url');
+
+                return false;
+            });
         }
     };
 

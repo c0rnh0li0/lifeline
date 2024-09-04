@@ -37,11 +37,11 @@ defined( 'ABSPATH' ) || exit;
 						<?php endwhile; ?><?php endif; ?>
 					</div>
 					<div class="carousel-indicators">
-						<button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-						<button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
-						<button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
-						<button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="3" aria-label="Slide 4"></button>
-						<button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="4" aria-label="Slide 5"></button>
+					<?php if( have_rows('main-homepage-slider', 'option') ): while ( have_rows('main-homepage-slider', 'option') ) : the_row(); ?>						
+						<?php if( have_rows('main-slider-slides', 'option') ): $counter = 0; while ( have_rows('main-slider-slides', 'option') ) : the_row();  ?>		
+							<button type="button" data-bs-target="#carouselExampleDark" class="<?php if($counter == 0) echo 'active';?>" data-bs-slide-to="<?php echo esc_html( $counter ); ?>" aria-label="Slide <?php echo esc_html( $slideto ); ?>"></button>
+						<?php $counter++; endwhile; ?><?php endif; ?>
+					<?php endwhile; ?><?php endif; ?>						
 
 						<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
 							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -145,7 +145,8 @@ defined( 'ABSPATH' ) || exit;
 <!-- BRANDS -->
 
 <div class="wrapper brands-wrapper" id="brands-wrapper">
-	<?php $brand_url = ICL_LANGUAGE_CODE == "mk" ? 'brands' : 'brands-en'; ?>
+	<?php //$brand_url = ICL_LANGUAGE_CODE == "mk" ? 'brands' : 'brands-en'; ?>
+	<?php $brand_url = 'brands'; ?>
 
 	<div class="container brands-container" id="brands-carousel">
 
@@ -177,18 +178,22 @@ defined( 'ABSPATH' ) || exit;
 							]);
 							\Lifeline\Frontend\LifelineFrontend::enable_wpml_filters();
 
-							$total_brands = 24;
+							if (sizeof($terms)) {
+								$total_brands = 24;
 
-							if (wp_is_mobile())
-								$total_brands = 12;
+								if (wp_is_mobile())
+									$total_brands = 12;
 
-							$brands = array_rand($terms, $total_brands);
+								if ($total_brands > sizeof($terms))
+									$total_brands = sizeof($terms);
 
-							foreach ($brands as $brand) { ?> 
-								<a href="<?php echo home_url('/' . $brand_url . '/' . $terms[$brand]->slug . '/'); ?>">
-									<?php echo $terms[$brand]->name; ?>
-								</a>
-						<?php } ?>
+								$brands = array_rand($terms, $total_brands);
+
+								foreach ($brands as $brand) { ?> 
+									<a href="<?php echo home_url('/' . $brand_url . '/' . $terms[$brand]->slug . '/'); ?>">
+										<?php echo $terms[$brand]->name; ?>
+									</a>
+							<?php } } ?>							
 					</div>
 				</div>
 				<?php if ( wp_is_mobile() ) : ?>

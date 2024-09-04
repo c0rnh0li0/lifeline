@@ -41,7 +41,7 @@ defined( 'ABSPATH' ) || exit;
                 'post_type' => 'post' ,
                 'meta_type' => 'DATE',              
                 'orderby' => 'meta_value',
-                'order' => 'ASC',
+                'order' => 'DESC',
                 'posts_per_page' => -1,
                 'category_name' => $cat,
                 'paged' => $paged
