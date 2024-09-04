@@ -1,7 +1,8 @@
 <?php 
     global $wp_query;
 
-    $brand_url = ICL_LANGUAGE_CODE == "mk" ? 'brands' : 'brands-en';
+    // $brand_url = ICL_LANGUAGE_CODE == "mk" ? 'brands' : 'brands-en';
+    $brand_url = 'brands';
 
     $columns = 5;
     $limit = 15;

@@ -107,8 +107,8 @@ window.Lifeline || (window.Lifeline = {});
 
             $('.brands-page-container a').off('click').on('click', function(event){
                 event.preventDefault();
-
-                window.location.href = $(this).parent().data('url');
+                
+                window.location.href = $(this).closest('div.ll-brand-cart').data('url');
 
                 return false;
             });

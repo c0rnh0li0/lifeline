@@ -145,7 +145,8 @@ defined( 'ABSPATH' ) || exit;
 <!-- BRANDS -->
 
 <div class="wrapper brands-wrapper" id="brands-wrapper">
-	<?php $brand_url = ICL_LANGUAGE_CODE == "mk" ? 'brands' : 'brands-en'; ?>
+	<?php // $brand_url = ICL_LANGUAGE_CODE == "mk" ? 'brands' : 'brands-en'; ?>
+	<?php $brand_url = 'brands'; ?>
 
 	<div class="container brands-container" id="brands-carousel">
 
