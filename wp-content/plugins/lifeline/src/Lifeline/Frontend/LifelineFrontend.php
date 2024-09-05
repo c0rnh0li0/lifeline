@@ -123,6 +123,8 @@ class LifelineFrontend {
 
         self::enable_wpml_filters();
 
+        // add_filter( 'woocommerce_shortcode_products_query', [$this, 'mc_products_shortcode'] );
+
         ob_start();
 
         require_once LIFELINE_TEMPLATES_DIR . 'lifeline-manufacturers.php';
@@ -131,6 +133,18 @@ class LifelineFrontend {
 
         return $content;
     }
+
+    // public function mc_products_shortcode($args ) {
+    //     var_dump($args );
+
+    //     $vars = [];
+
+    //     foreach ($args as $key => $arg) {
+
+    //     }
+        
+    //     // return do_shortcode( "[products ids={$attrs['ids']}]" );
+    // }
 
     public function bestsellers($dummy) {
         ob_start();

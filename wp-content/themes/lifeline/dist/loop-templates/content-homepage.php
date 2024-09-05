@@ -145,7 +145,7 @@ defined( 'ABSPATH' ) || exit;
 <!-- BRANDS -->
 
 <div class="wrapper brands-wrapper" id="brands-wrapper">
-	<?php //$brand_url = ICL_LANGUAGE_CODE == "mk" ? 'brands' : 'brands-en'; ?>
+	<?php // $brand_url = ICL_LANGUAGE_CODE == "mk" ? 'brands' : 'brands-en'; ?>
 	<?php $brand_url = 'brands'; ?>
 
 	<div class="container brands-container" id="brands-carousel">
@@ -190,7 +190,7 @@ defined( 'ABSPATH' ) || exit;
 								$brands = array_rand($terms, $total_brands);
 
 								foreach ($brands as $brand) { ?> 
-									<a href="<?php echo home_url('/' . $brand_url . '/' . $terms[$brand]->slug . '/'); ?>">
+									<a href="<?php echo home_url('/' . $brand_url . '/?manufacturer=' . $terms[$brand]->slug); ?>">
 										<?php echo $terms[$brand]->name; ?>
 									</a>
 							<?php } } ?>							

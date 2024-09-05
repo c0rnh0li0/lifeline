@@ -190,7 +190,7 @@ defined( 'ABSPATH' ) || exit;
 								$brands = array_rand($terms, $total_brands);
 
 								foreach ($brands as $brand) { ?> 
-									<a href="<?php echo home_url('/' . $brand_url . '/' . $terms[$brand]->slug . '/'); ?>">
+									<a href="<?php echo home_url('/' . $brand_url . '/?manufacturer=' . $terms[$brand]->slug); ?>">
 										<?php echo $terms[$brand]->name; ?>
 									</a>
 							<?php } } ?>							
