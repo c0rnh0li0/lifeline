@@ -42,13 +42,23 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 		<div class="top-buttons">
 			<?php /* <a href="#" target="_blank"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/icons/icon-heart-plus.svg" alt="Heart plus" /></a> */?>
-			<?php 
+			<?php /* 
 				wp_nav_menu( array(
 				  'theme_location' => 'cart-menu',
 				  'container'      => false,
 				  'menu_class'     => 'x-nav sf-menu'
 				  ) ); 
-				?>
+				?> */ ?>
+				<ul id="menu-cart-menu" class="x-nav sf-menu"><li class="menu-item xoo-wsc-menu-item">
+					<div class="xoo-wsc-sc-cont">
+						<div class="xoo-wsc-cart-trigger">
+							<div class="xoo-wsc-sc-bkcont">
+								<span class="xoo-wsc-sc-bki xoo-wsc-icon-basket1"></span>
+								<span class="xoo-wsc-sc-count">0</span>
+							</div>
+						</div>
+					</div>
+				</li></ul>
 		</div>
 		
 		<div class="social">

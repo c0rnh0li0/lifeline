@@ -2896,7 +2896,7 @@ body.woocommerce-cart #page #content ul.wc-block-grid__products {
                                     font-size: 0.75rem;
                                     background-position: 7px 6px;
                                     background-size: auto 18px;
-                                    text-align: right;
+                                    text-align: center;
                                     padding: 7px 8px 7px 8px;
                                 }
                             }
@@ -3490,9 +3490,14 @@ span.xoo-wsc-footer-txt {
 .wrapper#single-wrapper .lifeline-product-group .woocommerce div.product.sale span.onsale,
 .wrapper#woocommerce-wrapper #content #primary div.product .related.products div.product.sale span.onsale,
 .wrapper#woocommerce-wrapper #content #primary .products div.product.sale span.onsale,
-.wrapper#page-wrapper .brands-products-container .woocommerce div.product.sale span.onsale {
+.wrapper#page-wrapper .brands-products-container .woocommerce div.product.sale span.onsale,
+.wrapper#page-wrapper .woocommerce .products.columns-5 div.product.sale span.onsale {
     top: 5px;
     right: 5px;
+}
+
+.xoo-wsc-sc-cont .xoo-wsc-cart-trigger .xoo-wsc-sc-subt {
+    display: none !important;
 }
 
 
@@ -4053,7 +4058,7 @@ span.xoo-wsc-footer-txt {
     }
 
     .product-carousel-container .product-carousel .products-container .woocommerce {
-        height: 370px;
+        padding-bottom: 10px;
     }
 
     .container.product-carousel-container .product-carousel .products-container .lifeline-product-group .slick-initialized .slick-list .slick-track .product a h2 {
@@ -4068,7 +4073,7 @@ span.xoo-wsc-footer-txt {
             font-size: 0.75rem;
             background-position: 7px 6px !important;
             background-size: auto 18px !important;
-            text-align: right;
+            text-align: center;
             padding: 7px 8px 7px 8px;
         }
     }
@@ -4146,7 +4151,8 @@ span.xoo-wsc-footer-txt {
 
     .wrapper#page-wrapper .woocommerce div.product.sale span.onsale, 
     .wrapper#single-wrapper .woocommerce div.product.sale span.onsale,
-    .wrapper#page-wrapper .brands-products-container .woocommerce div.product.sale span.onsale {
+    .wrapper#page-wrapper .brands-products-container .woocommerce div.product.sale span.onsale
+     {
         top: 5px;
         right: 5px;
     }
@@ -4228,17 +4234,65 @@ span.xoo-wsc-footer-txt {
                     font-size: 0.75rem;
                     background-position: 7px 6px;
                     background-size: auto 18px;
-                    text-align: right;
+                    text-align: center;
                     padding: 7px 8px 7px 8px;
                 }
             }
         }   
     }
 
+    .brands-products-container {
+        margin-bottom: 20px;
+    }
+
 }
 
-@media (min-width: 769px) and (max-width: 979px) {
+@media (min-width: 1100px) and (max-width: 1200px) {
 
+    header#wrapper-navbar nav#main-nav .phone {
+        display: none;
+    }
 
+    .wrapper.menu-wrapper .header-bottom .lifeline-nav #navbarNavDropdown .navbar-nav .menu-item .nav-link {
+        padding: 0 15px;
+        font-size: .75rem;
+    }
+
+    .wrapper.menu-wrapper .header-bottom .lifeline-nav #navbarNavDropdown .navbar-nav .menu-item:last-of-type .nav-link {
+        padding-right: 28px;
+    }
+
+}
+
+@media (min-width: 1000px) and (max-width: 1099px) {
+
+    header#wrapper-navbar nav#main-nav .phone {
+        display: none;
+    }
+
+    .wrapper.menu-wrapper .header-bottom .lifeline-nav #navbarNavDropdown .navbar-nav .menu-item .nav-link {
+        padding: 0 18px;
+        font-size: .75rem;
+    }
+
+    .wrapper.menu-wrapper .header-bottom .lifeline-nav #navbarNavDropdown .navbar-nav .menu-item:last-of-type .nav-link {
+        padding-right: 28px;
+    }
+
+    .container.product-carousel-container .product-carousel .products-container .lifeline-product-group .slick-initialized .slick-arrow.slick-prev {
+        left: -20px;
+    }
+
+    .container.product-carousel-container .product-carousel .products-container .lifeline-product-group .slick-initialized .slick-arrow.slick-next {
+        right: -5px;
+    }
+
+    .brands-container .brands-carousel .brands-carousel-wrapper .slick-initialized .slick-arrow.slick-prev {
+        left: -34px;
+    }
+
+    .brands-container .brands-carousel .brands-carousel-wrapper .slick-initialized .slick-arrow.slick-next {
+        right: -22px;
+    }
 
 }
