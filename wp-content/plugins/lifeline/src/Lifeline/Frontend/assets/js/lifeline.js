@@ -125,13 +125,13 @@ window.Lifeline || (window.Lifeline = {});
 
             $('.brands-slider-container').slick(slick_opts);
 
-            $('.brands-page-container a').off('click').on('click', function(event){
-                event.preventDefault();
+            // $('.brands-page-container a').off('click').on('click', function(event){
+            //     event.preventDefault();
                 
-                window.location.href = $(this).closest('div.ll-brand-cart').data('url');
+            //     window.location.href = $(this).closest('div.ll-brand-cart').data('url');
 
-                return false;
-            });
+            //     return false;
+            // });
         }
     };
 
