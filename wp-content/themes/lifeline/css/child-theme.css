@@ -18355,6 +18355,86 @@ span.xoo-wsc-footer-txt {
   display: none !important;
 }
 
+.wrapper#page-wrapper .kategorii .woocommerce .products.columns-4, .wrapper#single-wrapper .kategorii .woocommerce .products.columns-4 {
+  grid-template-columns: repeat(auto-fill, 15.5%);
+}
+
+.wrapper#page-wrapper .kategorii .woocommerce .products .product a h2, .wrapper#page-wrapper .kategorii .woocommerce .products .product a .h2,
+.wrapper#single-wrapper .kategorii .woocommerce .products .product a h2,
+.wrapper#single-wrapper .kategorii .woocommerce .products .product a .h2 {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.wrapper#page-wrapper .kategorii .woocommerce .products .product a h2 .count, .wrapper#page-wrapper .kategorii .woocommerce .products .product a .h2 .count,
+.wrapper#single-wrapper .kategorii .woocommerce .products .product a h2 .count,
+.wrapper#single-wrapper .kategorii .woocommerce .products .product a .h2 .count {
+  background: none;
+  display: block;
+  color: #8AAC54;
+  padding: 5px;
+  margin-top: 5px;
+  font-weight: 600;
+}
+
+.wrapper#page-wrapper .kategorii .woocommerce .products.columns-4 .product,
+.wrapper#single-wrapper .kategorii .woocommerce .products.columns-4 .product {
+  padding-bottom: 0px;
+}
+
+.wrapper#page-wrapper .kategorii .woocommerce .products .product a,
+.wrapper#single-wrapper .kategorii .woocommerce .products .product a {
+  padding-bottom: 0px;
+}
+
+.col.h6.text-end {
+  text-align: center !important;
+  margin-bottom: 25px;
+}
+
+.col.h6.text-end span {
+  display: inline-block;
+  padding: 10px 15px;
+  border-radius: 5px;
+  color: #FFF;
+  background: #8AAC54;
+  font-size: 1.25rem;
+}
+
+.col.h6.text-end del {
+  display: inline-flex;
+  padding: 10px 15px;
+  border-radius: 5px;
+  color: #FFF;
+  background: #C3655F;
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  flex-direction: column;
+  gap: 3px;
+  padding-bottom: 30px;
+  position: relative;
+}
+.col.h6.text-end del:after {
+  content: "Акцијата е истечена";
+  position: absolute;
+  left: 0;
+  bottom: 10px;
+  display: block;
+  text-decoration: none !important;
+  text-decoration-line: none !important;
+  font-size: 1rem;
+  width: 100%;
+  text-align: center;
+  z-index: 5;
+}
+.col.h6.text-end del span {
+  display: inline-block;
+  padding: 0;
+  border-radius: 0;
+  background: none;
+}
+
 @media (min-width: 1700px) {
   .container {
     width: 1440px;

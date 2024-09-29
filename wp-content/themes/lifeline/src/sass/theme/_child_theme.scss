@@ -10,6 +10,7 @@ $orange: #F79E1B;
 $lightgreen: #E8F0DB;
 $lightgrey: #666;
 $almostwhite: #f0f0f0;
+$red: #C3655F;
 $mainshadow: drop-shadow(0px 0.1px 0.3px rgba(0, 0, 0, 0.1)) drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.2));
 
 //vars
@@ -3679,6 +3680,84 @@ span.xoo-wsc-footer-txt {
 
 .xoo-wsc-sc-cont .xoo-wsc-cart-trigger .xoo-wsc-sc-subt {
     display: none !important;
+}
+
+.wrapper#page-wrapper .kategorii .woocommerce .products.columns-4, .wrapper#single-wrapper .kategorii .woocommerce .products.columns-4 {
+    grid-template-columns: repeat(auto-fill, 15.5%);
+}
+
+.wrapper#page-wrapper .kategorii .woocommerce .products .product a h2, 
+.wrapper#single-wrapper .kategorii .woocommerce .products .product a h2 {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.wrapper#page-wrapper .kategorii .woocommerce .products .product a h2 .count, 
+.wrapper#single-wrapper .kategorii .woocommerce .products .product a h2 .count {
+    background: none;
+    display: block;
+    color: $green;
+    padding: 5px;
+    margin-top: 5px;
+    font-weight: 600;
+}
+
+.wrapper#page-wrapper .kategorii .woocommerce .products.columns-4 .product, 
+.wrapper#single-wrapper .kategorii .woocommerce .products.columns-4 .product {
+    padding-bottom: 0px;
+}
+
+.wrapper#page-wrapper .kategorii .woocommerce .products .product a, 
+.wrapper#single-wrapper .kategorii .woocommerce .products .product a {
+    padding-bottom: 0px;
+}
+
+.col.h6.text-end {
+    text-align: center !important;
+    margin-bottom: 25px;
+}
+
+.col.h6.text-end span {
+    display: inline-block;
+    padding: 10px 15px;
+    border-radius: 5px;
+    color: $white;
+    background: $green;
+    font-size: 1.25rem;
+}
+
+.col.h6.text-end del {
+    display: inline-flex;
+    padding: 10px 15px;
+    border-radius: 5px;
+    color: $white;
+    background: $red;
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    flex-direction: column;
+    gap: 3px;
+    padding-bottom: 30px;
+    position: relative;
+    &:after {
+        content:"Акцијата е истечена";
+        position: absolute;
+        left: 0;
+        bottom: 10px;
+        display: block;
+        text-decoration: none !important;
+        text-decoration-line: none !important;
+        font-size: 1rem;
+        width: 100%;
+        text-align: center;
+        z-index: 5;
+    }
+    span {
+        display: inline-block;
+        padding: 0;
+        border-radius: 0;
+        background: none;        
+    }
 }
 
 
