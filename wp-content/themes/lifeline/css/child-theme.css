@@ -18435,6 +18435,41 @@ span.xoo-wsc-footer-txt {
   background: none;
 }
 
+#payment.woocommerce-checkout-payment {
+  background: #f0f0f0;
+}
+
+#add_payment_method #payment div.payment_box, .woocommerce-cart #payment div.payment_box, .woocommerce-checkout #payment div.payment_box {
+  background-color: #8AAC54;
+}
+#add_payment_method #payment div.payment_box p, .woocommerce-cart #payment div.payment_box p, .woocommerce-checkout #payment div.payment_box p {
+  color: #FFF;
+}
+
+#add_payment_method #payment div.payment_box::before, .woocommerce-cart #payment div.payment_box::before, .woocommerce-checkout #payment div.payment_box::before {
+  content: "";
+  display: block;
+  border: 1em solid #8AAC54;
+  border-right-color: transparent;
+  border-left-color: transparent;
+  border-top-color: transparent;
+}
+
+#add_payment_method #payment div.form-row #place_order.btn.btn-primary, #add_payment_method #payment div.form-row .wpcf7 input#place_order.btn-primary[type=submit], .wpcf7 #add_payment_method #payment div.form-row input#place_order.btn-primary[type=submit], #add_payment_method #payment div.form-row .woocommerce-notices-wrapper .woocommerce-message a#place_order.btn-primary.button, .woocommerce-notices-wrapper .woocommerce-message #add_payment_method #payment div.form-row a#place_order.btn-primary.button, #add_payment_method #payment div.form-row .woocommerce-info a#place_order.btn-primary.button, .woocommerce-info #add_payment_method #payment div.form-row a#place_order.btn-primary.button, .woocommerce-cart #payment div.form-row #place_order.btn.btn-primary, .woocommerce-cart #payment div.form-row .wpcf7 input#place_order.btn-primary[type=submit], .wpcf7 .woocommerce-cart #payment div.form-row input#place_order.btn-primary[type=submit], .woocommerce-cart #payment div.form-row .woocommerce-notices-wrapper .woocommerce-message a#place_order.btn-primary.button, .woocommerce-notices-wrapper .woocommerce-message .woocommerce-cart #payment div.form-row a#place_order.btn-primary.button, .woocommerce-cart #payment div.form-row .woocommerce-info a#place_order.btn-primary.button, .woocommerce-info .woocommerce-cart #payment div.form-row a#place_order.btn-primary.button, .woocommerce-checkout #payment div.form-row #place_order.btn.btn-primary, .woocommerce-checkout #payment div.form-row .wpcf7 input#place_order.btn-primary[type=submit], .wpcf7 .woocommerce-checkout #payment div.form-row input#place_order.btn-primary[type=submit], .woocommerce-checkout #payment div.form-row .woocommerce-notices-wrapper .woocommerce-message a#place_order.btn-primary.button, .woocommerce-notices-wrapper .woocommerce-message .woocommerce-checkout #payment div.form-row a#place_order.btn-primary.button, .woocommerce-checkout #payment div.form-row .woocommerce-info a#place_order.btn-primary.button, .woocommerce-info .woocommerce-checkout #payment div.form-row a#place_order.btn-primary.button {
+  background: #8AAC54;
+  border: none;
+  border-radius: 4px;
+  color: #FFF;
+  text-decoration: none;
+  order: 2;
+}
+#add_payment_method #payment div.form-row #place_order.btn.btn-primary:hover, #add_payment_method #payment div.form-row .wpcf7 input#place_order.btn-primary[type=submit]:hover, .wpcf7 #add_payment_method #payment div.form-row input#place_order.btn-primary[type=submit]:hover, #add_payment_method #payment div.form-row .woocommerce-notices-wrapper .woocommerce-message a#place_order.btn-primary.button:hover, .woocommerce-notices-wrapper .woocommerce-message #add_payment_method #payment div.form-row a#place_order.btn-primary.button:hover, #add_payment_method #payment div.form-row .woocommerce-info a#place_order.btn-primary.button:hover, .woocommerce-info #add_payment_method #payment div.form-row a#place_order.btn-primary.button:hover, #add_payment_method #payment div.form-row #place_order.btn.btn-primary:focus, #add_payment_method #payment div.form-row .wpcf7 input#place_order.btn-primary[type=submit]:focus, .wpcf7 #add_payment_method #payment div.form-row input#place_order.btn-primary[type=submit]:focus, #add_payment_method #payment div.form-row .woocommerce-notices-wrapper .woocommerce-message a#place_order.btn-primary.button:focus, .woocommerce-notices-wrapper .woocommerce-message #add_payment_method #payment div.form-row a#place_order.btn-primary.button:focus, #add_payment_method #payment div.form-row .woocommerce-info a#place_order.btn-primary.button:focus, .woocommerce-info #add_payment_method #payment div.form-row a#place_order.btn-primary.button:focus, .woocommerce-cart #payment div.form-row #place_order.btn.btn-primary:hover, .woocommerce-cart #payment div.form-row .wpcf7 input#place_order.btn-primary[type=submit]:hover, .wpcf7 .woocommerce-cart #payment div.form-row input#place_order.btn-primary[type=submit]:hover, .woocommerce-cart #payment div.form-row .woocommerce-notices-wrapper .woocommerce-message a#place_order.btn-primary.button:hover, .woocommerce-notices-wrapper .woocommerce-message .woocommerce-cart #payment div.form-row a#place_order.btn-primary.button:hover, .woocommerce-cart #payment div.form-row .woocommerce-info a#place_order.btn-primary.button:hover, .woocommerce-info .woocommerce-cart #payment div.form-row a#place_order.btn-primary.button:hover, .woocommerce-cart #payment div.form-row #place_order.btn.btn-primary:focus, .woocommerce-cart #payment div.form-row .wpcf7 input#place_order.btn-primary[type=submit]:focus, .wpcf7 .woocommerce-cart #payment div.form-row input#place_order.btn-primary[type=submit]:focus, .woocommerce-cart #payment div.form-row .woocommerce-notices-wrapper .woocommerce-message a#place_order.btn-primary.button:focus, .woocommerce-notices-wrapper .woocommerce-message .woocommerce-cart #payment div.form-row a#place_order.btn-primary.button:focus, .woocommerce-cart #payment div.form-row .woocommerce-info a#place_order.btn-primary.button:focus, .woocommerce-info .woocommerce-cart #payment div.form-row a#place_order.btn-primary.button:focus, .woocommerce-checkout #payment div.form-row #place_order.btn.btn-primary:hover, .woocommerce-checkout #payment div.form-row .wpcf7 input#place_order.btn-primary[type=submit]:hover, .wpcf7 .woocommerce-checkout #payment div.form-row input#place_order.btn-primary[type=submit]:hover, .woocommerce-checkout #payment div.form-row .woocommerce-notices-wrapper .woocommerce-message a#place_order.btn-primary.button:hover, .woocommerce-notices-wrapper .woocommerce-message .woocommerce-checkout #payment div.form-row a#place_order.btn-primary.button:hover, .woocommerce-checkout #payment div.form-row .woocommerce-info a#place_order.btn-primary.button:hover, .woocommerce-info .woocommerce-checkout #payment div.form-row a#place_order.btn-primary.button:hover, .woocommerce-checkout #payment div.form-row #place_order.btn.btn-primary:focus, .woocommerce-checkout #payment div.form-row .wpcf7 input#place_order.btn-primary[type=submit]:focus, .wpcf7 .woocommerce-checkout #payment div.form-row input#place_order.btn-primary[type=submit]:focus, .woocommerce-checkout #payment div.form-row .woocommerce-notices-wrapper .woocommerce-message a#place_order.btn-primary.button:focus, .woocommerce-notices-wrapper .woocommerce-message .woocommerce-checkout #payment div.form-row a#place_order.btn-primary.button:focus, .woocommerce-checkout #payment div.form-row .woocommerce-info a#place_order.btn-primary.button:focus, .woocommerce-info .woocommerce-checkout #payment div.form-row a#place_order.btn-primary.button:focus {
+  background-color: #6f8a43;
+  color: #FFF;
+  border: none;
+  text-decoration: none;
+}
+
 @media (min-width: 1700px) {
   .container {
     width: 1440px;
