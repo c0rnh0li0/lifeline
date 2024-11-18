@@ -26,6 +26,13 @@ body {
 	padding: 0;
 }
 
+a {
+    transition: 0.5s ease;
+    &:hover, &:focus {
+        transition: 0.5s ease;
+    }
+}
+
 .wrapper {
     padding: 0;
     &.menu-wrapper {
@@ -1877,7 +1884,7 @@ header#wrapper-navbar {
                 font-weight: 600;
                 margin-bottom: 20px;
                 &:hover, &:focus {
-                    background: $green;
+                    background: $almostwhite;
                     color: $white;
                 }
             }
@@ -2987,7 +2994,7 @@ body.woocommerce-cart #page #content ul.wc-block-grid__products {
                         font-weight: 600;
                         margin-bottom: 20px;
                         &:hover, &:focus {
-                            background: $green;
+                            background: $almostwhite;
                             color: $white;
                         }
                     }

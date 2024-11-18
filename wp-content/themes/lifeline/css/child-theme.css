@@ -14974,6 +14974,13 @@ body {
   padding: 0;
 }
 
+a {
+  transition: 0.5s ease;
+}
+a:hover, a:focus {
+  transition: 0.5s ease;
+}
+
 .wrapper {
   padding: 0;
 }
@@ -16694,7 +16701,7 @@ header#wrapper-navbar nav#main-nav .social a img {
   margin-bottom: 20px;
 }
 .brands-container .brands-carousel .brands-name-container a:hover, .brands-container .brands-carousel .brands-name-container a:focus {
-  background: #8AAC54;
+  background: #f0f0f0;
   color: #FFF;
 }
 .brands-container .brands-carousel .brands-name-container .products {
@@ -17695,7 +17702,7 @@ body.woocommerce-cart #page #content ul.wc-block-grid__products li.wc-block-grid
   margin-bottom: 20px;
 }
 .wrapper#page-wrapper .brands-page .entry-content .brands-name-container .brands-name-container a:hover, .wrapper#page-wrapper .brands-page .entry-content .brands-name-container .brands-name-container a:focus {
-  background: #8AAC54;
+  background: #f0f0f0;
   color: #FFF;
 }
 .wrapper#page-wrapper .brands-page .entry-content .brands-products-container .products {

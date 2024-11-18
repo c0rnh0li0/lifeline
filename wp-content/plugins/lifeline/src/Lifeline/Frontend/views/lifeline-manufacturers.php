@@ -29,8 +29,8 @@
         <?php foreach ($terms as $term) {
             $single_brand_url = home_url('/' . $brand_url . '/?manufacturer=' . $term->slug);
         ?>
-            <a href="<?php echo $single_brand_url; ?>">
-                <?php echo $term->name; ?>
+            <a href="<?php echo $single_brand_url; ?>" class="<?php echo $term->slug ?>">
+                <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/brands/<?php echo $term->slug; ?>.webp" alt="<?php echo $term->name; ?>" />
             </a>
         <?php } ?>
     </div>
