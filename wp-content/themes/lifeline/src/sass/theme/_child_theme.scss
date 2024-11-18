@@ -1844,8 +1844,12 @@ header#wrapper-navbar {
                         font-weight: 600;
                         margin: 0 15px;                   
                         &:hover, &:focus {
-                            background: $green;
+                            background: $almostwhite;
                             color: $white;
+                            img {
+                                filter: saturate(0%);
+                                opacity: 0.5;
+                            }
                         }                                       
                     }
                    }
@@ -1886,6 +1890,10 @@ header#wrapper-navbar {
                 &:hover, &:focus {
                     background: $almostwhite;
                     color: $white;
+                    img {
+                        filter: saturate(0%);
+                        opacity: 0.5;
+                    }
                 }
             }
             .products {
@@ -2996,6 +3004,10 @@ body.woocommerce-cart #page #content ul.wc-block-grid__products {
                         &:hover, &:focus {
                             background: $almostwhite;
                             color: $white;
+                            img {
+                                filter: saturate(0%);
+                                opacity: 0.5;
+                            }
                         }
                     }
                 }                
