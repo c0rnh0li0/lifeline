@@ -46,7 +46,7 @@ class LifelineConnector {
                 $this->connection = $connection;
 
                 return $connection;      
-            } catch (PDOException    $e) {
+            } catch (PDOException $e) {
                 $this->log([
                     'inserted' => 0,
                     'updated' => 0,
@@ -55,14 +55,17 @@ class LifelineConnector {
                     'old_restore' => 0
                 ]);
     
+                llog($e->getMessage());
                 // exit($e->getMessage());
             }
         }
     }
     
     public function query($query) {
-        if (!$this->connection)
+        if (!$this->connection) {
+            llog("No connection with database: " . PHP_EOL . $query);
             return [];
+        }            
         
         $result = $this->connection->query($query);
 

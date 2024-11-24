@@ -138,7 +138,7 @@ class LifelineGroups {
 
         if (isset($data['ends_at']) && !empty($data['ends_at'])) {
             $ends_at = strtotime($data['ends_at']);
-            $ends_at = date('Y-m-d 00:00:00', $ends_at);
+            $ends_at = date('Y-m-d 23:59:59', $ends_at);
         }
 
         $vals_arr = array(

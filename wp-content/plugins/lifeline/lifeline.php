@@ -26,6 +26,9 @@ define('LIFELINE_FE_GROUPS_DB', 'lifeline_fe_groups');
 define('LIFELINE_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('LIFELINE_TEMPLATES_DIR', plugin_dir_path(__FILE__) . 'src/Lifeline/Frontend/views/');
 
+if (!defined('LIFELINE_ERROR_LOG'))
+    define('LIFELINE_ERROR_LOG', plugin_dir_path(__FILE__) . 'lifeline-errors.log');
+
 require plugin_dir_path(__FILE__) . '/vendor/autoload.php';
 
 global $lifeline_active;

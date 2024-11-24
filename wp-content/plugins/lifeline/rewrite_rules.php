@@ -42,3 +42,35 @@ function lifeline_rest_route_groups($data) {
 
 	return rest_ensure_response($groups);
 }
+
+function llog($msg) {
+	$date = '[' . date('Y-m-d H:i:s') . ']';
+
+	// ob_start();
+	// var_dump($msg);
+	// $log_data = ob_get_clean();
+	// ob_end_clean();
+
+	@error_log($date . $msg . "\r\n", 3, LIFELINE_ERROR_LOG);
+}
+
+function ts_hide_shipping_for_order_total( $rates ) {
+	$free = array();
+	$order_total = WC()->cart->get_subtotal();
+	
+	if( $order_total > 1500 ) {
+	  foreach ( $rates as $rate_id => $rate ) {
+		if ( 'free_shipping' === $rate->get_method_id() ) {
+		  $free[ $rate_id ] = $rate;
+		}
+	  }
+	} else {
+		foreach ( $rates as $rate_id => $rate ) {
+			if ( 'flat_rate' === $rate->get_method_id() ) {
+			  $free[ $rate_id ] = $rate;
+			}
+		  }
+	}
+	return ! empty( $free ) ? $free : $rates;
+  }
+  add_filter( 'woocommerce_package_rates', 'ts_hide_shipping_for_order_total', 100 );

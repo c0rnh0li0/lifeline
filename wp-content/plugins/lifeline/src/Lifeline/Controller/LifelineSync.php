@@ -1,6 +1,7 @@
 <?php
 namespace Lifeline\Controller;
 
+use Exception;
 use stdClass;
 use WC_Product;
 use WC_Product_Attribute;
@@ -228,6 +229,8 @@ class LifelineSync extends LifelineConnector {
             ];
 
             $this->log($error_data);
+            llog("No products in database or no connection to database server.");
+
             return $error_data;
         }
 
@@ -328,48 +331,52 @@ class LifelineSync extends LifelineConnector {
         $count = 1; 
 
         foreach($products as $product) {
-            $product_id = wc_get_product_id_by_sku($product->sifra);
+            try {
+                $product_id = wc_get_product_id_by_sku($product->sifra);
 
-            if ($product_id == 0)
-                $return->inserted++;
-            else 
-                $return->updated++;
+                if ($product_id == 0)
+                    $return->inserted++;
+                else 
+                    $return->updated++;
 
-            $woo_product = $product_id == 0 || !$product_id ? new WC_Product() : wc_get_product($product_id);
+                $woo_product = $product_id == 0 || !$product_id ? new WC_Product() : wc_get_product($product_id);
 
-            
-            $woo_product->set_name($product->naziv);
+                
+                $woo_product->set_name($product->naziv);
 
-            if ($product_id == 0)
-                $woo_product->set_sku($product->sifra);
-            
-            $woo_product->set_regular_price($product->maloprodazna);
-            $woo_product->set_price($product->maloprodazna);
-            // $woo_product->set_description($product->opis && !empty($product->opis) ? $product->opis : "");
-            $woo_product->set_backorders('notify');
-            
-            $woo_product->set_manage_stock(true);
-            $woo_product->set_stock_quantity($product->zaliha);
-            $woo_product->set_stock_status($product->zaliha > 0 ? 'instock' : 'outofstock');
-            
-            $attribs = $this->add_attribute_value('Manufacturer', $product->proizvoditel);
-            
-            $woo_product->set_attributes($attribs);
+                if ($product_id == 0)
+                    $woo_product->set_sku($product->sifra);
+                
+                $woo_product->set_regular_price($product->maloprodazna);
+                $woo_product->set_price($product->maloprodazna);
+                // $woo_product->set_description($product->opis && !empty($product->opis) ? $product->opis : "");
+                $woo_product->set_backorders('notify');
+                
+                $woo_product->set_manage_stock(true);
+                $woo_product->set_stock_quantity($product->zaliha);
+                $woo_product->set_stock_status($product->zaliha > 0 ? 'instock' : 'outofstock');
+                
+                $attribs = $this->add_attribute_value('Manufacturer', $product->proizvoditel);
+                
+                $woo_product->set_attributes($attribs);
 
-            $ddv = (int) $product->ddv;
-            $woo_product->set_tax_class($this->tax_classes["$ddv"]); // standard
+                $ddv = (int) $product->ddv;
+                $woo_product->set_tax_class($this->tax_classes["$ddv"]); // standard
 
-            $woo_product->set_status('publish');
+                $woo_product->set_status('publish');
 
-            $product_id = $woo_product->save();
+                $product_id = $woo_product->save();
 
-            $product_skus[$product->sifra] = $product_id;
+                $product_skus[$product->sifra] = $product_id;
 
-            $this->set_terms($attribs, $product_id);
+                $this->set_terms($attribs, $product_id);
 
-            $this->set_status($paging, $count);
+                $this->set_status($paging, $count);
 
-            $count++;
+                $count++;
+            } catch (Exception $e) {
+                llog("Product import error: " . PHP_EOL . $e->getMessage() . PHP_EOL . $e->getTraceAsString());
+            }            
         }
 
         return $return;
