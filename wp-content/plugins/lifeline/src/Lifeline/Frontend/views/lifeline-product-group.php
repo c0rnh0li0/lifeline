@@ -33,8 +33,10 @@
         <?php if (!empty($group->starts_at) && !empty($group->ends_at && !$group->is_bestseller)) { ?>
             <div class="col h6 text-end">
                 <?php echo $expired ? '<del>' : ''; ?>
+                <span>    
                 од <?php echo date('d.m.Y', strtotime($group->starts_at)); ?> 
                 до <?php echo date('d.m.Y', strtotime($group->ends_at)); ?> 
+                </span>
                 <?php echo $expired ? '</del>' : ''; ?>                
             </div>
         <?php } ?>
